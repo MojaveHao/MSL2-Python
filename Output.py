@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-import os,sys
+import os,sys,time
 from ui_output import Ui_Output
 class Output(QMainWindow,Ui_Output):
     def __init__(self,server_path):
@@ -11,3 +11,4 @@ class Output(QMainWindow,Ui_Output):
             with open(f"{server_path}server.log") as f:
                 log = f.read()
             self.logs.setText(log)
+            time.sleep(2)
