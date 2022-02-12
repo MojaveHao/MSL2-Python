@@ -9,19 +9,16 @@
 ### Dir
 ####  Resource -> MSL2_Python调用的图片文件
 ####  SupportLib -> MSL2_Python调用的支持文件
-    __init__.py -> 让主程序能够调用同级目录下文件
-
-    download.py -> 多线程下载器，由Bilibili @2z0h0m9 制作，会在下个版本中使用
-
-    frp_support.py -> SakuraFRP教程引导程序
-    
-    RAM.py -> 计算并返回当前总内存与可用内存，由Bilibili @2z0h0m9 制作
+##### __init__.py -> 让主程序能够调用同级目录下文
+##### download.py -> 多线程下载器,由Bilibili @2z0h0m9 制作,会在下个版本中使用
+##### frp_support.py -> SakuraFRP教程引导程序
+##### RAM.py -> 计算并返回当前总内存与可用内存,由Bilibili @2z0h0m9 制作
 ## 代码结构
 ### 主程序
-####  self.using_java = 0 ->0为17，1为16，2为8
+####  self.using_java = 0 ->0为17,1为16,2为8
 ####  self.want_to_download = 0 ->同上
-#### self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/libjvm/java-8-openjdk-amd64"]
-#### self.server_path = "" ->服务端的路径
+#### self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/libjvm/java-8-openjdk-amd64"] -> 第一个为Java17路径，第二个为Java16路径，第三个为Java8路径，默认为Ubuntu系统
+#### self.server_path = "" ->服务端的路径,默认为空,即当前目录
 #### self.min_mem_G = 1 ->最小内存(G)
 #### self.max_mem_G = RAM.mem()[1] ->最大内存(G)
 #### self.dis_log4j2 = True ->是否禁用log4j2
@@ -31,8 +28,8 @@
 #### self.pvp = True ->开启PVP
 #### self.command_block = True ->开启命令方块
 #### self.motd_message = "Welcome!" ->服务器选择界面提示
-#### self.select_card = 0 ->打开的选项卡，0为无，1为日志，2为映射，3为关于
-#### self.server_status = False ->服务器状态，False为关闭，True为开启
+#### self.select_card = 0 ->打开的选项卡,0为无,1为日志,2为映射,3为关于
+#### self.server_status = False ->服务器状态,False为关闭,True为开启
 ### Output.py
 #### self.server_path -> 读取(f"{self.server_path}"+os.sep+"server.log")文件
 ## Defines
