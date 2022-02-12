@@ -18,6 +18,7 @@ class KFQ(QMainWindow,KaiFuQi):
         self.want_to_download = 0 #同上
         self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/lib/jvm/java-8-openjdk-amd64"]
         self.server_path = "" #服务端的路径
+        self.server_name = "server.jar" #服务端的名字，需要单独设置
         self.min_mem_G = 1 #最小内存(G)
         self.max_mem_G = RAM.mem()[1] #最大内存(G)
         self.dis_log4j2 = True #是否禁用log4j2
@@ -39,7 +40,8 @@ class KFQ(QMainWindow,KaiFuQi):
         self.pbtn_start_server.clicked.connect(self.start_server)
         self.pbtn_about.clicked.connect(self.about)
         self.pbtn_output.clicked.connect(self.open_logs)
-        self.pbtn_show_java_path.clicked.connect(self.show_java_path)   
+        self.pbtn_show_java_path.clicked.connect(self.show_java_path)
+        self.pbtn_select_path.clicked.connect(self.select_server_path)   
         if not os.path.isfile("frp.conf"):
             self.pbtn_frp.clicked.connect(self.frp_guide("first_use"))
             with open("frp.conf","w") as f:
@@ -87,18 +89,18 @@ class KFQ(QMainWindow,KaiFuQi):
         want_to = self.cbox_want_to_download.currentText()
         os.system("sudo apt update && sudo apt upgrade -y") #更新pip源
         if "7" in want_to:
-            os.system("sudo apt-get install openjdk-7-jre") #下载Java7
+            os.system("sudo apt install openjdk-7-jre") #下载Java7
         if "8" in want_to:
-            os.system("sudo apt-get install openjdk-8-jdk") #下载Java8
+            os.system("sudo apt install openjdk-8-jdk") #下载Java8
         if "16" in want_to:
-            os.system("sudo apt-get install openjdk-16-jdk") #下载Java16
+            os.system("sudo apt install openjdk-16-jdk") #下载Java16
         if "17" in want_to:
-            os.system("sudo apt-get install openjdk-17-jdk") #下载Java17
+            os.system("sudo apt install openjdk-17-jdk") #下载Java17
     def start_server(self):
         if self.dis_log4j2 == True:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_path))
+            os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
         else:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {}".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_path))
+            os.system("{}java -Xms {}G -Xmx {}G -jar {}".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
     def open_logs(self):
         Dialog = QDialog()
         ui = Output.Output(self.server_path)
@@ -116,6 +118,9 @@ class KFQ(QMainWindow,KaiFuQi):
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
     def frp_guide(self,now):
         os.system("sudo python "+"SupportLib"+os.sep+"frpsupport.py"+f"{now}")
+    def select_server_path(self):
+        self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹")
+        self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)"))
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     kfq = KFQ()

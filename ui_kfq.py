@@ -39,6 +39,7 @@ class Ui_MainWindow(object):
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
+        self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.setObjectName(u"cbox_want_to_download")
         self.cbox_want_to_download.setGeometry(QRect(290, 350, 87, 26))
         self.pbtn_how_to_choice = QPushButton(self.centralwidget)
@@ -166,6 +167,7 @@ class Ui_MainWindow(object):
         self.cbox_want_to_download.setItemText(0, QCoreApplication.translate("MainWindow", u"Java17", None))
         self.cbox_want_to_download.setItemText(1, QCoreApplication.translate("MainWindow", u"Java16", None))
         self.cbox_want_to_download.setItemText(2, QCoreApplication.translate("MainWindow", u"Java8", None))
+        self.cbox_want_to_download.setItemText(3, QCoreApplication.translate("MainWindow", u"Java7", None))
 
         self.pbtn_how_to_choice.setText(QCoreApplication.translate("MainWindow", u"\u5982\u4f55\u9009\u62e9", None))
         self.n_1.setText(QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u7aef\u8def\u5f84\uff1a", None))
