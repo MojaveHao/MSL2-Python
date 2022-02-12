@@ -9,6 +9,13 @@
 ### Dir
 ####  Resource -> MSL2_Python调用的图片文件
 ####  SupportLib -> MSL2_Python调用的支持文件
+  init.py -> 让主程序能够调用同级目录下文件
+
+  download.py -> 多线程下载器，由Bilibili @2z0h0m9 制作，会在下个版本中使用
+  
+  frp_support.py -> SakuraFRP教程引导程序
+
+RAM.py -> 计算并返回当前总内存与可用内存，由Bilibili @2z0h0m9 制作
 ## 代码结构
 ### 主程序
 ####  self.using_java = 0 ->0为17，1为16，2为8
@@ -26,7 +33,10 @@
 #### self.motd_message = "Welcome!" ->服务器选择界面提示
 #### self.select_card = 0 ->打开的选项卡，0为无，1为日志，2为映射，3为关于
 #### self.server_status = False ->服务器状态，False为关闭，True为开启
-### Defines
+### Output.py
+#### self.server_path -> 读取(f"{self.server_path}"+os.sep+"server.log")文件
+## Defines
+### 主程序
 #### set_adv -> 向server.properties文件写入配置
 #### process_log4j2 -> 处理log4j2的开关
 #### how_to_choice -> 提示如何选择Java
@@ -36,5 +46,5 @@
 #### about -> 打印软件信息
 #### show_java_path -> 打印当前的Java路径
 #### frp_guide -> 调用SupportLib/frp_guide.py来启动SakuraFRP配置向导
-
-##本说明持续更新中
+### Output.py
+#### readlog -> 反复读取(f"{self.server_path}"+os.sep+"server.log")文件
