@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTextBrowser" name="logs">
+  <widget class="QTextBrowser" name="show_logs">
    <property name="geometry">
     <rect>
      <x>10</x>

@@ -1,12 +1,41 @@
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-import sys,os
-from ui_kfq import Ui_MainWindow as KaiFuQi
-import Output
+import sys,os,time,threading
+from ui_kfq import Ui_MainWindow as MSL2Py
+from ui_output import Ui_Output
 import SupportLib.RAM as RAM
 import SupportLib.download
-class KFQ(QMainWindow,KaiFuQi):
+from download_server_support import Download_Manager as DManager
+class Output(QDialog, Ui_Output):
+    def __init__(self,server_path):
+        super().__init__()
+        self.server_path = server_path
+        self.setupUi(self)
+        self.show()
+class ReadingLogs(threading.Thread,Output,QDialog):
+    def __init__(self,log_path):
+        threading.Thread.__init__(self)
+        Output.__init__(self,log_path)
+        self.log_path = log_path
+	# 覆盖父类的run方法
+    def run(self):
+        jump = 0
+        while True:
+            with open(f"{self.log_path}server.log") as f:
+                    if jump > 0:
+                        for i in range(jump):
+                            f.next()
+                        try:
+                            for whe in range(1, 50):
+                                new_logs = f.readline()
+                        except:
+                            jump = whe
+                    else:
+                        for whe in range(1, 50):
+                            new_logs = f.readline()
+            self.show_logs.setText(new_logs)
+class MSL2(QMainWindow,MSL2Py,ReadingLogs):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -42,6 +71,7 @@ class KFQ(QMainWindow,KaiFuQi):
         self.pbtn_output.clicked.connect(self.open_logs)
         self.pbtn_show_java_path.clicked.connect(self.show_java_path)
         self.pbtn_select_path.clicked.connect(self.select_server_path)   
+        self.pbtn_download_server.clicked.connect(self.download_server)
         if not os.path.isfile("frp.conf"):
             self.pbtn_frp.clicked.connect(self.frp_guide("first_use"))
             with open("frp.conf","w") as f:
@@ -74,8 +104,8 @@ class KFQ(QMainWindow,KaiFuQi):
         self.max_ram.setMinimum(self.min_mem_G)
         self.max_ram.setMaximum(RAM.mem()[1])
     def process_log4j2(self):
-        self.log4j2 = not(self.log4j2)#反相是否启用log4j2的设置
-        if self.log4j2 == True:
+        self.dis_log4j2 = not(self.dis_log4j2)#反相是否启用log4j2的设置
+        if self.dis_log4j2 == True:
             self.pbtn_dis_log4j2.setText("启用log4j2 (不推荐)")
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
@@ -102,11 +132,8 @@ class KFQ(QMainWindow,KaiFuQi):
         else:
             os.system("{}java -Xms {}G -Xmx {}G -jar {}".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
     def open_logs(self):
-        Dialog = QDialog()
-        ui = Output.Output(self.server_path)
-        ui.setupUi(Dialog)
-        Dialog.show()
-        Dialog.exec_()
+        rdl = ReadingLogs(log_path=self.server_path)
+        rdl.start()
     def about(self):
         QMessageBox.information(self,"软件信息","我的世界开服器Python版1.0(对应Waheal版本2.0)\n由Mojavium制作")
     def show_java_path(self):
@@ -121,7 +148,10 @@ class KFQ(QMainWindow,KaiFuQi):
     def select_server_path(self):
         self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹")
         self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)"))
+    def download_server(self):
+        download = DManager()
+        download.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    kfq = KFQ()
+    kfq = MSL2()
     sys.exit(app.exec())
