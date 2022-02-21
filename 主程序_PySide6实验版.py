@@ -72,10 +72,8 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         self.pbtn_show_java_path.clicked.connect(self.show_java_path)
         self.pbtn_select_path.clicked.connect(self.select_server_path)   
         self.pbtn_download_server.clicked.connect(self.download_server)
-        if not os.path.isfile("frp.conf"):
+        if not os.path.isfile("frp.conf"): #判断是否已经配置过SakuraFRP
             self.pbtn_frp.clicked.connect(self.frp_guide("first_use"))
-            with open("frp.conf","w") as f:
-                f.write("frp configed\n--Please don't delete this file.")
         else:
             self.pbtn_frp.clicked.connect(self.frp_guide("after"))
     def set_adv(self): #读写server.pro...文件修改设置
@@ -99,10 +97,9 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
                 server_lines[i] = "enable-command-block={}".format(self.command_block)
         with open(f"{self.server_path}"+os.sep+"server.properties","w"):
             f.write(server_lines)
-        self.min_ram.setMinimum(1)
-        self.min_ram.setMaximum(self.max_mem_G)
-        self.max_ram.setMinimum(self.min_mem_G)
-        self.max_ram.setMaximum(RAM.mem()[1])
+        self.min_ram.setMinimum(1) #定义最小内存为1G
+        self.min_ram.setMaximum(self.max_mem_G) #设置最大内存为当前可用内存
+        self.max_ram.setMinimum(self.min_mem_G) #设置最小内存
     def process_log4j2(self):
         self.dis_log4j2 = not(self.dis_log4j2)#反相是否启用log4j2的设置
         if self.dis_log4j2 == True:
@@ -119,13 +116,13 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         want_to = self.cbox_want_to_download.currentText()
         os.system("sudo apt update && sudo apt upgrade -y") #更新pip源
         if "7" in want_to:
-            os.system("sudo apt install openjdk-7-jre") #下载Java7
+            os.system("sudo apt install openjdk-7-jre -y") #下载Java7
         if "8" in want_to:
-            os.system("sudo apt install openjdk-8-jdk") #下载Java8
+            os.system("sudo apt install openjdk-8-jdk -y") #下载Java8
         if "16" in want_to:
-            os.system("sudo apt install openjdk-16-jdk") #下载Java16
+            os.system("sudo apt install openjdk-16-jdk -y") #下载Java16
         if "17" in want_to:
-            os.system("sudo apt install openjdk-17-jdk") #下载Java17
+            os.system("sudo apt install openjdk-17-jdk -y") #下载Java17
     def start_server(self):
         if self.dis_log4j2 == True:
             os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
@@ -153,5 +150,5 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         download.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    kfq = MSL2()
+    msl = MSL2()
     sys.exit(app.exec())
