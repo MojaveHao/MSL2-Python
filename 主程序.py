@@ -1,40 +1,43 @@
+from tokenize import Single
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-import sys,os,time,threading
+import sys,os
 from ui_kfq import Ui_MainWindow as MSL2Py
 from ui_output import Ui_Output
 import SupportLib.RAM as RAM
-import SupportLib.download
 from download_server_support import Download_Manager as DManager
+from create_config import *
 class Output(QDialog, Ui_Output):
     def __init__(self,server_path):
         super().__init__()
         self.server_path = server_path
         self.setupUi(self)
         self.show()
-class ReadingLogs(threading.Thread,Output,QDialog):
-    def __init__(self,log_path):
-        threading.Thread.__init__(self)
-        Output.__init__(self,log_path)
-        self.log_path = log_path
-	# 覆盖父类的run方法
-    def run(self):
+class ReadingLogs(QThread,Output,QDialog):
+    #sigle = Single(object)
+    def __init__(self,parent=None,log_path=""):
+        super().__init__()
+    def read_logs(self,log_path):
         jump = 0
+        self.log_path = log_path
         while True:
             with open(f"{self.log_path}server.log") as f:
-                    if jump > 0:
-                        for i in range(jump):
-                            f.next()
-                        try:
-                            for whe in range(1, 50):
-                                new_logs = f.readline()
-                        except:
-                            jump = whe
-                    else:
+                if jump > 0:
+                    for i in range(jump):
+                        f.next()
+                    try:
                         for whe in range(1, 50):
                             new_logs = f.readline()
-            self.show_logs.setText(new_logs)
+                    except:
+                        jump = whe
+                else:
+                    for whe in range(1, 50):
+                        new_logs = f.readline()
+                self.show_logs.setText(new_logs)
+    def run(self):
+        self.read_logs()
+        self.signal.emit(self.log_path)
 class MSL2(QMainWindow,MSL2Py,ReadingLogs):
     def __init__(self):
         super().__init__()
@@ -62,7 +65,7 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         self.pbtn_output.setIcon(QIcon("Resource"+os.sep+"Book.gif")) #设置输出摁钮的图案为书
         self.pbtn_frp.setIcon(QIcon("Resource"+os.sep+"Furnace.png")) #设置内网穿透摁钮的图案为熔炉
         self.pbtn_about.setIcon(QIcon("Resource"+os.sep+"Quill.png")) #设置关于摁钮的图案为书和笔
-        self.pbtn_ok_adv_set.clicked.connect(self.set_adv)
+        self.pbtn_ok_adv_set.clicked.connect(self.set_adv) #此行以后直到第74行都是绑定摁钮处理方法
         self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
         self.pbtn_dis_log4j2.clicked.connect(self.process_log4j2)
         self.pbtn_download.clicked.connect(self.download_java)
@@ -76,6 +79,16 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
             self.pbtn_frp.clicked.connect(self.frp_guide("first_use"))
         else:
             self.pbtn_frp.clicked.connect(self.frp_guide("after"))
+        if not os.path.isdir("MSLDownload"): #判断是否有下载目录，没有就创建
+            os.mkdir("MSLDownload")
+        else:
+            self.download_path = "../MSLDownload"
+        if os.path.isfile("msl_config.text"): #如果存在配置就从配置读取
+            temp = read_config()
+            self.using_java = temp[0]
+            self.java_path = temp[1]
+            self.server_path = temp[2]
+            self.download_path = temp[3]
     def set_adv(self): #读写server.pro...文件修改设置
         self.min_mem_G = self.min_ram.value() #获取最小内存(G)
         self.max_mem_G = self.max_ram.value() #获取最大内存(G)
@@ -83,10 +96,10 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         self.serv_port = int(self.server_port.text()) #获取服务器端口
         self.pvp = bool(self.cbox_pvp) #获取是否启用pvp
         self.command_block = bool(self.cbox_command_block) #获取是否启用命令方块
-        self.motd_message = self.motd.text()
-        with open(f"{self.server_path}"+os.sep+"server.properties") as f:
+        self.motd_message = self.motd.text() #设置服务器选择界面的提示
+        with open(f"{self.server_path}"+os.sep+"server.properties") as f: #读取server.properties
             server_lines = f.readlines()
-        for i in range(server_lines):
+        for i in range(server_lines):#遍历server.properties，并且在内存中修改内容
             if "max-players=" in server_lines[i]:
                 server_lines[i] = "max-players={}".format(self.max_players)
             if "server-port=" in server_lines[i]:
@@ -95,18 +108,19 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
                 server_lines[i] = "pvp={}".format(self.pvp)
             if "enable-command-block=" in server_lines[i]:
                 server_lines[i] = "enable-command-block={}".format(self.command_block)
-        with open(f"{self.server_path}"+os.sep+"server.properties","w"):
+        with open(f"{self.server_path}"+os.sep+"server.properties","w"): #将修改后的内容重新写回server.properties
             f.write(server_lines)
         self.min_ram.setMinimum(1) #定义最小内存为1G
         self.min_ram.setMaximum(self.max_mem_G) #设置最大内存为当前可用内存
         self.max_ram.setMinimum(self.min_mem_G) #设置最小内存
+        write_config(self.using_java,self.java_path,self.server_path,self.download_path)
     def process_log4j2(self):
-        self.dis_log4j2 = not(self.dis_log4j2)#反相是否启用log4j2的设置
-        if self.dis_log4j2 == True:
+        self.dis_log4j2 = not(self.dis_log4j2) #反相是否启用log4j2的设置
+        if self.dis_log4j2 == True: #设置反相之后摁钮显示的文字
             self.pbtn_dis_log4j2.setText("启用log4j2 (不推荐)")
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
-    def print_how_to_choice(self):
+    def print_how_to_choice(self): #显示如何选择Java的提示框
         QMessageBox.information(self,"如何选择Java版本","\
         1.18+ --> Java17\n\
         1.14 - 1.17 --> Java8 - Java16\n\
@@ -114,7 +128,7 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         1.7- --> Java7")
     def download_java(self):
         want_to = self.cbox_want_to_download.currentText()
-        os.system("sudo apt update && sudo apt upgrade -y") #更新pip源
+        os.system("sudo apt update && sudo apt upgrade -y") #更新下载源
         if "7" in want_to:
             os.system("sudo apt install openjdk-7-jre -y") #下载Java7
         if "8" in want_to:
@@ -123,30 +137,32 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
             os.system("sudo apt install openjdk-16-jdk -y") #下载Java16
         if "17" in want_to:
             os.system("sudo apt install openjdk-17-jdk -y") #下载Java17
-    def start_server(self):
+    def start_server(self): #启动服务器
         if self.dis_log4j2 == True:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
+            os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true -nogui".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
         else:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {}".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
-    def open_logs(self):
-        rdl = ReadingLogs(log_path=self.server_path)
-        rdl.start()
-    def about(self):
+            os.system("{}java -Xms {}G -Xmx {}G -jar {} -nogui".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
+    def open_logs(self): #多线程显示日志
+        rd = ReadingLogs()
+        rd.start(self.server_path)
+    def about(self): #显示软件信息
         QMessageBox.information(self,"软件信息","我的世界开服器Python版1.0(对应Waheal版本2.0)\n由Mojavium制作")
-    def show_java_path(self):
+    def show_java_path(self): #展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
             QMessageBox.information(self,"Java17路径",str(self.java_path[0]))
         if self.cbox_using_java.currentText() == "Java16":
             QMessageBox.information(self,"Java16路径",str(self.java_path[1]))
         if self.cbox_using_java.currentText() == "Java8":
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
-    def frp_guide(self,now):
+    def frp_guide(self,now): #调用FRP配置指南
         os.system("sudo python "+"SupportLib"+os.sep+"frpsupport.py"+f"{now}")
-    def select_server_path(self):
-        self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹")
-        self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)"))
-    def download_server(self):
-        download = DManager()
+    def select_server_path(self): #选择服务端路径的函数
+        self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹") #选择服务端路径
+        self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)")) #选择服务器的Jar文件
+        if self.server_path: #如果选择了服务端路径，把它也设置成默认下载路径
+            self.download_path = self.server_path
+    def download_server(self): #创建下载窗口
+        download = DManager(self.download_path)
         download.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
