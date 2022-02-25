@@ -23,6 +23,9 @@
       <height>29</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>开启服务器</string>
     </property>
@@ -48,6 +51,9 @@
       <width>87</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <item>
      <property name="text">
@@ -153,8 +159,11 @@
       <x>690</x>
       <y>70</y>
       <width>51</width>
-      <height>29</height>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>下载</string>
@@ -164,10 +173,13 @@
     <property name="geometry">
      <rect>
       <x>740</x>
-      <y>70</y>
-      <width>31</width>
-      <height>31</height>
+      <y>80</y>
+      <width>21</width>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>...</string>
@@ -221,6 +233,9 @@
       <height>29</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>通过启动参数禁用Log4j2</string>
     </property>
@@ -246,6 +261,9 @@
       <width>71</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <item>
      <property name="text">
@@ -332,6 +350,9 @@
       <height>26</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <item>
      <property name="text">
       <string>True</string>
@@ -364,6 +385,9 @@
       <width>71</width>
       <height>26</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <item>
      <property name="text">
@@ -421,6 +445,9 @@
       <height>29</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>确认</string>
     </property>
@@ -473,6 +500,9 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>输出</string>
     </property>
@@ -486,6 +516,9 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string>映射</string>
     </property>
@@ -494,10 +527,13 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>220</y>
       <width>93</width>
       <height>91</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>关于</string>
@@ -543,6 +579,9 @@
       <width>151</width>
       <height>29</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string>点击显示当前路径</string>
