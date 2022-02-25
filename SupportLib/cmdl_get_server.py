@@ -79,4 +79,4 @@ def get_file_url(type="PaperSpigot",ver="1.12.2"):
                         return (i["file"],i["name"])
         else:
             print(f"Can't find this type of server.\nThere is a list of names:{can_be_use_type}\nOr use this names:{other_name}")
-            return "Err"
+            return None,None

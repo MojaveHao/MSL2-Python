@@ -1,3 +1,4 @@
+from itertools import count
 import os
 from SupportLib.cmdl_get_server import get_file_url as gfu
 from SupportLib.download import *
@@ -142,8 +143,11 @@ while True:
         \t3.Paper\n\
         \t4.Vanilla\n")
         name = input("请输入名字(不要输入序号)")
-        ver = int(input("请输入您想要下载的版本"))
+        ver = input("请输入您想要下载的版本")
         result = gfu(name,ver)
+        if result[0] == None:
+            print("没有找到资源，请检查您的输入")
+            continue
         download(result[0],result[1])
     if choice == 9:
         exit()

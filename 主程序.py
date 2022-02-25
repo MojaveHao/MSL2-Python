@@ -1,11 +1,14 @@
+from signal import signal
 from tokenize import Single
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
+from PySide6 import QtConcurrent
 import sys,os
 from ui_kfq import Ui_MainWindow as MSL2Py
 from ui_output import Ui_Output
 import SupportLib.RAM as RAM
+from SupportLib.frp import FRP
 from download_server_support import Download_Manager as DManager
 from create_config import *
 class Output(QDialog, Ui_Output):
@@ -14,15 +17,11 @@ class Output(QDialog, Ui_Output):
         self.server_path = server_path
         self.setupUi(self)
         self.show()
-class ReadingLogs(QThread,Output,QDialog):
-    #sigle = Single(object)
-    def __init__(self,parent=None,log_path=""):
-        super().__init__()
-    def read_logs(self,log_path):
+        reading = QtConcurrent.run(self.read_logs)
+    def read_logs(self):
         jump = 0
-        self.log_path = log_path
         while True:
-            with open(f"{self.log_path}server.log") as f:
+            with open(f"{self.path}server.log") as f:
                 if jump > 0:
                     for i in range(jump):
                         f.next()
@@ -34,11 +33,9 @@ class ReadingLogs(QThread,Output,QDialog):
                 else:
                     for whe in range(1, 50):
                         new_logs = f.readline()
-                self.show_logs.setText(new_logs)
-    def run(self):
-        self.read_logs()
-        self.signal.emit(self.log_path)
-class MSL2(QMainWindow,MSL2Py,ReadingLogs):
+            self.new_logs = new_logs
+            self.show_logs.setText(self.new_logs)
+class MSL2(QMainWindow,MSL2Py,Output,FRP):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -75,10 +72,6 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         self.pbtn_show_java_path.clicked.connect(self.show_java_path)
         self.pbtn_select_path.clicked.connect(self.select_server_path)   
         self.pbtn_download_server.clicked.connect(self.download_server)
-        if not os.path.isfile("frp.conf"): #判断是否已经配置过SakuraFRP
-            self.pbtn_frp.clicked.connect(self.frp_guide("first_use"))
-        else:
-            self.pbtn_frp.clicked.connect(self.frp_guide("after"))
         if not os.path.isdir("MSLDownload"): #判断是否有下载目录，没有就创建
             os.mkdir("MSLDownload")
         else:
@@ -143,8 +136,11 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         else:
             os.system("{}java -Xms {}G -Xmx {}G -jar {} -nogui".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
     def open_logs(self): #多线程显示日志
-        rd = ReadingLogs()
-        rd.start(self.server_path)
+        try:
+            logs = Output(self.server_path)
+            logs.show()
+        except TypeError as err:
+            print(err)
     def about(self): #显示软件信息
         QMessageBox.information(self,"软件信息","我的世界开服器Python版1.0(对应Waheal版本2.0)\n由Mojavium制作")
     def show_java_path(self): #展示默认的Java路径
@@ -155,7 +151,8 @@ class MSL2(QMainWindow,MSL2Py,ReadingLogs):
         if self.cbox_using_java.currentText() == "Java8":
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
     def frp_guide(self,now): #调用FRP配置指南
-        os.system("sudo python "+"SupportLib"+os.sep+"frpsupport.py"+f"{now}")
+        frpconfig = FRP()
+        frpconfig.show()
     def select_server_path(self): #选择服务端路径的函数
         self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹") #选择服务端路径
         self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)")) #选择服务器的Jar文件
