@@ -18,9 +18,9 @@ class Ui_Output(object):
         if not Output.objectName():
             Output.setObjectName(u"Output")
         Output.resize(640, 480)
-        self.logs = QTextBrowser(Output)
-        self.logs.setObjectName(u"logs")
-        self.logs.setGeometry(QRect(10, 10, 621, 461))
+        self.show_logs = QTextBrowser(Output)
+        self.show_logs.setObjectName(u"show_logs")
+        self.show_logs.setGeometry(QRect(10, 10, 621, 461))
 
         self.retranslateUi(Output)
 

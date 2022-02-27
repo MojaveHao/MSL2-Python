@@ -3,15 +3,21 @@
 ################################################################################
 ## Form generated from reading UI file 'kfq.ui'
 ##
-## Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 6.2.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
+    QMainWindow, QPushButton, QSizePolicy, QSpinBox,
+    QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -23,6 +29,7 @@ class Ui_MainWindow(object):
         self.pbtn_start_server = QPushButton(self.centralwidget)
         self.pbtn_start_server.setObjectName(u"pbtn_start_server")
         self.pbtn_start_server.setGeometry(QRect(130, 10, 661, 29))
+        self.pbtn_start_server.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_8 = QLabel(self.centralwidget)
         self.n_8.setObjectName(u"n_8")
         self.n_8.setGeometry(QRect(130, 50, 69, 20))
@@ -32,10 +39,12 @@ class Ui_MainWindow(object):
         self.cbox_using_java.addItem("")
         self.cbox_using_java.setObjectName(u"cbox_using_java")
         self.cbox_using_java.setGeometry(QRect(210, 50, 87, 26))
+        self.cbox_using_java.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_2 = QLabel(self.centralwidget)
         self.n_2.setObjectName(u"n_2")
         self.n_2.setGeometry(QRect(130, 350, 151, 20))
         self.cbox_want_to_download = QComboBox(self.centralwidget)
+        self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
@@ -52,10 +61,12 @@ class Ui_MainWindow(object):
         self.label_path.setGeometry(QRect(220, 80, 461, 20))
         self.pbtn_download_server = QPushButton(self.centralwidget)
         self.pbtn_download_server.setObjectName(u"pbtn_download_server")
-        self.pbtn_download_server.setGeometry(QRect(690, 70, 51, 29))
+        self.pbtn_download_server.setGeometry(QRect(690, 70, 51, 31))
+        self.pbtn_download_server.setCursor(QCursor(Qt.PointingHandCursor))
         self.pbtn_select_path = QPushButton(self.centralwidget)
         self.pbtn_select_path.setObjectName(u"pbtn_select_path")
-        self.pbtn_select_path.setGeometry(QRect(740, 70, 31, 31))
+        self.pbtn_select_path.setGeometry(QRect(740, 80, 21, 21))
+        self.pbtn_select_path.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_3 = QLabel(self.centralwidget)
         self.n_3.setObjectName(u"n_3")
         self.n_3.setGeometry(QRect(130, 130, 69, 20))
@@ -68,6 +79,7 @@ class Ui_MainWindow(object):
         self.pbtn_dis_log4j2 = QPushButton(self.centralwidget)
         self.pbtn_dis_log4j2.setObjectName(u"pbtn_dis_log4j2")
         self.pbtn_dis_log4j2.setGeometry(QRect(440, 130, 341, 29))
+        self.pbtn_dis_log4j2.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_7 = QLabel(self.centralwidget)
         self.n_7.setObjectName(u"n_7")
         self.n_7.setGeometry(QRect(130, 180, 69, 20))
@@ -76,6 +88,7 @@ class Ui_MainWindow(object):
         self.cbox_mojang.addItem("")
         self.cbox_mojang.setObjectName(u"cbox_mojang")
         self.cbox_mojang.setGeometry(QRect(200, 180, 71, 26))
+        self.cbox_mojang.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_6 = QLabel(self.centralwidget)
         self.n_6.setObjectName(u"n_6")
         self.n_6.setGeometry(QRect(290, 180, 101, 20))
@@ -96,6 +109,7 @@ class Ui_MainWindow(object):
         self.cbox_pvp.addItem("")
         self.cbox_pvp.setObjectName(u"cbox_pvp")
         self.cbox_pvp.setGeometry(QRect(200, 210, 71, 26))
+        self.cbox_pvp.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_11 = QLabel(self.centralwidget)
         self.n_11.setObjectName(u"n_11")
         self.n_11.setGeometry(QRect(290, 210, 69, 20))
@@ -104,6 +118,7 @@ class Ui_MainWindow(object):
         self.cbox_command_block.addItem("")
         self.cbox_command_block.setObjectName(u"cbox_command_block")
         self.cbox_command_block.setGeometry(QRect(360, 210, 71, 26))
+        self.cbox_command_block.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_12 = QLabel(self.centralwidget)
         self.n_12.setObjectName(u"n_12")
         self.n_12.setGeometry(QRect(440, 210, 151, 20))
@@ -116,6 +131,7 @@ class Ui_MainWindow(object):
         self.pbtn_ok_adv_set = QPushButton(self.centralwidget)
         self.pbtn_ok_adv_set.setObjectName(u"pbtn_ok_adv_set")
         self.pbtn_ok_adv_set.setGeometry(QRect(390, 250, 93, 29))
+        self.pbtn_ok_adv_set.setCursor(QCursor(Qt.PointingHandCursor))
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(130, 250, 251, 20))
@@ -128,12 +144,15 @@ class Ui_MainWindow(object):
         self.pbtn_output = QPushButton(self.centralwidget)
         self.pbtn_output.setObjectName(u"pbtn_output")
         self.pbtn_output.setGeometry(QRect(10, 20, 93, 91))
+        self.pbtn_output.setCursor(QCursor(Qt.PointingHandCursor))
         self.pbtn_frp = QPushButton(self.centralwidget)
         self.pbtn_frp.setObjectName(u"pbtn_frp")
         self.pbtn_frp.setGeometry(QRect(10, 120, 93, 91))
+        self.pbtn_frp.setCursor(QCursor(Qt.PointingHandCursor))
         self.pbtn_about = QPushButton(self.centralwidget)
         self.pbtn_about.setObjectName(u"pbtn_about")
-        self.pbtn_about.setGeometry(QRect(10, 230, 93, 91))
+        self.pbtn_about.setGeometry(QRect(10, 220, 93, 91))
+        self.pbtn_about.setCursor(QCursor(Qt.PointingHandCursor))
         self.min_ram = QSpinBox(self.centralwidget)
         self.min_ram.setObjectName(u"min_ram")
         self.min_ram.setGeometry(QRect(200, 130, 44, 25))
@@ -147,6 +166,7 @@ class Ui_MainWindow(object):
         self.pbtn_show_java_path = QPushButton(self.centralwidget)
         self.pbtn_show_java_path.setObjectName(u"pbtn_show_java_path")
         self.pbtn_show_java_path.setGeometry(QRect(300, 50, 151, 29))
+        self.pbtn_show_java_path.setCursor(QCursor(Qt.PointingHandCursor))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -166,6 +186,7 @@ class Ui_MainWindow(object):
         self.cbox_want_to_download.setItemText(0, QCoreApplication.translate("MainWindow", u"Java17", None))
         self.cbox_want_to_download.setItemText(1, QCoreApplication.translate("MainWindow", u"Java16", None))
         self.cbox_want_to_download.setItemText(2, QCoreApplication.translate("MainWindow", u"Java8", None))
+        self.cbox_want_to_download.setItemText(3, QCoreApplication.translate("MainWindow", u"Java7", None))
 
         self.pbtn_how_to_choice.setText(QCoreApplication.translate("MainWindow", u"\u5982\u4f55\u9009\u62e9", None))
         self.n_1.setText(QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u7aef\u8def\u5f84\uff1a", None))
