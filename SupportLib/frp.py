@@ -2,7 +2,7 @@ from turtle import update
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from ui_frp import Ui_FrpcConfig
+from .ui_frp import Ui_FrpcConfig
 import os,sys,base64,requests,random,webbrowser,time
 class FRP(QDialog,Ui_FrpcConfig):
     def __init__(self):

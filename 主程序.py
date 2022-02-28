@@ -15,13 +15,20 @@ class Output(QDialog, Ui_Output):
     def __init__(self,server_path):
         super().__init__()
         self.server_path = server_path
+        path = self.server_path
+        self.read_logs = ReadingLogs(self.server_path)
         self.setupUi(self)
         self.show()
-        reading = QtConcurrent.run(self.read_logs)
-    def read_logs(self):
+        reading = QThread.start(self.read_logs)
+        reading.wait()
+class ReadingLogs(QThread):
+    def __init__(self,path):
+        super().__init__()
+        self.path = path
+    def run(self,path):
         jump = 0
         while True:
-            with open(f"{self.path}server.log") as f:
+            with open(f"{path}server.log") as f:
                 if jump > 0:
                     for i in range(jump):
                         f.next()
@@ -151,8 +158,9 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         if self.cbox_using_java.currentText() == "Java8":
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
     def frp_guide(self,now): #调用FRP配置指南
-        frpconfig = FRP()
-        frpconfig.show()
+        '''frpconfig = FRP()
+        frpconfig.show()'''
+        print("De")
     def select_server_path(self): #选择服务端路径的函数
         self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹") #选择服务端路径
         self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)")) #选择服务器的Jar文件
