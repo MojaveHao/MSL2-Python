@@ -79,6 +79,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         self.pbtn_show_java_path.clicked.connect(self.show_java_path)
         self.pbtn_select_path.clicked.connect(self.select_server_path)   
         self.pbtn_download_server.clicked.connect(self.download_server)
+        self.pbtn_frp.clicked.connect(self.frp_guide)
         if not os.path.isdir("MSLDownload"): #判断是否有下载目录，没有就创建
             os.mkdir("MSLDownload")
         else:
@@ -158,8 +159,8 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         if self.cbox_using_java.currentText() == "Java8":
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
     def frp_guide(self,now): #调用FRP配置指南
-        '''frpconfig = FRP()
-        frpconfig.show()'''
+        frpconfig = FRP()
+        frpconfig.show()
         print("De")
     def select_server_path(self): #选择服务端路径的函数
         self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹") #选择服务端路径

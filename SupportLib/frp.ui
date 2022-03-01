@@ -45,12 +45,12 @@
    </item>
    <item>
     <property name="text">
-     <string>[付费]杭州  优先使用</string>
+     <string>[正在维护][付费]杭州  优先使用</string>
     </property>
    </item>
    <item>
     <property name="text">
-     <string>[付费]广州  杭州不行再用</string>
+     <string>[正在维护][付费]广州  杭州不行再用</string>
     </property>
    </item>
   </widget>
