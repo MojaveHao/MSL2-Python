@@ -1,7 +1,23 @@
-from itertools import count
+from SupportLib.RAM import mem
 import os
+from tqdm import tqdm
 from SupportLib.cmdl_get_server import get_file_url as gfu
 from SupportLib.download import *
+min_ram = 1
+max_ram = 4
+if os.path.isfile('config.txt'):
+    with tqdm(total=4,desc='Read config from file') as pbar:
+        with open('config.txt') as f:
+            temp = f.read()
+            pbar.update(1)
+            serv_path = temp[0]
+            pbar.update(1)
+            serv_name = temp[1]
+            pbar.update(1)
+            log4j2 = temp[2]
+            pbar.update(1)
+print("\n"*2)
+print("############################################################################################")
 print(" \
          __  __ ____  _     ____    ____        _   _              __     __        \n\
          |  \/  / ___|| |   |___ \  |  _ \ _   _| |_| |__   ___  _ _\ \   / /__ _ __ \n\
@@ -20,7 +36,8 @@ while True:
     \t6.查看帮助\n\
     \t7.下载Java\n\
     \t8.下载服务端\n\
-    \t9.退出\n\
+    \t9.保存当前配置\n\
+    \t10.退出\n\
     >>>"))
     if choice == 1:
         serv_path = input("请输入服务端所在路径")
@@ -29,15 +46,24 @@ while True:
         continue
     if choice == 2:
         if serv_path and serv_name and min_ram and max_ram and log4j2:
-            os.system("java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/serv_name -Dlog4j2.formatMsgNoLookups=true")
+            os.system("java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/{serv_name} -Dlog4j2.formatMsgNoLookups=true")
+            print("Starting...")
+            continue
         if serv_path and serv_name and min_ram and max_ram and log4j2 == False:
-            os.system("java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/serv_name")
-        continue
+            os.system("java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/{serv_name}")
+            print("Starting...")
+            continue
     if choice == 3:
-        min_ram = int(input("请输入最小内存"))
-        max_ram = int(input("请输入最大内存"))
-        print("Sucessful")
-        continue
+        temp = int(input("请选择内存模式:\n1.自动选择\n2.手动选择"))
+        if temp == 2:
+            min_ram = int(input("请输入最小内存"))
+            max_ram = int(input("请输入最大内存"))
+            print("Sucessful")
+            continue
+        if temp == 1:
+            min_ram = 1
+            max_ram = mem()[1] * 0.8
+            continue
     if choice == 4:
         try:
             log4j2 = bool(input("请输入Log4j2状态"))
@@ -150,4 +176,8 @@ while True:
             continue
         download(result[0],result[1])
     if choice == 9:
+        config = "({serv_path,serv_name,log4j2})"
+        with open('config.txt','w') as f:
+            f.write(config)
+    if choice == 10:
         exit()

@@ -13,8 +13,8 @@ class FRP(QDialog,Ui_FrpcConfig):
             os.system("cd frp")
             os.system("tar -zxvf frp.tar.gz")
         self.remote_port = random.randint(20000,60000)
-        self.pbtn_start.clicked.connect(self.start)
-        self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
+        #self.pbtn_start.clicked.connect(self.start)
+        #self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
         self.url_list = ["gz1.qwq.one","sh.qwq.one","hk.qwq.one","hz.qwq.one","gz2.qwq.one"]
         self.setupUi(self)
         self.show()

@@ -1,5 +1,3 @@
-from signal import signal
-from tokenize import Single
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
@@ -20,7 +18,6 @@ class Output(QDialog, Ui_Output):
         self.setupUi(self)
         self.show()
         reading = QThread.start(self.read_logs)
-        reading.wait()
 class ReadingLogs(QThread):
     def __init__(self,path):
         super().__init__()
@@ -47,7 +44,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.setWindowIcon(QIcon("Resource"+os.sep+"我的世界开服器.ico"))
+        self.setWindowIcon(QIcon("Resource"+os.sep+"server.png"))
         self.setWindowTitle("我的世界开服器")
         self.setFixedSize(811,384) #设置窗体大小为811*384
         self.using_java = 0 #0为17，1为16，2为8
@@ -69,7 +66,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         self.pbtn_output.setIcon(QIcon("Resource"+os.sep+"Book.gif")) #设置输出摁钮的图案为书
         self.pbtn_frp.setIcon(QIcon("Resource"+os.sep+"Furnace.png")) #设置内网穿透摁钮的图案为熔炉
         self.pbtn_about.setIcon(QIcon("Resource"+os.sep+"Quill.png")) #设置关于摁钮的图案为书和笔
-        self.pbtn_ok_adv_set.clicked.connect(self.set_adv) #此行以后直到第74行都是绑定摁钮处理方法
+        self.pbtn_ok_adv_set.clicked.connect(self.set_adv) #此行以后直到第82行都是绑定摁钮处理方法
         self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
         self.pbtn_dis_log4j2.clicked.connect(self.process_log4j2)
         self.pbtn_download.clicked.connect(self.download_java)
