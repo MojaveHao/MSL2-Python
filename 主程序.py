@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-from PySide6 import QtConcurrent
 import sys,os
 from ui_kfq import Ui_MainWindow as MSL2Py
 from ui_output import Ui_Output
@@ -95,19 +94,25 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         self.pvp = bool(self.cbox_pvp) #获取是否启用pvp
         self.command_block = bool(self.cbox_command_block) #获取是否启用命令方块
         self.motd_message = self.motd.text() #设置服务器选择界面的提示
-        with open(f"{self.server_path}"+os.sep+"server.properties") as f: #读取server.properties
-            server_lines = f.readlines()
-        for i in range(server_lines):#遍历server.properties，并且在内存中修改内容
-            if "max-players=" in server_lines[i]:
-                server_lines[i] = "max-players={}".format(self.max_players)
-            if "server-port=" in server_lines[i]:
-                server_lines[i] = "server-port={}".format(self.serv_port)
-            if "pvp=" in server_lines[i]:
-                server_lines[i] = "pvp={}".format(self.pvp)
-            if "enable-command-block=" in server_lines[i]:
-                server_lines[i] = "enable-command-block={}".format(self.command_block)
-        with open(f"{self.server_path}"+os.sep+"server.properties","w"): #将修改后的内容重新写回server.properties
-            f.write(server_lines)
+        if os.path.isdir(self.server_path): #如果服务端路径存在就执行
+            try:
+                with open(f"{self.server_path}"+os.sep+"server.properties") as f: #读取server.properties
+                    server_lines = f.readlines()
+            except:
+                QMessageBox.warning(self,"警告","您必须确保已经在服务端路径下生成了ser.properties文件")
+            for i in range(server_lines):#遍历server.properties，并且在内存中修改内容
+                if "max-players=" in server_lines[i]:
+                    server_lines[i] = "max-players={}".format(self.max_players)
+                if "server-port=" in server_lines[i]:
+                    server_lines[i] = "server-port={}".format(self.serv_port)
+                if "pvp=" in server_lines[i]:
+                    server_lines[i] = "pvp={}".format(self.pvp)
+                if "enable-command-block=" in server_lines[i]:
+                    server_lines[i] = "enable-command-block={}".format(self.command_block)
+            with open(f"{self.server_path}"+os.sep+"server.properties","w"): #将修改后的内容重新写回server.properties
+                f.write(server_lines)
+        else:
+            QMessageBox.warning(self,"警告","请您先选择正确的服务端路径")
         self.min_ram.setMinimum(1) #定义最小内存为1G
         self.min_ram.setMaximum(self.max_mem_G) #设置最大内存为当前可用内存
         self.max_ram.setMinimum(self.min_mem_G) #设置最小内存
