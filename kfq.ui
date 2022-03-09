@@ -140,7 +140,7 @@
      <string>服务端路径：</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_path">
+   <widget class="QLabel" name="lb_path">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -423,7 +423,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="n_13">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -452,7 +452,7 @@
      <string>确认</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="n_14">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -465,7 +465,7 @@
      <string>——————————————————————————————</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="n_15">
     <property name="geometry">
      <rect>
       <x>520</x>
