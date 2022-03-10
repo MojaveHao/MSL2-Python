@@ -1,4 +1,5 @@
-# MSL2-Python
+# MSL2-Python          Monthly Branch
+## This Branch will release some stable preview version.Maybe there's some bug.
 ## 这是什么？
 #### 这是由NTFS2020制作的MSL2Python版，使用了和原版一致的内网穿透服务(暂时不支持付费节点)
 原作传送门[点击](https://github.com/Waheal/MSL2)
