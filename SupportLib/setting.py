@@ -3,7 +3,7 @@ from PySide6.QtGui import *
 from PySide6.QtCore import *
 from ui_setiing import Ui_Setting
 import webbrowser as web
-import os
+import os,requests,time
 class Setting(QDialog,Ui_Setting):
     def __init__(self):
         self.update_setting = 'Master'
@@ -42,13 +42,23 @@ class Setting(QDialog,Ui_Setting):
             if '.xaml' in file or '.xml' in file or '.yml' in file or '.yaml' in file:
                 config_list.append(file)
     def download_update(self):
+        def dld(type):
+            api_url = 'https://api.github.com/repos/NTFS2020/MSL2-Python'
+            result = requests.get(api_url).json()
+            date = result['updated_at']
+            fmt_date = time.mktime(time.strptime(date,"%Y-%m-%dT%H:%M:%S"))
+            files = os.listdir("frp")
+            get_time = os.path.getmtime("./frp/LICENCE")
+            if not get_time:
+                get_time = date
+            if get_time < date:
+                os.system(f"wget -o update_pack.zip https://github.com/fatedier/frp/archive/{type}.zip")
+            os.system("python update.py")
+            exit()
         self.update_setting = self.cbox_update.text()
         if self.update_setting == 'Master':
-            #下载main分支
-            pass
+            dld('main')
         if self.update_setting == 'Monthly':
-            #下载Monthly分支
-            pass
+            dld('Monthly')
         if self.update_setting == 'Dev':
-            #下载dev分支
-            pass
+            dld('dev')
