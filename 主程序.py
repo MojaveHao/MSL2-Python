@@ -9,7 +9,8 @@ from SupportLib.frp import FRP
 from download_server_support import Download_Manager as DManager
 from create_config import *
 from Output import Output
-class MSL2(QMainWindow,MSL2Py,Output,FRP):
+from SupportLib.help import Help
+class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -36,7 +37,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         self.pbtn_output.setIcon(QIcon("Resource"+os.sep+"Book.gif")) #设置输出摁钮的图案为书
         self.pbtn_frp.setIcon(QIcon("Resource"+os.sep+"Furnace.png")) #设置内网穿透摁钮的图案为熔炉
         self.pbtn_about.setIcon(QIcon("Resource"+os.sep+"Quill.png")) #设置关于摁钮的图案为书和笔
-        self.pbtn_ok_adv_set.clicked.connect(self.set_adv) #此行以后直到第49行都是绑定摁钮处理方法
+        self.pbtn_ok_adv_set.clicked.connect(self.set_adv) #此行以后直到第50行都是绑定摁钮处理方法
         self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
         self.pbtn_dis_log4j2.clicked.connect(self.process_log4j2)
         self.pbtn_download.clicked.connect(self.download_java)
@@ -47,6 +48,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
         self.pbtn_select_path.clicked.connect(self.select_server_path)   
         self.pbtn_download_server.clicked.connect(self.download_server)
         self.pbtn_frp.clicked.connect(self.frp_guide)
+        self.pbtn_visit_help.clicked.connect(self.visit_help)
         if not os.path.isdir("MSLDownload"): #判断是否有下载目录，没有就创建
             os.mkdir("MSLDownload")
         else:
@@ -149,6 +151,8 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP):
     def download_server(self): #创建下载窗口
         download = DManager(self.download_path)
         download.show()
+    def visit_help(self): #查看帮助
+        help = Help()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()

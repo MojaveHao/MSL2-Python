@@ -19,7 +19,7 @@
      <rect>
       <x>130</x>
       <y>20</y>
-      <width>661</width>
+      <width>601</width>
       <height>29</height>
      </rect>
     </property>
@@ -585,6 +585,19 @@
     </property>
     <property name="text">
      <string>点击显示当前路径</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_visit_help">
+    <property name="geometry">
+     <rect>
+      <x>730</x>
+      <y>20</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>查看帮助</string>
     </property>
    </widget>
   </widget>

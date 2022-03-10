@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.pbtn_start_server = QPushButton(self.centralwidget)
         self.pbtn_start_server.setObjectName(u"pbtn_start_server")
-        self.pbtn_start_server.setGeometry(QRect(130, 20, 661, 29))
+        self.pbtn_start_server.setGeometry(QRect(130, 20, 601, 29))
         self.pbtn_start_server.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_8 = QLabel(self.centralwidget)
         self.n_8.setObjectName(u"n_8")
@@ -167,6 +167,9 @@ class Ui_MainWindow(object):
         self.pbtn_show_java_path.setObjectName(u"pbtn_show_java_path")
         self.pbtn_show_java_path.setGeometry(QRect(300, 60, 151, 29))
         self.pbtn_show_java_path.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pbtn_visit_help = QPushButton(self.centralwidget)
+        self.pbtn_visit_help.setObjectName(u"pbtn_visit_help")
+        self.pbtn_visit_help.setGeometry(QRect(730, 20, 80, 22))
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -223,5 +226,6 @@ class Ui_MainWindow(object):
         self.pbtn_frp.setText(QCoreApplication.translate("MainWindow", u"\u6620\u5c04", None))
         self.pbtn_about.setText(QCoreApplication.translate("MainWindow", u"\u5173\u4e8e", None))
         self.pbtn_show_java_path.setText(QCoreApplication.translate("MainWindow", u"\u70b9\u51fb\u663e\u793a\u5f53\u524d\u8def\u5f84", None))
+        self.pbtn_visit_help.setText(QCoreApplication.translate("MainWindow", u"\u67e5\u770b\u5e2e\u52a9", None))
     # retranslateUi
 
