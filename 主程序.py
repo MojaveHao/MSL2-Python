@@ -135,7 +135,8 @@ class MSL2(QMainWindow,MSL2Py,Output):
         if "16" in want_to:
             os.system("sudo apt install openjdk-16-jdk -y") #下载Java16
         if "17" in want_to:
-            os.system("sudo apt install openjdk-17-jdk -y") #下载Java17
+            from SupportLib.downjava import setUp
+            setUp()
     def start_server(self): #启动服务器
         if self.dis_log4j2 == True:
             os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true -nogui".format(self.java_path,self.min_mem_G,self.max_mem_G,self.server_name))
