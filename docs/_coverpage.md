@@ -8,4 +8,4 @@
 - 功能强大
 
 [GitHub](https://github.com/NTFS2020/MSL2-Python)
-[来♂](README)
+[Get♂Started](README)
