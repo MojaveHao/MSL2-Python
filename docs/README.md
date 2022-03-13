@@ -13,19 +13,19 @@
  		- 如果您已经配置好了Python3.7环境，请在终端执行sudo pip3 install PySide6来下载PySide6运行环境
 	      
 			- 其他环境安装：将以下库名替换到上面一条命令PySide6的位置
-	      
+		  
 				- tqdm
-	      
+		  
 				- requests
-	      
+		  
 				- multitasking
-	      
+		  
 				- signal
-	      
+		  
 				- retry
-	      
+		  
 				- urllib
-	      
+		  
 				- psutil
 
 
@@ -44,7 +44,13 @@
 	- 进阶设置可以在服务端路径下的server.properties修改，具体每个选项的释义可以在主界面-帮助 查看
 	- 服务端目录结构，开服前准备都可以在主界面-帮助查看
 
-
+# 进阶设置/疑难解答
+- 更改Java的安装路径：见主程序第23行
+- 你的系统用不了apt/apt库里没有Java16，17，只有8和11：请自行寻找Java16/17的deb包安装（一般情况下带GUI的系统可以直接双击安装），然后在上面的“更改Java路径”解决办法手动指定Java安装路径
+- 仓库相关
+    - 服务器相关问题请自行Bing，不是MSL2的问题不要在仓库提交issues（除非你有好的建议）
+    - 参与讨论可以提交issues
+    - 改好了请直接提交PR，详细描述解决的是什么问题，咋解决的
 # MSL2-Python 开发文档
 
 ## 文件结构
@@ -125,7 +131,7 @@
 
 ### Output.py
 
-- self.server_path -> 读取(f"{self.server_path}"+os.sep+"server.log")文件[已弃用]
+- self.server_path -> 读取(f"{self.server_path}"+os.sep+"server.log")文件
 
 ## Defines
 
@@ -146,8 +152,6 @@
 - about -> 打印软件信息
 
 - show_java_path -> 打印当前的Java路径
-
-- frp_guide -> 调用SupportLib/frp_guide.py来启动内网穿透配置向导
 
 ### Output.py
 
