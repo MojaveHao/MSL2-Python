@@ -45,8 +45,13 @@
 	- 服务端目录结构，开服前准备都可以在主界面-帮助查看
 
 # 进阶设置/疑难解答
+
 - 更改Java的安装路径：见主程序第23行
-- 你的系统用不了apt/apt库里没有Java16，17，只有8和11：请自行寻找Java16/17的deb包安装（一般情况下带GUI的系统可以直接双击安装），然后在上面的“更改Java路径”解决办法手动指定Java安装路径
+- 你的系统用不了apt/apt库里没有Java16，17，只有8和11：请自行下载deb包安装（一般情况下带GUI的系统可以直接双击安装），然后在上面的“更改Java路径”解决办法手动指定Java安装路径
+	- [Java17](https://www.oracle.com/java/technologies/downloads/)
+	- [Java16](https://www.oracle.com/java/technologies/javase/jdk16-archive-downloads.html)
+	- [Java8](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html)
+	- [命令行安装教程](https://blog.csdn.net/oMcLin/article/details/108725325)
 - 仓库相关
     - 服务器相关问题请自行Bing，不是MSL2的问题不要在仓库提交issues（除非你有好的建议）
     - 参与讨论可以提交issues
