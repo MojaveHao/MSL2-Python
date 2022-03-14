@@ -1,4 +1,3 @@
-from turtle import update
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -7,21 +6,25 @@ import os,sys,base64,requests,random,webbrowser,time
 class FRP(QDialog,Ui_FrpcConfig):
     def __init__(self):
         if os.path.isdir("frp"):
-            wdt = requests.get("url")
-            self.token = base64.encodebytes(wdt.encode('utf8'))
+            pass
         else:
             os.system("wget -o frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_amd64.tar.gz")
             os.system("mkdir frp")
             os.system("cd frp")
             os.system("tar -zxvf frp.tar.gz")
         self.remote_port = random.randint(20000,60000)
-        self.pbtn_start.clicked.connect(self.start)
-        self.url_list = ["gz1.qwq.one","sh.qwq.one","xg.qwq.one","hz.qwq.one","gz2.qwq.one"]
+        #self.pbtn_start.clicked.connect(self.start)
+        #self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
+        self.url_list = ["gz1.qwq.one","sh.qwq.one","hk.qwq.one","hz.qwq.one","gz2.qwq.one"]
         self.setupUi(self)
         self.show()
     def start(self):
         url_index = self.select_url.currentIndex()
+        if url_index >= 4:
+            QMessageBox.Warning(self,"警告","付费节点正在维护,请先使用免费节点")
         url = self.url_list[url_index]
+        wdt = requests.get(url)
+        self.token = base64.encodebytes(wdt.encode('utf8'))
         accont = self.accont.text()
         passwd = self.passwd.text()
         port = self.port.text()

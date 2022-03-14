@@ -6,7 +6,7 @@ from ui_kfq import Ui_MainWindow as MSL2Py
 from ui_output import Ui_Output
 import SupportLib.RAM as RAM
 from SupportLib.frp import FRP
-from download_server_support import Download_Manager as DManager
+from SupportLib.download_server import Download_Manager as DManager
 from create_config import *
 from Output import Output
 from SupportLib.help import Help

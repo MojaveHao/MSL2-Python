@@ -1,7 +1,6 @@
 from SupportLib.RAM import mem
 import os
 from tqdm import tqdm
-from SupportLib.cmdl_get_server import get_file_url as gfu
 from SupportLib.download import *
 min_ram = 1
 max_ram = 4
@@ -163,18 +162,7 @@ while True:
         if temp == 4:
             os.system("sudo apt install openjdk-7-jre -y")
     if choice == 8:
-        print("目前此版本仅支持以下常用服务端:\n\
-        \t1.Spigot\n\
-        \t2.Mojang\n\
-        \t3.Paper\n\
-        \t4.Vanilla\n")
-        name = input("请输入名字(不要输入序号)")
-        ver = input("请输入您想要下载的版本")
-        result = gfu(name,ver)
-        if result[0] == None:
-            print("没有找到资源，请检查您的输入")
-            continue
-        download(result[0],result[1])
+        print("开发中")
     if choice == 9:
         config = "({serv_path,serv_name,log4j2})"
         with open('config.txt','w') as f:

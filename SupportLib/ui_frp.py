@@ -82,9 +82,9 @@ class Ui_FrpcConfig(object):
         ___qlistwidgetitem2 = self.select_url.item(2)
         ___qlistwidgetitem2.setText(QCoreApplication.translate("FrpcConfig", u"[\u514d\u8d39]\u9999\u6e2f", None));
         ___qlistwidgetitem3 = self.select_url.item(3)
-        ___qlistwidgetitem3.setText(QCoreApplication.translate("FrpcConfig", u"[\u4ed8\u8d39]\u676d\u5dde  \u4f18\u5148\u4f7f\u7528", None));
+        ___qlistwidgetitem3.setText(QCoreApplication.translate("FrpcConfig", u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u676d\u5dde  \u4f18\u5148\u4f7f\u7528", None));
         ___qlistwidgetitem4 = self.select_url.item(4)
-        ___qlistwidgetitem4.setText(QCoreApplication.translate("FrpcConfig", u"[\u4ed8\u8d39]\u5e7f\u5dde  \u676d\u5dde\u4e0d\u884c\u518d\u7528", None));
+        ___qlistwidgetitem4.setText(QCoreApplication.translate("FrpcConfig", u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u5e7f\u5dde  \u676d\u5dde\u4e0d\u884c\u518d\u7528", None));
         self.select_url.setSortingEnabled(__sortingEnabled)
 
         self.n1.setText(QCoreApplication.translate("FrpcConfig", u"QQ\u53f7\u7801", None))
