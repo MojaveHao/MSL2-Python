@@ -1,12 +1,10 @@
 from SupportLib.RAM import mem
-import os
-from tqdm import tqdm
-from SupportLib.cmdl_get_server import get_file_url as gfu
 from SupportLib.download import *
+
 min_ram = 1
 max_ram = 4
 if os.path.isfile('config.txt'):
-    with tqdm(total=4,desc='Read config from file') as pbar:
+    with tqdm(total=4, desc='Read config from file') as pbar:
         with open('config.txt') as f:
             temp = f.read()
             pbar.update(1)
@@ -16,7 +14,7 @@ if os.path.isfile('config.txt'):
             pbar.update(1)
             log4j2 = temp[2]
             pbar.update(1)
-print("\n"*2)
+print("\n" * 2)
 print("############################################################################################")
 print(" \
          __  __ ____  _     ____    ____        _   _              __     __        \n\
@@ -46,7 +44,8 @@ while True:
         continue
     if choice == 2:
         if serv_path and serv_name and min_ram and max_ram and log4j2:
-            os.system("java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/{serv_name} -Dlog4j2.formatMsgNoLookups=true")
+            os.system(
+                "java -Xms{min_ram}G -Xmx{max_ram}G -jar {serv_path}/{serv_name} -Dlog4j2.formatMsgNoLookups=true")
             print("Starting...")
             continue
         if serv_path and serv_name and min_ram and max_ram and log4j2 == False:
@@ -87,24 +86,24 @@ while True:
                                     \4.设置服务器选择界面的提示"))
             except:
                 if port != None:
-                    for i in range(temp_config):#遍历server.properties，并且在内存中修改内容
+                    for i in range(temp_config):  # 遍历server.properties，并且在内存中修改内容
                         if "server-port=" in temp_config[i]:
                             temp_config[i] = "server-port={}".format(port)
                         break
                 if pvp != None:
-                    for i in range(temp_config):#遍历server.properties，并且在内存中修改内容
+                    for i in range(temp_config):  # 遍历server.properties，并且在内存中修改内容
                         if "pvp=" in temp_config[i]:
                             temp_config[i] = "pvp={}".format(pvp)
                         break
                 if cmdb != None:
-                    for i in range(temp_config):#遍历server.properties，并且在内存中修改内容
+                    for i in range(temp_config):  # 遍历server.properties，并且在内存中修改内容
                         if "enable-command-block=" in temp_config[i]:
                             temp_config[i] = "enable-command-block={}".format(cmdb)
                 if motd != None:
-                    for i in range(temp_config):#遍历server.properties，并且在内存中修改内容
+                    for i in range(temp_config):  # 遍历server.properties，并且在内存中修改内容
                         if "motd=" in temp_config[i]:
                             temp_config[i] = "motd={}".format(motd)
-                with open(f"{serv_path}"+os.sep+"server.properties","w")as f: #将修改后的内容重新写回server.properties
+                with open(f"{serv_path}" + os.sep + "server.properties", "w") as f:  # 将修改后的内容重新写回server.properties
                     f.write(temp_config)
             if temp == 1:
                 try:
@@ -163,21 +162,10 @@ while True:
         if temp == 4:
             os.system("sudo apt install openjdk-7-jre -y")
     if choice == 8:
-        print("目前此版本仅支持以下常用服务端:\n\
-        \t1.Spigot\n\
-        \t2.Mojang\n\
-        \t3.Paper\n\
-        \t4.Vanilla\n")
-        name = input("请输入名字(不要输入序号)")
-        ver = input("请输入您想要下载的版本")
-        result = gfu(name,ver)
-        if result[0] == None:
-            print("没有找到资源，请检查您的输入")
-            continue
-        download(result[0],result[1])
+        print("开发中")
     if choice == 9:
         config = "({serv_path,serv_name,log4j2})"
-        with open('config.txt','w') as f:
+        with open('config.txt', 'w') as f:
             f.write(config)
     if choice == 10:
         exit()
