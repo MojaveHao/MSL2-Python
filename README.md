@@ -1,3 +1,4 @@
+#### 本仓库主要开发者NTFS2020因私事已无能力继续更新，本项目完全由Bilibili@2z0h0m9接手
 # MSL2-Python          Monthly Branch
 ## This Branch will release some stable preview version.Maybe there's some bug.
 ## 这是什么？
