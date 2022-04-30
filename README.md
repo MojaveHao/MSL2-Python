@@ -7,4 +7,4 @@
 ### 本程序专为Linux制作，在Windows下无法运行。(也许等以后会移植到Mac OS？)
 ## 下载：
 ### 前往版本界面下载最新版即可。
-## 运行环境详见(使用说明)[https://ntfs2020.github.io/MSL2-Python/#/?id=%e4%bd%bf%e7%94%a8%e5%89%8d]
+## 运行环境详见[使用说明](https://ntfs2020.github.io/MSL2-Python/#/?id=%e4%bd%bf%e7%94%a8%e5%89%8d)
