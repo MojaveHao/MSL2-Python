@@ -27,7 +27,7 @@ def split(start: int, end: int, step: int):
 
 
 def get_file_size(url: str, raise_error: bool = False) -> int:
-    '''
+    """
     获取文件大小
 
     Parameters
@@ -40,7 +40,7 @@ def get_file_size(url: str, raise_error: bool = False) -> int:
     文件大小（B为单位）
     如果不支持则会报错
 
-    '''
+    """
     response = requests.head(url)
     file_size = response.headers.get('Content-Length')
     if file_size is None:
@@ -51,7 +51,7 @@ def get_file_size(url: str, raise_error: bool = False) -> int:
 
 
 def download(url: str, file_name: str, retry_times: int = 3, each_size=16*MB) -> None:
-    '''
+    """
     根据文件直链和文件名下载文件
 
     Parameters
@@ -63,24 +63,24 @@ def download(url: str, file_name: str, retry_times: int = 3, each_size=16*MB) ->
     ------
     None
 
-    '''
+    """
     f = open(file_name, 'wb')
     file_size = get_file_size(url)
 
     @retry(tries=retry_times)
     @multitasking.task
-    def start_download(start: int, end: int) -> None:
-        '''
+    def start_download(start_place: int, end_place: int) -> None:
+        """
         根据文件起止位置下载文件
 
         Parameters
         ----------
-        start : 开始位置
-        end : 结束位置
-        '''
+        start_place : 开始位置
+        end_place : 结束位置
+        """
         _headers = headers.copy()
         # 分段下载的核心
-        _headers['Range'] = f'bytes={start}-{end}'
+        _headers['Range'] = f'bytes={start_place}-{end_place}'
         # 发起请求并获取响应（流式）
         response = session.get(url, headers=_headers, stream=True)
         # 每次读取的流式响应大小
@@ -92,7 +92,7 @@ def download(url: str, file_name: str, retry_times: int = 3, each_size=16*MB) ->
             chunks.append(chunk)
             # 更新进度条
             bar.update(chunk_size)
-        f.seek(start)
+        f.seek(start_place)
         for chunk in chunks:
             f.write(chunk)
         # 释放已写入的资源

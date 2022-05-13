@@ -1,5 +1,7 @@
 import os
-def sakura_frp_status_setting(now:str):
+
+
+def sakura_frp_status_setting(now: str):
     if now == "first_use":
         os.system("cd /usr/loacl/bin || wget -O frpc https://getfrp.sh/d/frpc_linux_amd64 ||")
         print("请按照以下步骤操作:\
