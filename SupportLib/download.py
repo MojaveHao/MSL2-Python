@@ -1,4 +1,3 @@
-# Create by 2z0h0m9(由NTFS2020上传)
 # 开始下载方式:download(下载链接, 文件名)
 # 用于显示进度条
 from tqdm import tqdm
@@ -9,6 +8,8 @@ import multitasking
 import signal
 # 导入 retry 库以方便进行下载出错重试
 from retry import retry
+import time,os
+from urllib.parse import unquote
 signal.signal(signal.SIGINT, multitasking.killall)
 
 # 请求头
@@ -25,81 +26,97 @@ def split(start: int, end: int, step: int):
              for start in range(0, end, step)]
     return parts
 
+def get_file_name(url, headers):
+    filename = ''
+    if 'Content-Disposition' in headers and headers['Content-Disposition']:
+        disposition_split = headers['Content-Disposition'].split(';')
+        if len(disposition_split) > 1:
+            if disposition_split[1].strip().lower().startswith('filename='):
+                file_name = disposition_split[1].split('=')
+                if len(file_name) > 1:
+                    filename = unquote(file_name[1])
+    if not filename and os.path.basename(url):
+        filename = os.path.basename(url).split("?")[0]
+    if not filename:
+        return time.time()
+    return filename
 
 def get_file_size(url: str, raise_error: bool = False) -> int:
-    """
+    '''
     获取文件大小
 
     Parameters
     ----------
     url : 文件直链
-    raise_error : 如果无法获取文件大小，是否引发错误
+    raise_error : 如果无法获取文件大小,是否引发错误
 
     Return
     ------
     文件大小（B为单位）
     如果不支持则会报错
 
-    """
+    '''
     response = requests.head(url)
     file_size = response.headers.get('Content-Length')
     if file_size is None:
         if raise_error is True:
-            raise ValueError('该文件不支持多线程分段下载！')
+            raise ValueError('Download failed, code: 0x01')
         return file_size
     return int(file_size)
 
 
-def download(url: str, file_name: str, retry_times: int = 3, each_size=16*MB) -> None:
-    """
-    根据文件直链和文件名下载文件
-
-    Parameters
+def download(url: str, save_path: str = '..', retry_times: int = 3, each_size = 16*MB) -> None:
+    '''
+    文件名将会被自动获取
+    通过以下代码直接下载一个直链：
+        download(url)
+    通过以下代码下载一个直链并保存于指定地址：
+        download(url=url, save_path=save_path)
     ----------
     url : 文件直链
-    file_name : 文件名
-    retry_times: 可选的，每次连接失败重试次数
+    save_path: 文件保存路径,可选,默认为本文件同目录
+    retry_times: 可选的,每次连接失败重试次数
     Return
     ------
-    None
-
-    """
-    f = open(file_name, 'wb')
+    '''
+    #获取直链内文件名
+    file_name = get_file_name(url=url, headers=headers)
+    f = open(save_path + file_name, 'wb')
     file_size = get_file_size(url)
 
     @retry(tries=retry_times)
     @multitasking.task
-    def start_download(start_place: int, end_place: int) -> None:
-        """
+    def start_download(start: int, end: int) -> None:
+        '''
         根据文件起止位置下载文件
 
         Parameters
         ----------
-        start_place : 开始位置
-        end_place : 结束位置
-        """
+        start : 开始位置
+        end : 结束位置
+        '''
         _headers = headers.copy()
         # 分段下载的核心
-        _headers['Range'] = f'bytes={start_place}-{end_place}'
+        _headers['Range'] = f'bytes={start}-{end}'
         # 发起请求并获取响应（流式）
         response = session.get(url, headers=_headers, stream=True)
         # 每次读取的流式响应大小
         chunk_size = 128
-        # 暂存已获取的响应，后续循环写入
+        # 暂存已获取的响应,后续循环写入
         chunks = []
         for chunk in response.iter_content(chunk_size=chunk_size):
             # 暂存获取的响应
             chunks.append(chunk)
             # 更新进度条
             bar.update(chunk_size)
-        f.seek(start_place)
+        f.seek(start)
         for chunk in chunks:
             f.write(chunk)
         # 释放已写入的资源
         del chunks
 
     session = requests.Session()
-    # 分块文件如果比文件大，就取文件大小为分块大小
+    # 分块文件如果比文件大,就取文件大小为分块大小
     each_size = min(each_size, file_size)
 
     # 分块
