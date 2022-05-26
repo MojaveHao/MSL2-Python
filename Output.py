@@ -6,7 +6,7 @@ class Output(QDialog, Ui_Output):
     def __init__(self,server_path,stat):
         super().__init__()
         self.setupUi(self)
-        self.show()
+        self.exec()
         if stat == True:
             self.server_path = server_path
             path = self.server_path

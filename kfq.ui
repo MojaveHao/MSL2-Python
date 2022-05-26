@@ -74,7 +74,7 @@
    <widget class="QLabel" name="n_2">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>170</x>
       <y>360</y>
       <width>151</width>
       <height>20</height>
@@ -433,7 +433,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>—————————————————————————高级设置：将在服务器重启后生效————————————————————————————</string>
+     <string>—————————————————————————以下设置将在服务器重启后生效————————————————————————————</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pbtn_ok_adv_set">
@@ -441,7 +441,7 @@
      <rect>
       <x>420</x>
       <y>260</y>
-      <width>93</width>
+      <width>101</width>
       <height>29</height>
      </rect>
     </property>
@@ -598,6 +598,19 @@
     </property>
     <property name="text">
      <string>查看帮助</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pbtn_upd_set">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>250</y>
+      <width>80</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>更新设置</string>
     </property>
    </widget>
   </widget>

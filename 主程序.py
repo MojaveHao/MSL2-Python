@@ -6,10 +6,11 @@ from ui_kfq import Ui_MainWindow as MSL2Py
 from ui_output import Ui_Output
 import SupportLib.RAM as RAM
 from SupportLib.frp import FRP
-from SupportLib.download_server import Download_Manager as DManager
+from download_server_support import Download_Manager as DManager
 from create_config import *
 from Output import Output
 from SupportLib.help import Help
+from SupportLib.setting import Setting
 class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
     def __init__(self):
         super().__init__()
@@ -138,8 +139,6 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
             QMessageBox.information(self,"Java8路径",str(self.java_path[2]))
     def frp_guide(self,now): #调用FRP配置指南
         frpconfig = FRP()
-        frpconfig.show()
-        print("De")
     def select_server_path(self): #选择服务端路径的函数
         self.server_path = QFileDialog.getExistingDirectory(self,"MSL2:选择服务端所在文件夹") #选择服务端路径
         self.server_name = QFileDialog.getOpenFileName(self,"MSL2:选择服务端文件",filter=("Minecraft Java Edi Server File (*.jar)")) #选择服务器的Jar文件
@@ -150,7 +149,6 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
             QMessageBox.warning(self,"警告","检测到您只选择了路径而没有选择服务端,如果您没有服务端,请在主界面下载服务端!")
     def download_server(self): #创建下载窗口
         download = DManager(self.download_path)
-        download.show()
     def visit_help(self): #查看帮助
         help = Help()
 if __name__ == '__main__':
