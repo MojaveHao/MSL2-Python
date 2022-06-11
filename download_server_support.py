@@ -13,11 +13,11 @@ class Download_Manager(QDialog, Ui_Dialog):
         self.server_path = server_path
         self.setupUi(self)
         self.pbtn_start_download.clicked.connect(self.download)
-        self.show()
+        self.exec()
 
     def download(self):
         type = self.cbox_type.currentText()
         version = self.comboBox.currentText()
         url, name = get_file_url(type, version)
         download(url, name, download_path=self.server_path)
-        print("请等待在弹出的窗口中下载文件,下载完成后将存放在MSLDownload目录下")
+        print("请等待在命令行中下载文件,下载完成后将存放在MSLDownload目录下")
