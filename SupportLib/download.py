@@ -8,25 +8,28 @@ import multitasking
 import signal
 # 导入 retry 库以方便进行下载出错重试
 from retry import retry
-import time,os
+import time, os
 from urllib.parse import unquote
+
 signal.signal(signal.SIGINT, multitasking.killall)
 
 # 请求头
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36 QIHU 360SE'
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 '
+                  'Safari/537.36 QIHU 360SE '
 }
 # 定义 1 MB 多少为 B
-MB = 1024**2
+MB = 1024 ** 2
 
 
 def split(start: int, end: int, step: int):
     # 分多块
-    parts = [(start, min(start+step, end))
+    parts = [(start, min(start + step, end))
              for start in range(0, end, step)]
     return parts
 
-def get_file_name(url, headers):
+
+def get_file_name(url: str, headers: dict) -> str:
     filename = ''
     if 'Content-Disposition' in headers and headers['Content-Disposition']:
         disposition_split = headers['Content-Disposition'].split(';')
@@ -37,36 +40,31 @@ def get_file_name(url, headers):
                     filename = unquote(file_name[1])
     if not filename and os.path.basename(url):
         filename = os.path.basename(url).split("?")[0]
-    if not filename:
-        return time.time()
     return filename
 
-def get_file_size(url: str, raise_error: bool = False) -> int:
-    '''
-    获取文件大小
 
+def get_file_size(url: str, raise_error: bool = False) -> int:
+    """
+    获取文件大小
     Parameters
     ----------
     url : 文件直链
     raise_error : 如果无法获取文件大小,是否引发错误
-
     Return
     ------
     文件大小（B为单位）
     如果不支持则会报错
-
-    '''
+    """
     response = requests.head(url)
     file_size = response.headers.get('Content-Length')
     if file_size is None:
         if raise_error is True:
             raise ValueError('Download failed, code: 0x01')
-        return file_size
     return int(file_size)
 
 
-def download(url: str, save_path: str = '..', retry_times: int = 3, each_size = 16*MB) -> None:
-    '''
+def download(url: str, save_path: str = '..', retry_times: int = 3, each_size=16 * MB) -> None:
+    """
     文件名将会被自动获取
     通过以下代码直接下载一个直链：
         download(url)
@@ -78,8 +76,8 @@ def download(url: str, save_path: str = '..', retry_times: int = 3, each_size = 
     retry_times: 可选的,每次连接失败重试次数
     Return
     ------
-    '''
-    #获取直链内文件名
+    """
+    # 获取直链内文件名
     file_name = get_file_name(url=url, headers=headers)
     f = open(save_path + file_name, 'wb')
     file_size = get_file_size(url)
@@ -87,14 +85,13 @@ def download(url: str, save_path: str = '..', retry_times: int = 3, each_size = 
     @retry(tries=retry_times)
     @multitasking.task
     def start_download(start: int, end: int) -> None:
-        '''
+        """
         根据文件起止位置下载文件
-
         Parameters
         ----------
         start : 开始位置
         end : 结束位置
-        '''
+        """
         _headers = headers.copy()
         # 分段下载的核心
         _headers['Range'] = f'bytes={start}-{end}'
