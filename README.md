@@ -13,7 +13,7 @@
 
 ## 运行环境详见[使用说明](https://ntfs2020.github.io/MSL2-Python/#/?id=%e4%bd%bf%e7%94%a8%e5%89%8d)
 
-
+## 使用GNU AGPLv3许可证
 
 Todo:
 	
@@ -22,4 +22,3 @@ Todo:
 	- 添加多语言支持（仅English）
 	- 添加多服务端管理
 	- 修bug（重要，正在推进中）
-
