@@ -60,7 +60,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
             self.java_path = temp[1]
             self.server_path = temp[2]
             self.download_path = temp[3]
-    def set_adv(self): #读写server.pro...文件修改设置
+    def set_adv(self): #读写server.properties文件修改设置
         if self.server_status == False:
             self.min_mem_G = self.min_ram.value() #获取最小内存(G)
             self.max_mem_G = self.max_ram.value() #获取最大内存(G)
@@ -74,8 +74,8 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
                     with open(f"{self.server_path}"+os.sep+"server.properties") as f: #读取server.properties
                         server_lines = f.readlines()
                 except:
-                    QMessageBox.warning(self,"警告","您必须确保已经在服务端路径下生成了ser.properties文件")
-                for i in range(server_lines):#遍历server.properties，并且在内存中修改内容
+                    QMessageBox.warning(self,"警告","您必须确保已经在服务端路径下生成了server.properties文件")
+                for i in server_lines:#遍历server.properties，并且在内存中修改内容
                     if "max-players=" in server_lines[i]:
                         server_lines[i] = "max-players={}".format(self.max_players)
                     if "server-port=" in server_lines[i]:
@@ -93,7 +93,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
             self.max_ram.setMinimum(self.min_mem_G) #设置最小内存
             write_config(self.using_java,self.java_path,self.server_path,self.download_path)
         else:
-            QMessageBox.warning(self,"警告","请您关闭服务器后在更改此部分设置!")
+            QMessageBox.warning(self,"警告","请您关闭服务器后再更改此部分设置!")
     def process_log4j2(self):
         self.dis_log4j2 = not(self.dis_log4j2) #反相是否启用log4j2的设置
         if self.dis_log4j2 == True: #设置反相之后摁钮显示的文字
