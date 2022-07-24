@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>815</width>
-    <height>398</height>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -92,7 +92,7 @@
    <widget class="QComboBox" name="cbox_want_to_download">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>160</x>
       <y>360</y>
       <width>87</width>
       <height>26</height>
@@ -125,7 +125,7 @@
    <widget class="QPushButton" name="pbtn_how_to_choice">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>250</x>
       <y>360</y>
       <width>93</width>
       <height>29</height>
@@ -303,7 +303,7 @@
    <widget class="QLineEdit" name="max_player">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>390</x>
       <y>190</y>
       <width>61</width>
       <height>25</height>
@@ -329,7 +329,7 @@
    <widget class="QLineEdit" name="server_port">
     <property name="geometry">
      <rect>
-      <x>540</x>
+      <x>550</x>
       <y>190</y>
       <width>51</width>
       <height>25</height>
@@ -492,7 +492,7 @@
    <widget class="QPushButton" name="pbtn_download">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>350</x>
       <y>360</y>
       <width>93</width>
       <height>29</height>

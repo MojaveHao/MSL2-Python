@@ -11,6 +11,7 @@ from create_config import *
 from Output import Output
 from SupportLib.help import Help
 from SupportLib.setting import Setting
+from SupportLib.license import License
 class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
     def __init__(self):
         super().__init__()
@@ -130,7 +131,7 @@ class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
         except TypeError as err:
             print(err)
     def about(self): #显示软件信息
-        QMessageBox.information(self,"软件信息","我的世界开服器Python版1.5(对应C#MSL2 1.7.4)\n由Mojavium制作")
+        license = License()
     def show_java_path(self): #展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
             QMessageBox.information(self,"Java17路径",str(self.java_path[0]))

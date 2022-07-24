@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import *
 from PySide6.QtGui import *
 from PySide6.QtCore import *
-from ui_setiing import Ui_Setting
+from .ui_setting import Ui_Setting
 import webbrowser as web
 import os,requests,time
 class Setting(QDialog,Ui_Setting):

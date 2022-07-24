@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'kfq.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.0
+## Created by: Qt User Interface Compiler version 6.2.3
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(815, 398)
+        MainWindow.resize(815, 420)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.pbtn_start_server = QPushButton(self.centralwidget)
@@ -50,11 +50,11 @@ class Ui_MainWindow(object):
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.addItem("")
         self.cbox_want_to_download.setObjectName(u"cbox_want_to_download")
-        self.cbox_want_to_download.setGeometry(QRect(130, 360, 87, 26))
+        self.cbox_want_to_download.setGeometry(QRect(160, 360, 87, 26))
         self.cbox_want_to_download.setCursor(QCursor(Qt.PointingHandCursor))
         self.pbtn_how_to_choice = QPushButton(self.centralwidget)
         self.pbtn_how_to_choice.setObjectName(u"pbtn_how_to_choice")
-        self.pbtn_how_to_choice.setGeometry(QRect(220, 360, 93, 29))
+        self.pbtn_how_to_choice.setGeometry(QRect(250, 360, 93, 29))
         self.pbtn_how_to_choice.setCursor(QCursor(Qt.PointingHandCursor))
         self.n_1 = QLabel(self.centralwidget)
         self.n_1.setObjectName(u"n_1")
@@ -97,13 +97,13 @@ class Ui_MainWindow(object):
         self.n_6.setGeometry(QRect(290, 190, 101, 20))
         self.max_player = QLineEdit(self.centralwidget)
         self.max_player.setObjectName(u"max_player")
-        self.max_player.setGeometry(QRect(370, 190, 61, 25))
+        self.max_player.setGeometry(QRect(390, 190, 61, 25))
         self.n_9 = QLabel(self.centralwidget)
         self.n_9.setObjectName(u"n_9")
         self.n_9.setGeometry(QRect(470, 190, 91, 20))
         self.server_port = QLineEdit(self.centralwidget)
         self.server_port.setObjectName(u"server_port")
-        self.server_port.setGeometry(QRect(540, 190, 51, 25))
+        self.server_port.setGeometry(QRect(550, 190, 51, 25))
         self.n_10 = QLabel(self.centralwidget)
         self.n_10.setObjectName(u"n_10")
         self.n_10.setGeometry(QRect(130, 220, 69, 20))
@@ -143,7 +143,7 @@ class Ui_MainWindow(object):
         self.n_15.setGeometry(QRect(520, 260, 311, 20))
         self.pbtn_download = QPushButton(self.centralwidget)
         self.pbtn_download.setObjectName(u"pbtn_download")
-        self.pbtn_download.setGeometry(QRect(320, 360, 93, 29))
+        self.pbtn_download.setGeometry(QRect(350, 360, 93, 29))
         self.pbtn_download.setCursor(QCursor(Qt.PointingHandCursor))
         self.pbtn_output = QPushButton(self.centralwidget)
         self.pbtn_output.setObjectName(u"pbtn_output")
