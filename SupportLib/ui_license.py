@@ -18,7 +18,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QDialog, QLabel, QPushButton,
     QSizePolicy, QTextBrowser, QWidget)
 
-class Ui_Dialog(object):
+class Ui_Licensse(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -57,7 +57,7 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.n1.setText(QCoreApplication.translate("Dialog", u"|  MSL2-Python       Copyleft   MojaveHao and 2z0h0m9    2022", None))
-        self.n2.setText(QCoreApplication.translate("Dialog", u"Software Info:MSL2-Python 22M7B1(2.3)", None))
+        self.n2.setText(QCoreApplication.translate("Dialog", u"Software Info:MSL2-Python 22M7B3(2.3.1)", None))
         self.n3.setText(QCoreApplication.translate("Dialog", u"OpenSourced by GNU Affero General Public License v3", None))
         self.pbtn_quit.setText(QCoreApplication.translate("Dialog", u"Quit", None))
         self.pbtn_chinese.setText(QCoreApplication.translate("Dialog", u"View Chinese Version(Website)", None))

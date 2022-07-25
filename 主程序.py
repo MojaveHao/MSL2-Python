@@ -9,7 +9,7 @@ from SupportLib.frp import FRP
 from download_server_support import Download_Manager as DManager
 from create_config import *
 from Output import Output
-from SupportLib.help import Help
+from SupportLib.mslhelp import Help
 class MSL2(QMainWindow,MSL2Py,Output,FRP,Help):
     def __init__(self):
         super().__init__()

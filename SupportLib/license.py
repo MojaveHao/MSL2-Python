@@ -1,9 +1,9 @@
 from PySide6.QtCore import *
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
-from .ui_license import Ui_Dialog
+from .ui_license import Ui_License
 import webbrowser as web,os
-class License(QDialog,Ui_Dialog):
+class License(QDialog,Ui_License):
     def __init__(self):
         self.pbtn_quit.clicked.connect(exit)
         self.pbtn_chinese.clicked.connect(self.view_chinese)
