@@ -1,16 +1,17 @@
 # 开始下载方式:download(下载链接, 文件名)
 # Created by 2z0h0m9
 # 用于显示进度条
-from tqdm import tqdm
-# 用于发起网络请求
-import requests
+import os
+import signal
+from urllib.parse import unquote
+
 # 用于多线程操作
 import multitasking
-import signal
+# 用于发起网络请求
+import requests
 # 导入 retry 库以方便进行下载出错重试
 from retry import retry
-import time, os
-from urllib.parse import unquote
+from tqdm import tqdm
 
 signal.signal(signal.SIGINT, multitasking.killall)
 
@@ -82,7 +83,7 @@ def download(url: str, save_path: str = '..', retry_times: int = 3, each_size=16
     file_name = get_file_name(url=url, headers=headers)
     f = open(save_path + file_name, 'wb')
     file_size = get_file_size(url)
-
+    
     @retry(tries=retry_times)
     @multitasking.task
     def start_download(start: int, end: int) -> None:
@@ -112,11 +113,11 @@ def download(url: str, save_path: str = '..', retry_times: int = 3, each_size=16
             f.write(chunk)
         # 释放已写入的资源
         del chunks
-
+    
     session = requests.Session()
     # 分块文件如果比文件大,就取文件大小为分块大小
     each_size = min(each_size, file_size)
-
+    
     # 分块
     parts = split(0, file_size, each_size)
     print(f'分块数：{len(parts)}')

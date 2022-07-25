@@ -1,9 +1,11 @@
-from PySide6.QtWidgets import *
-from PySide6.QtGui import *
 from PySide6.QtCore import *
+from PySide6.QtWidgets import *
+
 from ui_output import Ui_Output
+
+
 class Output(QDialog, Ui_Output):
-    def __init__(self,server_path,stat):
+    def __init__(self, server_path, stat):
         super().__init__()
         self.setupUi(self)
         self.exec()
@@ -13,12 +15,15 @@ class Output(QDialog, Ui_Output):
             self.read_logs = ReadingLogs(self.server_path)
             reading = QThread.start(self.read_logs)
         else:
-            QMessageBox.warning(self,"警告","请先开启服务器")
+            QMessageBox.warning(self, "警告", "请先开启服务器")
+
+
 class ReadingLogs(QThread):
-    def __init__(self,path):
+    def __init__(self, path):
         super().__init__()
         self.path = path
-    def run(self,path):
+    
+    def run(self, path):
         jump = 0
         while True:
             with open(f"{path}server.log") as f:

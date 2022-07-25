@@ -1,6 +1,4 @@
 from SupportLib.RAM import mem
-import os
-from tqdm import tqdm
 from SupportLib.cmdl_get_server import get_file_url as gfu
 from SupportLib.download import *
 
