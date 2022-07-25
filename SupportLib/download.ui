@@ -1,467 +1,467 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>419</width>
-    <height>75</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <widget class="QPushButton" name="pbtn_start_download">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>40</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="text">
-    <string>开始下载</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbox_type">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>10</y>
-     <width>131</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <item>
-    <property name="text">
-     <string>Paper</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Forge</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Vanilla</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Bukkit</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Spigot</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Mojang</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Nukkit</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>CubeRite</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>GlowStone</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Akarin</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>BunggeeCord</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>BukkitPlugins</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>TacoSpigot</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Cauldron</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Thermos</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>WaterFall</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QComboBox" name="cbox_ver">
-   <property name="geometry">
-    <rect>
-     <x>330</x>
-     <y>10</y>
-     <width>71</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <item>
-    <property name="text">
-     <string>1.18.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.18</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.17.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.17</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16.5</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16.4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16.3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.16</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.15.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.15.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.15</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.14.4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.14.3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.14.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.14.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.14</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.13.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.13.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.13</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.12.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.12.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.12</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.11.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.11.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.11</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.10.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.10.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.10</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.9.4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.9.3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.9.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.9.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.9</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.9</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.8</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.7</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.6</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.5</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.8</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.9</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.8</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.7</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.6</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.5</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.4</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.3</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.2</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7.1</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>1.7</string>
-    </property>
-   </item>
-  </widget>
-  <widget class="QPushButton" name="pbtn_ok1">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>40</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>确认</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pbtn_ok2">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>40</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>确认</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="cbox_source">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>161</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string>Xiaoyu(MSL2 C#)</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Offical(Download low,update fast)</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>SakuraMirror(Old Version)</string>
-    </property>
-   </item>
-  </widget>
- </widget>
- <resources/>
- <connections/>
+    <class>Dialog</class>
+    <widget class="QDialog" name="Dialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>419</width>
+                <height>75</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <widget class="QPushButton" name="pbtn_start_download">
+            <property name="geometry">
+                <rect>
+                    <x>330</x>
+                    <y>40</y>
+                    <width>80</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+                <string>开始下载</string>
+            </property>
+        </widget>
+        <widget class="QComboBox" name="cbox_type">
+            <property name="geometry">
+                <rect>
+                    <x>190</x>
+                    <y>10</y>
+                    <width>131</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <item>
+                <property name="text">
+                    <string>Paper</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Forge</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Vanilla</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Bukkit</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Spigot</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Mojang</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Nukkit</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>CubeRite</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>GlowStone</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Akarin</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>BunggeeCord</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>BukkitPlugins</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>TacoSpigot</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Cauldron</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Thermos</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>WaterFall</string>
+                </property>
+            </item>
+        </widget>
+        <widget class="QComboBox" name="cbox_ver">
+            <property name="geometry">
+                <rect>
+                    <x>330</x>
+                    <y>10</y>
+                    <width>71</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <item>
+                <property name="text">
+                    <string>1.18.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.18</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.17.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.17</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16.5</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16.4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16.3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.16</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.15.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.15.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.15</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.14.4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.14.3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.14.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.14.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.14</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.13.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.13.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.13</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.12.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.12.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.12</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.11.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.11.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.11</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.10.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.10.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.10</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.9.4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.9.3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.9.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.9.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.9</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.9</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.8</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.7</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.6</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.5</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.8</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.9</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.8</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.7</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.6</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.5</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.4</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.3</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.2</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7.1</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>1.7</string>
+                </property>
+            </item>
+        </widget>
+        <widget class="QPushButton" name="pbtn_ok1">
+            <property name="geometry">
+                <rect>
+                    <x>70</x>
+                    <y>40</y>
+                    <width>80</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>确认</string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="pbtn_ok2">
+            <property name="geometry">
+                <rect>
+                    <x>220</x>
+                    <y>40</y>
+                    <width>80</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>确认</string>
+            </property>
+        </widget>
+        <widget class="QComboBox" name="cbox_source">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>10</y>
+                    <width>161</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <item>
+                <property name="text">
+                    <string>Xiaoyu(MSL2 C#)</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>Offical(Download low,update fast)</string>
+                </property>
+            </item>
+            <item>
+                <property name="text">
+                    <string>SakuraMirror(Old Version)</string>
+                </property>
+            </item>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
 </ui>

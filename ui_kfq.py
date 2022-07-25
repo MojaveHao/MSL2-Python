@@ -8,16 +8,13 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpinBox,
-    QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
+                            Qt)
+from PySide6.QtGui import (QCursor)
+from PySide6.QtWidgets import (QComboBox, QLabel, QLineEdit,
+                               QPushButton, QSpinBox,
+                               QWidget)
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -180,27 +177,30 @@ class Ui_MainWindow(object):
         self.pbtn_upd_set.setGeometry(QRect(10, 280, 91, 20))
         self.pbtn_upd_set.setCursor(QCursor(Qt.PointingHandCursor))
         MainWindow.setCentralWidget(self.centralwidget)
-
+        
         self.retranslateUi(MainWindow)
-
+        
         QMetaObject.connectSlotsByName(MainWindow)
+    
     # setupUi
-
+    
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.pbtn_start_server.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u542f\u670d\u52a1\u5668", None))
+        self.pbtn_start_server.setText(
+            QCoreApplication.translate("MainWindow", u"\u5f00\u542f\u670d\u52a1\u5668", None))
         self.n_8.setText(QCoreApplication.translate("MainWindow", u"\u4f7f\u7528Java:", None))
         self.cbox_using_java.setItemText(0, QCoreApplication.translate("MainWindow", u"Java17", None))
         self.cbox_using_java.setItemText(1, QCoreApplication.translate("MainWindow", u"Java16", None))
         self.cbox_using_java.setItemText(2, QCoreApplication.translate("MainWindow", u"Java8", None))
         self.cbox_using_java.setItemText(3, QCoreApplication.translate("MainWindow", u"\u7cfb\u7edf\u53d8\u91cf", None))
-
-        self.n_2.setText(QCoreApplication.translate("MainWindow", u"\u4e0b\u8f7d\u4ee5\u4e0b\u7248\u672c\u7684Java:", None))
+        
+        self.n_2.setText(
+            QCoreApplication.translate("MainWindow", u"\u4e0b\u8f7d\u4ee5\u4e0b\u7248\u672c\u7684Java:", None))
         self.cbox_want_to_download.setItemText(0, QCoreApplication.translate("MainWindow", u"Java17", None))
         self.cbox_want_to_download.setItemText(1, QCoreApplication.translate("MainWindow", u"Java16", None))
         self.cbox_want_to_download.setItemText(2, QCoreApplication.translate("MainWindow", u"Java8", None))
         self.cbox_want_to_download.setItemText(3, QCoreApplication.translate("MainWindow", u"Java7", None))
-
+        
         self.pbtn_how_to_choice.setText(QCoreApplication.translate("MainWindow", u"\u5982\u4f55\u9009\u62e9", None))
         self.n_1.setText(QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u7aef\u8def\u5f84\uff1a", None))
         self.lb_path.setText(QCoreApplication.translate("MainWindow", u"None", None))
@@ -209,11 +209,12 @@ class Ui_MainWindow(object):
         self.n_3.setText(QCoreApplication.translate("MainWindow", u"\u6700\u5c0f\u5185\u5b58\uff1a", None))
         self.n_4.setText(QCoreApplication.translate("MainWindow", u"GB   \u6700\u5927\u5185\u5b58\uff1a", None))
         self.n_5.setText(QCoreApplication.translate("MainWindow", u"GB", None))
-        self.pbtn_dis_log4j2.setText(QCoreApplication.translate("MainWindow", u"\u901a\u8fc7\u542f\u52a8\u53c2\u6570\u7981\u7528Log4j2", None))
+        self.pbtn_dis_log4j2.setText(
+            QCoreApplication.translate("MainWindow", u"\u901a\u8fc7\u542f\u52a8\u53c2\u6570\u7981\u7528Log4j2", None))
         self.n_7.setText(QCoreApplication.translate("MainWindow", u"\u6b63\u7248\u9a8c\u8bc1\uff1a", None))
         self.cbox_mojang.setItemText(0, QCoreApplication.translate("MainWindow", u"True", None))
         self.cbox_mojang.setItemText(1, QCoreApplication.translate("MainWindow", u"False", None))
-
+        
         self.n_6.setText(QCoreApplication.translate("MainWindow", u"\u6700\u5927\u73a9\u5bb6\u6570\u91cf\uff1a", None))
         self.max_player.setText(QCoreApplication.translate("MainWindow", u"20", None))
         self.n_9.setText(QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u5668\u7aef\u53e3\uff1a", None))
@@ -221,22 +222,30 @@ class Ui_MainWindow(object):
         self.n_10.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u542f PVP:", None))
         self.cbox_pvp.setItemText(0, QCoreApplication.translate("MainWindow", u"True", None))
         self.cbox_pvp.setItemText(1, QCoreApplication.translate("MainWindow", u"False", None))
-
+        
         self.n_11.setText(QCoreApplication.translate("MainWindow", u"\u547d\u4ee4\u65b9\u5757\uff1a", None))
         self.cbox_command_block.setItemText(0, QCoreApplication.translate("MainWindow", u"True", None))
         self.cbox_command_block.setItemText(1, QCoreApplication.translate("MainWindow", u"False", None))
-
-        self.n_12.setText(QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u5668\u5217\u8868\u754c\u9762\u63d0\u793a\uff1a", None))
-        self.n_13.setText(QCoreApplication.translate("MainWindow", u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u4ee5\u4e0b\u8bbe\u7f6e\u5c06\u5728\u670d\u52a1\u5668\u91cd\u542f\u540e\u751f\u6548\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014", None))
+        
+        self.n_12.setText(
+            QCoreApplication.translate("MainWindow", u"\u670d\u52a1\u5668\u5217\u8868\u754c\u9762\u63d0\u793a\uff1a",
+                                       None))
+        self.n_13.setText(QCoreApplication.translate("MainWindow",
+                                                     u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u4ee5\u4e0b\u8bbe\u7f6e\u5c06\u5728\u670d\u52a1\u5668\u91cd\u542f\u540e\u751f\u6548\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+                                                     None))
         self.pbtn_ok_adv_set.setText(QCoreApplication.translate("MainWindow", u"\u786e\u8ba4", None))
-        self.n_14.setText(QCoreApplication.translate("MainWindow", u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014", None))
-        self.n_15.setText(QCoreApplication.translate("MainWindow", u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014", None))
+        self.n_14.setText(QCoreApplication.translate("MainWindow",
+                                                     u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+                                                     None))
+        self.n_15.setText(QCoreApplication.translate("MainWindow",
+                                                     u"\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+                                                     None))
         self.pbtn_download.setText(QCoreApplication.translate("MainWindow", u"\u4e0b\u8f7d", None))
         self.pbtn_output.setText(QCoreApplication.translate("MainWindow", u"\u8f93\u51fa", None))
         self.pbtn_frp.setText(QCoreApplication.translate("MainWindow", u"\u6620\u5c04", None))
         self.pbtn_about.setText(QCoreApplication.translate("MainWindow", u"\u5173\u4e8e", None))
-        self.pbtn_show_java_path.setText(QCoreApplication.translate("MainWindow", u"\u70b9\u51fb\u663e\u793a\u5f53\u524d\u8def\u5f84", None))
+        self.pbtn_show_java_path.setText(
+            QCoreApplication.translate("MainWindow", u"\u70b9\u51fb\u663e\u793a\u5f53\u524d\u8def\u5f84", None))
         self.pbtn_visit_help.setText(QCoreApplication.translate("MainWindow", u"\u5e2e\u52a9", None))
         self.pbtn_upd_set.setText(QCoreApplication.translate("MainWindow", u"\u66f4\u65b0\u8bbe\u7f6e", None))
     # retranslateUi
-

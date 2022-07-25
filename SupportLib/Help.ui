@@ -1,134 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>481</width>
-    <height>298</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Dialog</string>
-  </property>
-  <widget class="QLabel" name="n1">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>0</y>
-     <width>111</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>16</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>帮助与支持</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="n2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>451</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>欢迎来到Msl2-Python的帮助与支持页面！开服过程中一些基本问题都可以在这里找到答案！</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="n3">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>60</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>开服愉快:)</string>
-   </property>
-  </widget>
-  <widget class="QTextBrowser" name="help_list">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>361</width>
-     <height>192</height>
-    </rect>
-   </property>
-   <property name="html">
-    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;server.properties如何配置&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;2.服务端的文件结构&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;3.第一次开服前的准备工作&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;4.常用指令&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;5.常用插件&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;6.关于Log4j2漏洞&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pbtn_visit">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>150</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>查看</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="n4">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>100</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>请输入您的编号：</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="ledit_no">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>125</y>
-     <width>81</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pbtn_exit">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>180</y>
-     <width>80</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>退出</string>
-   </property>
-  </widget>
- </widget>
- <resources/>
- <connections/>
+    <class>Dialog</class>
+    <widget class="QDialog" name="Dialog">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>481</width>
+                <height>298</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>Dialog</string>
+        </property>
+        <widget class="QLabel" name="n1">
+            <property name="geometry">
+                <rect>
+                    <x>180</x>
+                    <y>0</y>
+                    <width>111</width>
+                    <height>41</height>
+                </rect>
+            </property>
+            <property name="font">
+                <font>
+                    <pointsize>16</pointsize>
+                </font>
+            </property>
+            <property name="text">
+                <string>帮助与支持</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="n2">
+            <property name="geometry">
+                <rect>
+                    <x>10</x>
+                    <y>40</y>
+                    <width>451</width>
+                    <height>20</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>欢迎来到Msl2-Python的帮助与支持页面！开服过程中一些基本问题都可以在这里找到答案！</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="n3">
+            <property name="geometry">
+                <rect>
+                    <x>210</x>
+                    <y>60</y>
+                    <width>61</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>开服愉快:)</string>
+            </property>
+        </widget>
+        <widget class="QTextBrowser" name="help_list">
+            <property name="geometry">
+                <rect>
+                    <x>20</x>
+                    <y>90</y>
+                    <width>361</width>
+                    <height>192</height>
+                </rect>
+            </property>
+            <property name="html">
+                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                    &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style
+                    type=&quot;text/css&quot;&gt;
+                    p, li { white-space: pre-wrap; }
+                    &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt;
+                    font-weight:400; font-style:normal;&quot;&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1.&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;server.properties如何配置&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;2.服务端的文件结构&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;3.第一次开服前的准备工作&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;4.常用指令&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;5.常用插件&lt;/span&gt;&lt;/p&gt;
+                    &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px;
+                    margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot;
+                    font-family:'Consolas','Courier New','monospace'; font-size:14px; color:#008000;&quot;&gt;6.关于Log4j2漏洞&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                </string>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="pbtn_visit">
+            <property name="geometry">
+                <rect>
+                    <x>390</x>
+                    <y>150</y>
+                    <width>80</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>查看</string>
+            </property>
+        </widget>
+        <widget class="QLabel" name="n4">
+            <property name="geometry">
+                <rect>
+                    <x>390</x>
+                    <y>100</y>
+                    <width>81</width>
+                    <height>16</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>请输入您的编号：</string>
+            </property>
+        </widget>
+        <widget class="QLineEdit" name="ledit_no">
+            <property name="geometry">
+                <rect>
+                    <x>390</x>
+                    <y>125</y>
+                    <width>81</width>
+                    <height>21</height>
+                </rect>
+            </property>
+        </widget>
+        <widget class="QPushButton" name="pbtn_exit">
+            <property name="geometry">
+                <rect>
+                    <x>390</x>
+                    <y>180</y>
+                    <width>80</width>
+                    <height>22</height>
+                </rect>
+            </property>
+            <property name="text">
+                <string>退出</string>
+            </property>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
 </ui>
