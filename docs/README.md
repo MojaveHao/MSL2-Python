@@ -2,12 +2,20 @@
 - 下载运行环境
 	- Python
 		- 本版本开服器使用Python编写，由于使用库的限制，请务必更新至Python3.7以上
-			- 现在请您先输入python -ver查看现存Python版本，3.6以下都不可以运行
-			- 如果您是Python2.x：请在终端输入sudo apt-get remove --auto-remove python2.x  来移除Python(把x换成后面的版本号)然后按照Python3.x-Python3.7一下处理
-			- 如果您是Python3.x：
-				- Python3.7以上可以直接跳到下载PySide6一节
-				- Python3.7以下可以查看[教程](https://cloud.tencent.com/developer/article/1565853)或自己折腾
-		
+      - Linux(命令行安装，请准备好sudo权限)
+            1. 现在请您先输入python -ver查看现存Python版本，3.6以下都不可以运行
+    			- 如果您是Python2.x
+        			- 请在终端输入sudo apt-get remove --auto-remove python2.x  来移除Python(把x换成后面的版本号)然后按照Python3.x-Python3.7以下处理
+    			- 如果您是Python3.x：
+  
+    		- Python3.7以上可以直接跳到下载PySide6一节
+    		- Python3.7以下可以查看[教程](https://cloud.tencent.com/developer/article/1565853)或自己折腾
+      - Windows/macOS(官网直接下载安装包安装)
+            - Windows前往[Python官网](https://www.python.org/downloads/windows/)
+            - macOS前往[Python官网](https://www.python.org/downloads/macos/)
+            - 我们始终推荐您下载最新的Python版本（一般位于页面最上部）（在撰写本版文档时最新版本为3.10.5）
+            - Windows用户下载Windows installer(64-bit)
+            - macOS用户下载macOS 64-bit universal2 installer
 	- 下载PySide6和其他运行环境
 	
  		- 如果您已经配置好了Python3.7环境，请在终端执行sudo pip3 install PySide6来下载PySide6运行环境
@@ -62,19 +70,19 @@
 	      - 参与讨论可以提交issues
 	      - 改好了请直接提交PR，详细描述解决的是什么问题，咋解决的
 	  
-	  ### 使用自定义域名
+        ### 使用自定义域名
+
+            您得先有一个域名 
+        然后参照以下教程：
+        - [阿里云](https://doc.natfrp.com/#/app/mc?id=srv-aliyun)
+
+        - [腾讯云](https://doc.natfrp.com/#/app/mc?id=srv-tencent)
+
+        - [CloudFlare](https://doc.natfrp.com/#/app/mc?id=srv-cloudflare)
+
+	### 常用指令
 		
-		 您得先有一个域名 
-		然后参照以下教程：
-		- [阿里云](https://doc.natfrp.com/#/app/mc?id=srv-aliyun)
-		
-		- [腾讯云](https://doc.natfrp.com/#/app/mc?id=srv-tencent)
-		
-		- [CloudFlare](https://doc.natfrp.com/#/app/mc?id=srv-cloudflare)
-		
-		### 常用指令
-		
-		 -  /ban <玩家名/玩家IP地址>  封禁玩家名/玩家IP地址
+	 -  /ban <玩家名/玩家IP地址>  封禁玩家名/玩家IP地址
 		
      -  /tick <玩家名/玩家IP地址>  临时踢出玩家名/玩家IP地址
     ### 部分常用配置翻译
