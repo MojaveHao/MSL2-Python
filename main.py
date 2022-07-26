@@ -138,7 +138,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
             print(
                 f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
     
-    def open_logs(self):  # 多线程显示日志
+    def open_logs(self):  # 显示日志
         try:
             logs = Output(self.server_path, self.server_status)
             logs.show()
