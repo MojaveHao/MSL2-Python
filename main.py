@@ -128,11 +128,15 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
     
     def start_server(self):  # 启动服务器
         if self.dis_log4j2:
-            os.system(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
-            print(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
+            os.system(
+                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
+            print(
+                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
         else:
-            os.system(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -nogui')
-            print(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -nogui')
+            os.system(
+                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
+            print(
+                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
     
     def open_logs(self):  # 多线程显示日志
         try:
@@ -159,16 +163,15 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         
         # self.server_path = QFileDialog.getExistingDirectory(self, "MSL2:选择服务端所在文件夹")  # 选择服务端路径
         self.server_name = QFileDialog.getOpenFileName(self, "MSL2:选择服务端文件",
-                                                       filter="Minecraft Java Edi Server File (*.jar)")[0].split('/')  # 选择服务器的Jar文件
+                                                       filter="Minecraft Java Edi Server File (*.jar)")[0].split(
+            '/')  # 选择服务器的Jar文件
         self.server_path = ''
         for i in self.server_name[:-1]:
             self.server_path += i + '/'
         self.server_name = self.server_name[-1]
-        if self.server_path:  # 如果选择了服务端路径，把它也设置成默认下载路径
-            self.download_path = self.server_path
-            self.lb_path.setText(self.server_path)
-        if self.server_name is None:
-            QMessageBox.warning(self, "警告", "检测到您只选择了路径而没有选择服务端,如果您没有服务端,请在主界面下载服务端!")
+        # 把服务端路径设置成默认下载路径
+        self.download_path = self.server_path
+        self.lb_path.setText(self.server_path)
     
     def download_server(self):  # 创建下载窗口
         download = DManager(self.download_path)
