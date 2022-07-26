@@ -14,7 +14,7 @@ from PySide6.QtWidgets import (QLabel, QPushButton,
                                QTextBrowser)
 
 
-class Ui_Licensse(object):
+class Ui_License(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
@@ -63,7 +63,8 @@ class Ui_Licensse(object):
         self.pbtn_chinese.setText(QCoreApplication.translate("Dialog", u"View Chinese Version(Website)", None))
         self.pbtn_open_file.setText(QCoreApplication.translate("Dialog", u"View Local File(English)", None))
         self.textBrowser.setHtml(QCoreApplication.translate("Dialog",
-                                                            u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+                                                            u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" "
+                                                            u"\"http://www.w3.org/TR/REC-html40/strict.dtd\">\n "
                                                             "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
                                                             "p, li { white-space: pre-wrap; }\n"
                                                             "</style></head><body style=\" font-family:'Microsoft YaHei UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"

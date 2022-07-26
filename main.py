@@ -66,7 +66,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
             self.download_path = temp[3]
     
     def set_adv(self):  # 读写server.properties文件修改设置
-        if self.server_status == False:
+        if not self.server_status:
             self.min_mem_G = self.min_ram.value()  # 获取最小内存(G)
             self.max_mem_G = self.max_ram.value()  # 获取最大内存(G)
             self.max_players = int(self.max_player.text())  # 获取最大玩家数量
@@ -90,7 +90,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
                     if "enable-command-block=" in server_lines[i]:
                         server_lines[i] = "enable-command-block={}".format(self.command_block)
                 with open(f"{self.server_path}" + os.sep + "server.properties", "w"):  # 将修改后的内容重新写回server.properties
-                    f.write(server_lines)
+                    f.write(''.join(server_lines))
             else:
                 QMessageBox.warning(self, "警告", "请您先选择正确的服务端路径")
             self.min_ram.setMinimum(1)  # 定义最小内存为1G
@@ -101,8 +101,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
             QMessageBox.warning(self, "警告", "请您关闭服务器后再更改此部分设置!")
     
     def process_log4j2(self):
-        self.dis_log4j2 = not (self.dis_log4j2)  # 反相是否启用log4j2的设置
-        if self.dis_log4j2 == True:  # 设置反相之后摁钮显示的文字
+        self.dis_log4j2 = not self.dis_log4j2  # 反相是否启用log4j2的设置
+        if self.dis_log4j2:  # 设置反相之后摁钮显示的文字
             self.pbtn_dis_log4j2.setText("启用log4j2 (不推荐)")
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
@@ -123,19 +123,16 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
             os.system("sudo apt install openjdk-8-jdk -y")  # 下载Java8
         if "16" in want_to:
             os.system("sudo apt install openjdk-16-jdk -y")  # 下载Java16
-        
         if "17" in want_to:
             os.system("sudo apt install openjdk-17-jdk -y")  # 下载Java17
     
     def start_server(self):  # 启动服务器
-        if self.dis_log4j2 == True:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {} -Dlog4j2.formatMsgNoLookups=true -nogui".format(self.java_path,
-                                                                                                        self.min_mem_G,
-                                                                                                        self.max_mem_G,
-                                                                                                        self.server_name))
+        if self.dis_log4j2:
+            os.system(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
+            print(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
         else:
-            os.system("{}java -Xms {}G -Xmx {}G -jar {} -nogui".format(self.java_path, self.min_mem_G, self.max_mem_G,
-                                                                       self.server_name))
+            os.system(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -nogui')
+            print(f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path+self.server_name}" -nogui')
     
     def open_logs(self):  # 多线程显示日志
         try:
@@ -159,13 +156,18 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         frpconfig = FRP()
     
     def select_server_path(self):  # 选择服务端路径的函数
-        self.server_path = QFileDialog.getExistingDirectory(self, "MSL2:选择服务端所在文件夹")  # 选择服务端路径
+        
+        # self.server_path = QFileDialog.getExistingDirectory(self, "MSL2:选择服务端所在文件夹")  # 选择服务端路径
         self.server_name = QFileDialog.getOpenFileName(self, "MSL2:选择服务端文件",
-                                                       filter=("Minecraft Java Edi Server File (*.jar)"))  # 选择服务器的Jar文件
+                                                       filter="Minecraft Java Edi Server File (*.jar)")[0].split('/')  # 选择服务器的Jar文件
+        self.server_path = ''
+        for i in self.server_name[:-1]:
+            self.server_path += i + '/'
+        self.server_name = self.server_name[-1]
         if self.server_path:  # 如果选择了服务端路径，把它也设置成默认下载路径
             self.download_path = self.server_path
             self.lb_path.setText(self.server_path)
-        if self.server_name == None:
+        if self.server_name is None:
             QMessageBox.warning(self, "警告", "检测到您只选择了路径而没有选择服务端,如果您没有服务端,请在主界面下载服务端!")
     
     def download_server(self):  # 创建下载窗口

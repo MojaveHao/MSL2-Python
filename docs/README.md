@@ -19,23 +19,9 @@
           - macOS用户下载macOS 64-bit universal2 installer
     - 下载PySide6和其他运行环境
 
-        - 如果您已经配置好了Python3.7环境，请在终端执行sudo pip3 install PySide6来下载PySide6运行环境
+        - 如果您已经配置好了Python3.7(或更高)环境，请在终端执行sudo pip install -r requirements.txt以安装依赖
+        - 注：此处请保证终端的路径处于我们的项目文件根目录
 
-            - 其他环境安装：将以下库名替换到上面一条命令PySide6的位置
-
-                - tqdm
-
-                - requests
-
-                - multitasking
-
-                - signal
-
-                - retry
-
-                - urllib
-
-                - psutil
 
 环境配置至此完成
 

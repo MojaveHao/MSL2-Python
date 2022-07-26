@@ -28,7 +28,7 @@
 
     - frp_support.py -> 内网穿透教实现程序(实验中)
 
-    - RAM.py -> 计算并返回当前总内存与可用内存,由Bilibili @2z0h0m9 制作
+    - RAM.py -> 计算并返回当前总内存与可用内存
 
     - cmdl_get_server-> 获取服务端下载路径（感谢[Sakura's Mirror](mirror.zerodream.net)提供的镜像服务)
 
