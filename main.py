@@ -21,7 +21,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         super().__init__()
         self.setupUi(self)
         self.show()
-        self.setWindowIcon(QIcon("Resource" + os.sep + "server.png"))
+        self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
         self.setWindowTitle("我的世界开服器")
         self.setFixedSize(811, 384)  # 设置窗体大小为811*384
         self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
