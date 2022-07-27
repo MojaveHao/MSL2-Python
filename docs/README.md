@@ -19,10 +19,24 @@
           - macOS用户下载macOS 64-bit universal2 installer
     - 下载PySide6和其他运行环境
 
-        - 如果您已经配置好了Python3.7(或更高)环境，请在终端执行sudo pip install -r requirements.txt以安装依赖
+        - 如果您已经配置好了Python3.7(或更高)环境，请在终端执行pip install -r requirements.txt以安装依赖
         - 注：此处请保证终端的路径处于我们的项目文件根目录
-
-
+        - 注2：如果您正在使用Linux请将pip替换为sudo pip3
+    - Java
+      - 虽然开服器本身并不需要Java，可Java是开服的必需品，所以在此一并列出其下载方式（仅针对Linux）
+        - 如您的发行版可以使用apt，请按照您的情况选择命令（必须要有root权限，推荐直接复制）：
+            - 首先，更新您的下载源：sudo apt update && sudo apt upgrade -y 
+            - Java17：sudo apt install openjdk-17-jdk -y
+            - Java16：sudo apt install openjdk-16-jdk -y
+            - Java8：sudo apt install openjdk-8-jdk -y
+            - Java7：sudo apt install openjdk-7-jdk -y
+        - 如果您的发行版使用不了apt或者上面的命令报错，请尝试下面的方法：
+          - [Java17下载](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+          - [Java16下载](https://www.oracle.com/java/technologies/javase/jdk16-archive-downloads.html)
+          - [Java8下载](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html)
+          - [Java7下载](https://www.oracle.com/java/technologies/javase/javase7-archive-downloads.html)
+          - [Deepin安装Java17示例](https://bbs.deepin.org/post/236160)
+  
 环境配置至此完成
 
 # 基本使用方法

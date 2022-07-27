@@ -8,11 +8,15 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
-                            Qt)
-from PySide6.QtGui import (QCursor)
-from PySide6.QtWidgets import (QComboBox, QPushButton)
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -114,13 +118,12 @@ class Ui_Dialog(object):
         self.cbox_source.addItem("")
         self.cbox_source.setObjectName(u"cbox_source")
         self.cbox_source.setGeometry(QRect(20, 10, 161, 22))
-        
+
         self.retranslateUi(Dialog)
-        
+
         QMetaObject.connectSlotsByName(Dialog)
-    
     # setupUi
-    
+
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.pbtn_start_download.setText(QCoreApplication.translate("Dialog", u"\u5f00\u59cb\u4e0b\u8f7d", None))
@@ -140,7 +143,7 @@ class Ui_Dialog(object):
         self.cbox_type.setItemText(13, QCoreApplication.translate("Dialog", u"Cauldron", None))
         self.cbox_type.setItemText(14, QCoreApplication.translate("Dialog", u"Thermos", None))
         self.cbox_type.setItemText(15, QCoreApplication.translate("Dialog", u"WaterFall", None))
-        
+
         self.cbox_ver.setItemText(0, QCoreApplication.translate("Dialog", u"1.18.1", None))
         self.cbox_ver.setItemText(1, QCoreApplication.translate("Dialog", u"1.18", None))
         self.cbox_ver.setItemText(2, QCoreApplication.translate("Dialog", u"1.17.1", None))
@@ -196,12 +199,12 @@ class Ui_Dialog(object):
         self.cbox_ver.setItemText(52, QCoreApplication.translate("Dialog", u"1.7.2", None))
         self.cbox_ver.setItemText(53, QCoreApplication.translate("Dialog", u"1.7.1", None))
         self.cbox_ver.setItemText(54, QCoreApplication.translate("Dialog", u"1.7", None))
-        
+
         self.pbtn_ok1.setText(QCoreApplication.translate("Dialog", u"\u786e\u8ba4", None))
         self.pbtn_ok2.setText(QCoreApplication.translate("Dialog", u"\u786e\u8ba4", None))
         self.cbox_source.setItemText(0, QCoreApplication.translate("Dialog", u"Xiaoyu(MSL2 C#)", None))
-        self.cbox_source.setItemText(1,
-                                     QCoreApplication.translate("Dialog", u"Offical(Download low,update fast)", None))
+        self.cbox_source.setItemText(1, QCoreApplication.translate("Dialog", u"Offical(Download low,update fast)", None))
         self.cbox_source.setItemText(2, QCoreApplication.translate("Dialog", u"SakuraMirror(Old Version)", None))
-    
+
     # retranslateUi
+
