@@ -14,13 +14,15 @@ class Setting(QDialog, Ui_Setting):
         self.website_list = ['https://files.minecraftforge.net/net/minecraftforge/forge/', 'https://fabricmc.net/',
                              'https://getbukkit.org/download/craftbukkit', 'https://getbukkit.org/download/spigot',
                              'https://getbukkit.org/download/vanilla']
-        self.pbtn_ufl1clicked.connect(self.open_uft1)
+        self.pbtn_ufl1.clicked.connect(self.open_uft1)
         self.pbtn_ufl2.clicked.connect(self.open_uft2)
         self.pbtn_download_auto_backup.clicked.connect(self.auto_backup)
         self.pbtn_download_website_manage.clicked.connect(self.web_mang)
         self.pbtn_goto.clicked.connect(self.goto)
         self.pbtn_check_configs_for_server.clicked.connect(self.check_all_configs)
         self.dl_update.clicked.connect(self.download_update)
+        self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
+        self.pbtn_download.clicked.connect(self.download_java)
         with open('../config.txt') as f:
             self.path = f.read()[0][0]
     
@@ -76,3 +78,23 @@ class Setting(QDialog, Ui_Setting):
             dld('Monthly')
         if self.update_setting == 'Dev':
             dld('dev')
+    def print_how_to_choice(self):  # 显示如何选择Java的提示框
+        QMessageBox.information(self, "如何选择Java版本", "\
+        1.18+ --> Java17\n\
+        1.14 - 1.17 --> Java8 - Java16\n\
+        1.8 - 1.13 --> Java8\n\
+        1.7- --> Java7")
+
+    def download_java(self):
+        want_to = self.cbox_want_to_download.currentText()
+        os.system("sudo apt update && sudo apt upgrade -y")  # 更新下载源
+        if "7" in want_to:
+            os.system("sudo apt install openjdk-7-jre -y")  # 下载Java7
+        if "8" in want_to:
+            os.system("sudo apt install openjdk-8-jdk -y")  # 下载Java8
+        if "16" in want_to:
+            os.system("sudo apt install openjdk-16-jdk -y")  # 下载Java16
+        if "17" in want_to:
+            os.system("sudo apt install openjdk-17-jdk -y")  # 下载Java17
+    
+    

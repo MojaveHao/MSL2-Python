@@ -1,5 +1,6 @@
 import os
 import sys
+import webbrowser as web
 
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -7,14 +8,15 @@ from PySide6.QtWidgets import *
 import SupportLib.RAM as RAM
 from Output import Output
 from SupportLib.frp import FRP
-from SupportLib.license import License
-from SupportLib.mslhelp import Help
+from SupportLib.setting import Setting
+
 from create_config import *
 from download_server_support import Download_Manager as DManager
 from ui_kfq import Ui_MainWindow as MSL2Py
+#from SupportLib.mslhelp import Help
+#from SupportLib.license import License
 
-
-class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
+class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
@@ -42,10 +44,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         self.pbtn_output.setIcon(QIcon("Resource" + os.sep + "Book.gif"))  # 设置输出摁钮的图案为书
         self.pbtn_frp.setIcon(QIcon("Resource" + os.sep + "Furnace.png"))  # 设置内网穿透摁钮的图案为熔炉
         self.pbtn_about.setIcon(QIcon("Resource" + os.sep + "Quill.png"))  # 设置关于摁钮的图案为书和笔
-        self.pbtn_ok_adv_set.clicked.connect(self.set_adv)  # 此行以后直到第50行都是绑定摁钮处理方法
-        self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
+        self.pbtn_ok_adv_set.clicked.connect(self.set_adv)  # 此行开始直到第57行都是绑定摁钮处理方法
         self.pbtn_dis_log4j2.clicked.connect(self.process_log4j2)
-        self.pbtn_download.clicked.connect(self.download_java)
         self.pbtn_start_server.clicked.connect(self.start_server)
         self.pbtn_about.clicked.connect(self.about)
         self.pbtn_output.clicked.connect(self.open_logs)
@@ -54,6 +54,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         self.pbtn_download_server.clicked.connect(self.download_server)
         self.pbtn_frp.clicked.connect(self.frp_guide)
         self.pbtn_visit_help.clicked.connect(self.visit_help)
+        self.pbtn_upd_set.clicked.connect(self.open_set)
         if not os.path.isdir("MSLDownload"):  # 判断是否有下载目录，没有就创建
             os.mkdir("MSLDownload")
         else:
@@ -107,25 +108,6 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
     
-    def print_how_to_choice(self):  # 显示如何选择Java的提示框
-        QMessageBox.information(self, "如何选择Java版本", "\
-        1.18+ --> Java17\n\
-        1.14 - 1.17 --> Java8 - Java16\n\
-        1.8 - 1.13 --> Java8\n\
-        1.7- --> Java7")
-    
-    def download_java(self):
-        want_to = self.cbox_want_to_download.currentText()
-        os.system("sudo apt update && sudo apt upgrade -y")  # 更新下载源
-        if "7" in want_to:
-            os.system("sudo apt install openjdk-7-jre -y")  # 下载Java7
-        if "8" in want_to:
-            os.system("sudo apt install openjdk-8-jdk -y")  # 下载Java8
-        if "16" in want_to:
-            os.system("sudo apt install openjdk-16-jdk -y")  # 下载Java16
-        if "17" in want_to:
-            os.system("sudo apt install openjdk-17-jdk -y")  # 下载Java17
-    
     def start_server(self):  # 启动服务器
         if self.dis_log4j2:
             os.system(
@@ -146,7 +128,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
             print(err)
     
     def about(self):  # 显示软件信息
-        license = License()
+        QMessageBox.information(self,"软件信息","MSL2-Python 22M7B3\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
@@ -177,9 +159,10 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Help):
         download = DManager(self.download_path)
     
     def visit_help(self):  # 查看帮助
-        help = Help()
+        web.open("https://ntfs2020.github.io/MSL2-Python/#/")
 
-
+    def open_set(self):
+        mslsetting = Setting()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()

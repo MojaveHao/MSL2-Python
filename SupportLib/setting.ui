@@ -164,9 +164,9 @@ p, li { white-space: pre-wrap; }
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>90</y>
-       <width>131</width>
-       <height>22</height>
+       <y>120</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -195,7 +195,7 @@ p, li { white-space: pre-wrap; }
        <x>10</x>
        <y>120</y>
        <width>121</width>
-       <height>22</height>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
@@ -249,7 +249,7 @@ p, li { white-space: pre-wrap; }
       <rect>
        <x>60</x>
        <y>170</y>
-       <width>111</width>
+       <width>191</width>
        <height>22</height>
       </rect>
      </property>
@@ -294,6 +294,97 @@ p, li { white-space: pre-wrap; }
      <property name="text">
       <string>下载</string>
      </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>200</y>
+       <width>211</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查看文档中的Java安装方法</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbtn_how_to_choice">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>260</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string>如何选择</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pbtn_download">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>260</y>
+       <width>93</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="text">
+      <string>下载</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="n_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>230</y>
+       <width>311</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>通过开服器下载Java（不推荐，可能报错）:</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="cbox_want_to_download">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>260</y>
+       <width>87</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <item>
+      <property name="text">
+       <string>Java17</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Java16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Java8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Java7</string>
+      </property>
+     </item>
     </widget>
    </widget>
   </widget>

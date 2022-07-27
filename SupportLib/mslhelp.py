@@ -9,7 +9,7 @@ class Help(QDialog, Ui_Dialog):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.show()
+        self.exec()
         self.pbtn_visit.clicked.connect(self.open_help)
         self.pbtn_exit.clicked.connect(self.quit)
     

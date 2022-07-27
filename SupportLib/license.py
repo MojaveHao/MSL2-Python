@@ -3,7 +3,7 @@ import webbrowser as web
 
 from PySide6.QtWidgets import *
 
-from .ui_license import Ui_License
+from ui_license import Ui_License
 
 
 class License(QDialog, Ui_License):
