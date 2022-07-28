@@ -4,46 +4,49 @@
 
 ### Files
 
--  主程序.py -> MSL2-Python 的主程序
+- 主程序.py -> MSL2-Python 的主程序
 
--  frp.conf -> 配置完成SakuraFRP后生成的用于判断的文件(运行后生成)
+- frp.conf -> 配置完成SakuraFRP后生成的用于判断的文件(运行后生成)
 
--  Output.py -> 负责输出界面的后台处理，包括读取日志文件
+- Output.py -> 负责输出界面的后台处理，包括读取日志文件
 
--  ui_kfq.py -> 负责显示MSL2主程序界面的Python文件
+- ui_kfq.py -> 负责显示MSL2主程序界面的Python文件
 
--  ui_output.py -> 负责显示输出界面的Python文件
+- ui_output.py -> 负责显示输出界面的Python文件
 
 - download_server_support.py -> 负责服务端下载页面的处理
 
 ### Dir
 
--  Resource -> MSL2-Python调用的图片文件
+- Resource -> MSL2-Python调用的图片文件
 
--  SupportLib -> MSL2-Python调用的支持文件
+- SupportLib -> MSL2-Python调用的支持文件
 
-    -  __init__.py -> 让主程序能够调用同级目录下文
+    - __init__.py -> 让主程序能够调用同级目录下文
 
-    -  download.py -> 多线程下载器,由Bilibili @2z0h0m9 制作,用于下载服务端
+    - download.py -> 多线程下载器,由Bilibili @2z0h0m9 制作,用于下载服务端
 
-    -  frp_support.py -> 内网穿透教实现程序(实验中)
+    - frp_support.py -> 内网穿透教实现程序(实验中)
 
-    -  RAM.py -> 计算并返回当前总内存与可用内存,由Bilibili @2z0h0m9 制作
+    - RAM.py -> 计算并返回当前总内存与可用内存
 
-	- cmdl_get_server-> 获取服务端下载路径（感谢[Sakura's Mirror](mirror.zerodream.net)提供的镜像服务)
+    - cmdl_get_server-> 获取服务端下载路径（感谢[Sakura's Mirror](mirror.zerodream.net)提供的镜像服务)
 
-	- ui_download.py -> 负责显示服务端下载页面
+    - ui_download.py -> 负责显示服务端下载页面
 
 - MSLDownload -> MSL2-Python的默认下载路径(运行后生成)
+
 ## 代码结构
 
 ### 主程序
 
--  self.using_java = 0 ->0为17,1为16,2为8
+- self.using_java = 0 ->0为17,1为16,2为8
 
--  self.want_to_download = 0 ->同上
+- self.want_to_download = 0 ->同上
 
-- self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/libjvm/java-8-openjdk-amd64"] -> 第一个为Java17路径，第二个为Java16路径，第三个为Java8路径，默认为Ubuntu系统
+-
+self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/libjvm/java-8-openjdk-amd64"]
+-> 第一个为Java17路径，第二个为Java16路径，第三个为Java8路径，默认为Ubuntu系统
 
 - self.server_path = "" ->服务端的路径,默认为空,即当前目录
 
