@@ -172,3 +172,8 @@
         - 更多详见[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Server.properties?variant=zh)
     
 
+      ### 快捷工具
+        - 快速更新GUI
+          使用update_gui.cmd(Windows)或.\update_gui(Linux)来快速更新已有的.ui文件，请自行添加您添加的其他的.ui文件 
+        - 快速更新需求库
+          使用update_requirements.cmd(Windows)或.\update_requirements(Linux)来快速更新MSL2-Python所需的库文件
