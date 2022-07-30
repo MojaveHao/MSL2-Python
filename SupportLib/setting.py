@@ -23,7 +23,7 @@ class Setting(QDialog, Ui_Setting):
         self.dl_update.clicked.connect(self.download_update)
         self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
         self.pbtn_download.clicked.connect(self.download_java)
-        with open('../config.txt') as f:
+        with open('../config.txt',encoding='utf-8') as f:
             self.path = f.read()[0][0]
     
     def open_uft1(self):
