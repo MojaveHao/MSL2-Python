@@ -6,13 +6,13 @@ from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
 import SupportLib.RAM as RAM
-from Output import Output
+from SupportLib.Output import Output
 from SupportLib.frp import FRP
 from SupportLib.setting import Setting
 
-from create_config import *
-from download_server_support import Download_Manager as DManager
-from ui_kfq import Ui_MainWindow as MSL2Py
+from SupportLib.create_config import *
+from SupportLib.download_server_support import Download_Manager as DManager
+from SupportLib.ui_kfq import Ui_MainWindow as MSL2Py
 #from SupportLib.mslhelp import Help
 #from SupportLib.license import License
 
@@ -142,6 +142,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     
     def frp_guide(self, now):  # 调用FRP配置指南
         frpconfig = FRP()
+        self.show()
     
     def select_server_path(self):  # 选择服务端路径的函数
         
