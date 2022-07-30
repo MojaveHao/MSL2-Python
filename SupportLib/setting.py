@@ -10,6 +10,10 @@ from .ui_setting import Ui_Setting
 
 class Setting(QDialog, Ui_Setting):
     def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        #self.show()
+        self.exec()
         self.update_setting = 'Master'
         self.website_list = ['https://files.minecraftforge.net/net/minecraftforge/forge/', 'https://fabricmc.net/',
                              'https://getbukkit.org/download/craftbukkit', 'https://getbukkit.org/download/spigot',
@@ -19,12 +23,14 @@ class Setting(QDialog, Ui_Setting):
         self.pbtn_download_auto_backup.clicked.connect(self.auto_backup)
         self.pbtn_download_website_manage.clicked.connect(self.web_mang)
         self.pbtn_goto.clicked.connect(self.goto)
-        self.pbtn_check_configs_for_server.clicked.connect(self.check_all_configs)
+        # NTFS2020 呀我看了提交历史 我看你改了设置的UI 把这个控件删除了 然后怎么不删这行代码呀？（我David
+        # self.pbtn_check_configs_for_server.clicked.connect(self.check_all_configs)
         self.dl_update.clicked.connect(self.download_update)
         self.pbtn_how_to_choice.clicked.connect(self.print_how_to_choice)
         self.pbtn_download.clicked.connect(self.download_java)
-        with open('../config.txt',encoding='utf-8') as f:
-            self.path = f.read()[0][0]
+        # 还有这行，没用了吧
+        #with open('../config.txt','r',encoding='utf-8') as f:
+        #    self.path = f.read()[0][0]
     
     def open_uft1(self):
         web.open('https://wiki.biligame.com/rust/%E6%9C%8D%E4%B8%BB:%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6')
@@ -50,11 +56,13 @@ class Setting(QDialog, Ui_Setting):
         elif 'Fabric' in self.cbox_goto_website.text():
             web.open(self.website_list[4])
     
-    def check_all_configs(self):
-        config_list = []
-        for file in os.listdir(self.path):
-            if '.xaml' in file or '.xml' in file or '.yml' in file or '.yaml' in file:
-                config_list.append(file)
+    # 和这个
+    #def check_all_configs(self):
+    #    config_list = []
+    #    for file in os.listdir(self.path):
+    #        if '.xaml' in file or '.xml' in file or '.yml' in file or '.yaml' in file:
+    #            config_list.append(file)
+
     
     def download_update(self):
         def dld(type):

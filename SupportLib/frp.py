@@ -13,6 +13,11 @@ from .ui_frp import Ui_FrpcConfig
 
 class FRP(QDialog, Ui_FrpcConfig):
     def __init__(self):
+
+        super().__init__()
+        self.setupUi(self)
+        self.exec()
+
         if os.path.isdir("frp"):
             pass
         else:
@@ -25,8 +30,6 @@ class FRP(QDialog, Ui_FrpcConfig):
         # self.pbtn_start.clicked.connect(self.start)
         # self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
         self.url_list = ["gz1.qwq.one", "sh.qwq.one", "hk.qwq.one", "hz.qwq.one", "gz2.qwq.one"]
-        self.setupUi(self)
-        self.exec()
     
     def start(self):
         url_index = self.select_url.currentIndex()
