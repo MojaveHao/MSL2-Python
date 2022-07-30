@@ -164,7 +164,9 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         web.open("https://ntfs2020.github.io/MSL2-Python/#/")
 
     def open_set(self):
+        '''显示设置页面'''
         mslsetting = Setting()
+        self.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()
