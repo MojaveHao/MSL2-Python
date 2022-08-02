@@ -27,7 +27,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
         self.want_to_download = 0  # 同上
         self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64", "/usr/lib/jvm/java-16-openjdk-amd64",
-                          "/usr/lib/jvm/java-8-openjdk-amd64", None]
+                          "/usr/lib/jvm/java-8-openjdk-amd64", '']
         self.server_path = ""  # 服务端的路径
         self.server_name = "server.jar"  # 服务端的名字，需要单独设置
         self.min_mem_G = 1  # 最小内存(G)
@@ -111,14 +111,14 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     def start_server(self):  # 启动服务器
         if self.dis_log4j2:
             os.system(
-                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
             print(
-                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
         else:
             os.system(
-                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
             print(
-                f'{self.java_path}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
     
     def open_logs(self):  # 显示日志
         try:
