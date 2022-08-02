@@ -6,13 +6,13 @@ from PySide6.QtGui import *
 from PySide6.QtWidgets import *
 
 import SupportLib.RAM as RAM
-from Output import Output
+from SupportLib.Output import Output
 from SupportLib.frp import FRP
 from SupportLib.setting import Setting
 
-from create_config import *
-from download_server_support import Download_Manager as DManager
-from ui_kfq import Ui_MainWindow as MSL2Py
+from SupportLib.create_config import *
+from SupportLib.download_server_support import Download_Manager as DManager
+from SupportLib.ui_kfq import Ui_MainWindow as MSL2Py
 #from SupportLib.mslhelp import Help
 #from SupportLib.license import License
 
@@ -23,7 +23,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.show()
         self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
         self.setWindowTitle("我的世界开服器")
-        self.setFixedSize(811, 384)  # 设置窗体大小为811*384
+        # 说明（这回没QQ在这跟你说下）我改了UI，加了布局（自适应）不用固定大小了
+        #self.setFixedSize(811, 384)  # 设置窗体大小为811*384
         self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
         self.want_to_download = 0  # 同上
         self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64", "/usr/lib/jvm/java-16-openjdk-amd64",
@@ -77,7 +78,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.motd_message = self.motd.text()  # 设置服务器选择界面的提示
             if os.path.isdir(self.server_path):  # 如果服务端路径存在就执行
                 try:
-                    with open(f"{self.server_path}" + os.sep + "server.properties") as f:  # 读取server.properties
+                    with open(f"{self.server_path}" + os.sep + "server.properties",encoding='utf-8') as f:  # 读取server.properties
                         server_lines = f.readlines()
                 except:
                     QMessageBox.warning(self, "警告", "您必须确保已经在服务端路径下生成了server.properties文件")
@@ -90,16 +91,16 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                         server_lines[i] = "pvp={}".format(self.pvp)
                     if "enable-command-block=" in server_lines[i]:
                         server_lines[i] = "enable-command-block={}".format(self.command_block)
-                with open(f"{self.server_path}" + os.sep + "server.properties", "w"):  # 将修改后的内容重新写回server.properties
+                with open(f"{self.server_path}" + os.sep + "server.properties", "w",encoding='utf-8'):  # 将修改后的内容重新写回server.properties
                     f.write(''.join(server_lines))
             else:
-                QMessageBox.warning(self, "警告", "请您先选择正确的服务端路径")
+                QMessageBox.warning(self, "警告", "请您选择正确的服务端路径")
             self.min_ram.setMinimum(1)  # 定义最小内存为1G
             self.min_ram.setMaximum(self.max_mem_G)  # 设置最大内存为当前可用内存
             self.max_ram.setMinimum(self.min_mem_G)  # 设置最小内存
             write_config(self.using_java, self.java_path, self.server_path, self.download_path)
         else:
-            QMessageBox.warning(self, "警告", "请您关闭服务器后再更改此部分设置!")
+            QMessageBox.warning(self, "警告", "请您在关闭服务器后再更改此部分设置!")
     
     def process_log4j2(self):
         self.dis_log4j2 = not self.dis_log4j2  # 反相是否启用log4j2的设置
@@ -110,6 +111,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     
     def start_server(self):  # 启动服务器
         if self.dis_log4j2:
+            # 我建议你们呀 不用os.system，因为这玩意已经被弃用了。。用subprocess库吧
             os.system(
                 f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
             print(
@@ -140,6 +142,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     
     def frp_guide(self, now):  # 调用FRP配置指南
         frpconfig = FRP()
+        self.show()
     
     def select_server_path(self):  # 选择服务端路径的函数
         
@@ -162,7 +165,9 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         web.open("https://ntfs2020.github.io/MSL2-Python/#/")
 
     def open_set(self):
+        '''显示设置页面'''
         mslsetting = Setting()
+        self.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()
