@@ -1,7 +1,7 @@
 import requests
 
 
-def get_file_url(type="PaperSpigot", ver="1.12.2"):
+def get_file_url(type, ver):
     """type为端 ver为版本"""
     can_be_use_type = [
         "PaperSpigot",
