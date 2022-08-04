@@ -1,0 +1,94 @@
+Date : 2022-08-04 12:59:21
+Directory : c:\Users\HTTco\Desktop\MSL2-Python
+Total : 58 files,  7396 codes, 242 comments, 664 blanks, all 8302 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| Python       |         31 |      4,260 |        200 |        511 |      4,971 |
+| XML          |         14 |      2,823 |          0 |          8 |      2,831 |
+| Markdown     |          7 |        209 |          0 |        129 |        338 |
+| HTML         |          1 |         43 |          4 |          2 |         49 |
+| JavaScript   |          1 |         37 |         38 |          8 |         83 |
+| Batch        |          2 |         14 |          0 |          3 |         17 |
+| Shell Script |          2 |         10 |          0 |          3 |         13 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                 |         58 |      7,396 |        242 |        664 |      8,302 |
+| .idea                                                                             |          6 |         67 |          0 |          0 |         67 |
+| .idea\inspectionProfiles                                                          |          2 |         37 |          0 |          0 |         37 |
+| .qt_for_python                                                                    |          6 |      1,541 |         60 |        189 |      1,790 |
+| .qt_for_python\uic                                                                |          6 |      1,541 |         60 |        189 |      1,790 |
+| SupportLib                                                                        |         31 |      5,137 |        136 |        311 |      5,584 |
+| docs                                                                              |          7 |        219 |         42 |         77 |        338 |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                          | language     | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\MSL2-Python.iml                          | XML          |         12 |          0 |          0 |         12 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\inspectionProfiles\Project_Default.xml   | XML          |         31 |          0 |          0 |         31 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\inspectionProfiles\profiles_settings.xml | XML          |          6 |          0 |          0 |          6 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\misc.xml                                 | XML          |          4 |          0 |          0 |          4 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\modules.xml                              | XML          |          8 |          0 |          0 |          8 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.idea\vcs.xml                                  | XML          |          6 |          0 |          0 |          6 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\download.py                 | Python       |        241 |         10 |         35 |        286 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\kfq.py                      | Python       |        300 |         10 |        104 |        414 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\license.py                  | Python       |        904 |         10 |         22 |        936 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\output.py                   | Python       |         26 |         10 |         10 |         46 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\output1.py                  | Python       |         26 |         10 |         10 |         46 |
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\start_options.py            | Python       |         44 |         10 |          8 |         62 |
+| c:\Users\HTTco\Desktop\MSL2-Python\MSL2-Python Development documentation.md       | Markdown     |         54 |          0 |         50 |        104 |
+| c:\Users\HTTco\Desktop\MSL2-Python\README.md                                      | Markdown     |         16 |          0 |         12 |         28 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\Help.ui                             | XML          |        149 |          0 |          1 |        150 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\Output.py                           | Python       |         36 |          0 |          7 |         43 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\RAM.py                              | Python       |          7 |          0 |          3 |         10 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\__init__.py                         | Python       |          0 |          0 |          2 |          2 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\cmdl_get_server.py                  | Python       |         82 |          1 |          4 |         87 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\create_config.py                    | Python       |          7 |          0 |          3 |         10 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\downjava.py                         | Python       |          6 |          1 |          4 |         11 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\download.py                         | Python       |         66 |         52 |         15 |        133 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\download.ui                         | XML          |        556 |          0 |          1 |        557 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\download_server.py                  | Python       |        154 |          0 |          7 |        161 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\download_server_support.py          | Python       |         19 |          0 |          5 |         24 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\frp.py                              | Python       |         67 |          0 |          9 |         76 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\frp.ui                              | XML          |        181 |          0 |          1 |        182 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\frp_support.py                      | Python       |         16 |          0 |          5 |         21 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\kfq.ui                              | XML          |        612 |          0 |          1 |        613 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\license.py                          | Python       |         17 |          0 |          8 |         25 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\license.ui                          | XML          |        751 |          0 |          1 |        752 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\mslhelp.py                          | Python       |         29 |          0 |          7 |         36 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\output.ui                           | XML          |         43 |          0 |          1 |         44 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\setting.py                          | Python       |         80 |         12 |         16 |        108 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\setting.ui                          | XML          |        394 |          0 |          1 |        395 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\start_options.ui                    | XML          |         70 |          0 |          1 |         71 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_download.py                      | Python       |        241 |         10 |         35 |        286 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_frp.py                           | Python       |         79 |         10 |         10 |         99 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_help.py                          | Python       |         78 |         10 |          8 |         96 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_kfq.py                           | Python       |        300 |         10 |        104 |        414 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_license.py                       | Python       |        904 |         10 |         22 |        936 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_output.py                        | Python       |         26 |         10 |         10 |         46 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_setting.py                       | Python       |        151 |         10 |         13 |        174 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\update.py                           | Python       |          8 |          0 |          3 |         11 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\update_frp.py                       | Python       |          8 |          0 |          3 |         11 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\README.md                                 | Markdown     |        118 |          0 |         61 |        179 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\_404.md                                   | Markdown     |          3 |          0 |          1 |          4 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\_coverpage.md                             | Markdown     |          8 |          0 |          5 |         13 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\_navbar.md                                | Markdown     |          6 |          0 |          0 |          6 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\_sidebar.md                               | Markdown     |          4 |          0 |          0 |          4 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\index.html                                | HTML         |         43 |          4 |          2 |         49 |
+| c:\Users\HTTco\Desktop\MSL2-Python\docs\sw.js                                     | JavaScript   |         37 |         38 |          8 |         83 |
+| c:\Users\HTTco\Desktop\MSL2-Python\main.py                                        | Python       |        156 |          4 |         17 |        177 |
+| c:\Users\HTTco\Desktop\MSL2-Python\main_cmdl.py                                   | Python       |        182 |          0 |          2 |        184 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_gui.cmd                                 | Batch        |         11 |          0 |          3 |         14 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_gui.sh                                  | Shell Script |          8 |          0 |          3 |         11 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_requirements.cmd                        | Batch        |          3 |          0 |          0 |          3 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_requirements.sh                         | Shell Script |          2 |          0 |          0 |          2 |
+| Total                                                                             |              |      7,396 |        242 |        664 |      8,302 |
++-----------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+

@@ -5,8 +5,8 @@ import random
 import requests
 import time
 import webbrowser
-
-from PySide6.QtWidgets import *
+import traceback
+import subprocess as sp
 
 from .ui_frp import Ui_FrpcConfig
 
@@ -21,14 +21,16 @@ class FRP(QDialog, Ui_FrpcConfig):
         if os.path.isdir("frp"):
             pass
         else:
-            os.system(
-                "wget -o frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_amd64.tar.gz")
-            os.system("mkdir frp")
-            os.system("cd frp")
-            os.system("tar -zxvf frp.tar.gz")
+            try:
+                sp.run("wget -o frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_amd64.tar.gz",check=True,Shell=True)
+                sp.run("mkdir frp",check=True,Shell=True)
+                sp.run("cd frp",check=True,Shell=True)
+                sp.run("tar -zxvf frp.tar.gz",check=True,Shell=True)
+            except:
+                QMessageBox.critical(traceback.format_exc())
         self.remote_port = random.randint(20000, 60000)
-        # self.pbtn_start.clicked.connect(self.start)
-        # self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
+        self.pbtn_start.clicked.connect(self.start)
+        self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
         self.url_list = ["gz1.qwq.one", "sh.qwq.one", "hk.qwq.one", "hz.qwq.one", "gz2.qwq.one"]
     
     def start(self):
@@ -53,7 +55,7 @@ local_port={port}\n\
 remote_port="
         with open("./frp/frpc.ini", "w") as f:
             f.write(write)
-        os.system("cd frp || ./frpc -c frpc.ini")
+        sp.run("cd frp || ./frpc -c frpc.ini")
     
     def buy_vip(self):
         webbrowser.oepn("https://www.afdian.net/@makabaka123")
@@ -68,6 +70,6 @@ remote_port="
         if not get_time:
             get_time = date
         if get_time < date:
-            os.system("wget -o frp.zip https://github.com/fatedier/frp/archive/master.zip")
-        os.system("python update_frp.py")
+            sp.run("wget -o frp.zip https://github.com/fatedier/frp/archive/master.zip")
+        sp.run("python update_frp.py")
         exit()

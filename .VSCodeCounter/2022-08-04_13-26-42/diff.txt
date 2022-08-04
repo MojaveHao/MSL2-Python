@@ -1,0 +1,44 @@
+Date : 2022-08-04 13:26:42
+Directory : c:\Users\HTTco\Desktop\MSL2-Python
+Total : 14 files,  556 codes, 28 comments, 131 blanks, all 715 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| Python       |          7 |        529 |         28 |        132 |        689 |
+| XML          |          5 |         25 |          0 |          0 |         25 |
+| Shell Script |          1 |          1 |          0 |         -1 |          0 |
+| Batch        |          1 |          1 |          0 |          0 |          1 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                              | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                 |         14 |        556 |         28 |        131 |        715 |
+| .qt_for_python                                                    |          1 |        158 |         10 |         13 |        181 |
+| .qt_for_python\uic                                                |          1 |        158 |         10 |         13 |        181 |
+| SupportLib                                                        |          6 |       -579 |         -2 |          4 |       -577 |
++-------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                          | language     | code       | comment    | blank      | total      |
++-------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| c:\Users\HTTco\Desktop\MSL2-Python\.qt_for_python\uic\setting.py  | Python       |        158 |         10 |         13 |        181 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\kfq.ui              | XML          |       -612 |          0 |         -1 |       -613 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\output.ui           | XML          |        -43 |          0 |         -1 |        -44 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\setting.py          | Python       |          0 |        -12 |         -2 |        -14 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\setting.ui          | XML          |         25 |          0 |          0 |         25 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_setting.py       | Python       |          7 |          0 |          0 |          7 |
+| c:\Users\HTTco\Desktop\MSL2-Python\SupportLib\ui_start_options.py | Python       |         44 |         10 |          8 |         62 |
+| c:\Users\HTTco\Desktop\MSL2-Python\kfq.ui                         | XML          |        612 |          0 |          1 |        613 |
+| c:\Users\HTTco\Desktop\MSL2-Python\main.py                        | Python       |         -6 |          0 |         -1 |         -7 |
+| c:\Users\HTTco\Desktop\MSL2-Python\output.ui                      | XML          |         43 |          0 |          1 |         44 |
+| c:\Users\HTTco\Desktop\MSL2-Python\ui_kfq.py                      | Python       |        300 |         10 |        104 |        414 |
+| c:\Users\HTTco\Desktop\MSL2-Python\ui_output.py                   | Python       |         26 |         10 |         10 |         46 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_gui.cmd                 | Batch        |          1 |          0 |          0 |          1 |
+| c:\Users\HTTco\Desktop\MSL2-Python\update_gui.sh                  | Shell Script |          1 |          0 |         -1 |          0 |
+| Total                                                             |              |        556 |         28 |        131 |        715 |
++-------------------------------------------------------------------+--------------+------------+------------+------------+------------+

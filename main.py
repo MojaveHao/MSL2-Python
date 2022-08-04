@@ -1,6 +1,8 @@
 import os
 import sys
 import webbrowser as web
+import traceback as tb
+import subprocess as sp
 
 from PySide6.QtGui import *
 from PySide6.QtWidgets import *
@@ -23,8 +25,6 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.show()
         self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
         self.setWindowTitle("我的世界开服器")
-        # 说明（这回没QQ在这跟你说下）我改了UI，加了布局（自适应）不用固定大小了
-        #self.setFixedSize(811, 384)  # 设置窗体大小为811*384
         self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
         self.want_to_download = 0  # 同上
         self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64", "/usr/lib/jvm/java-16-openjdk-amd64",
@@ -42,6 +42,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.motd_message = "Welcome!"  # 服务器选择界面提示
         self.select_card = 0  # 打开的选项卡，0为无，1为日志，2为映射，3为关于
         self.server_status = False  # 服务器状态，False为关闭，True为开启
+        self.server_start_opitions = ""
         self.pbtn_output.setIcon(QIcon("Resource" + os.sep + "Book.gif"))  # 设置输出摁钮的图案为书
         self.pbtn_frp.setIcon(QIcon("Resource" + os.sep + "Furnace.png"))  # 设置内网穿透摁钮的图案为熔炉
         self.pbtn_about.setIcon(QIcon("Resource" + os.sep + "Quill.png"))  # 设置关于摁钮的图案为书和笔
@@ -106,22 +107,16 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.dis_log4j2 = not self.dis_log4j2  # 反相是否启用log4j2的设置
         if self.dis_log4j2:  # 设置反相之后摁钮显示的文字
             self.pbtn_dis_log4j2.setText("启用log4j2 (不推荐)")
+            self.server_start_opitions += "-Dlog4j2.formatMsgNoLookups=true -nogui"
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
-    
+            self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
+
     def start_server(self):  # 启动服务器
-        if self.dis_log4j2:
-            # 我建议你们呀 不用os.system，因为这玩意已经被弃用了。。用subprocess库吧
-            os.system(
-                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
-            print(
-                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -Dlog4j2.formatMsgNoLookups=true -nogui')
-        else:
-            os.system(
-                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
-            print(
-                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}" -nogui')
-    
+        sp.run(
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True,Shell=True)
+        print(
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True,Shell=True)
     def open_logs(self):  # 显示日志
         try:
             logs = Output(self.server_path, self.server_status)
