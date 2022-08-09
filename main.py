@@ -172,7 +172,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             print(err)
     
     def about(self):  # 显示软件信息
-        QMessageBox.information(self,"软件信息","MSL2-Python 22M7B3\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
+        QMessageBox.information(self,"软件信息","MSL2-Python 22M8B2\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
