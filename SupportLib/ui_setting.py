@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QLabel,
     QPushButton, QSizePolicy, QTabWidget, QTextBrowser,
     QWidget)
 
-class Ui_Setiing(object):
+class Ui_Setting(object):
     def setupUi(self, Setiing):
         if not Setiing.objectName():
             Setiing.setObjectName(u"Setiing")

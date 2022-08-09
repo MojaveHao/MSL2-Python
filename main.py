@@ -5,6 +5,7 @@ import traceback as tb
 import subprocess as sp
 
 from PySide6.QtGui import *
+from PySide6.QtCore import *
 from PySide6.QtWidgets import *
 
 import SupportLib.RAM as RAM
@@ -165,5 +166,6 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.show()
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    QtCore.QTextCodec.setCodecForTr(QtCore.QTextCodec.codecForName("UTF-8"))
     msl = MSL2()
     sys.exit(app.exec())
