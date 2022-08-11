@@ -1,8 +1,8 @@
 import os
-import requests
 import time
 import webbrowser as web
 
+import requests
 from PySide6.QtWidgets import *
 
 from .ui_setting import Ui_Setting
@@ -49,7 +49,7 @@ class Setting(QDialog, Ui_Setting):
             web.open(self.website_list[3])
         elif 'Fabric' in self.cbox_goto_website.text():
             web.open(self.website_list[4])
-            
+    
     def download_update(self):
         def dld(type):
             api_url = 'https://api.github.com/repos/NTFS2020/MSL2-Python'
@@ -72,13 +72,14 @@ class Setting(QDialog, Ui_Setting):
             dld('Monthly')
         if self.update_setting == 'Dev':
             dld('dev')
+    
     def print_how_to_choice(self):  # 显示如何选择Java的提示框
         QMessageBox.information(self, "如何选择Java版本", "\
         1.18+ --> Java17\n\
         1.14 - 1.17 --> Java8 - Java16\n\
         1.8 - 1.13 --> Java8\n\
         1.7- --> Java7")
-
+    
     def download_java(self):
         want_to = self.cbox_want_to_download.currentText()
         os.system("sudo apt update && sudo apt upgrade -y")  # 更新下载源
@@ -90,5 +91,3 @@ class Setting(QDialog, Ui_Setting):
             os.system("sudo apt install openjdk-16-jdk -y")  # 下载Java16
         if "17" in want_to:
             os.system("sudo apt install openjdk-17-jdk -y")  # 下载Java17
-    
-    

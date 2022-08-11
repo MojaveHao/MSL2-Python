@@ -1,36 +1,39 @@
-from PySide6.QtWidgets import *
 import base64
 import os
 import random
-import requests
-import time
-import webbrowser
-import traceback
 import subprocess as sp
+import time
+import traceback
+import webbrowser
+
+import requests
+from PySide6.QtWidgets import *
 
 from .ui_frp import Ui_FrpcConfig
 
 
 class FRP(QDialog, Ui_FrpcConfig):
     def __init__(self):
-
+        
         super().__init__()
         self.setupUi(self)
         self.exec()
-
+        
         if os.path.isdir("frp"):
             pass
         else:
             try:
-                sp.run("wget -o frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_amd64.tar.gz",check=True,Shell=True)
-                sp.run("mkdir frp",check=True,Shell=True)
-                sp.run("cd frp",check=True,Shell=True)
-                sp.run("tar -zxvf frp.tar.gz",check=True,Shell=True)
+                sp.run(
+                    "wget -o frp.tar.gz https://github.com/fatedier/frp/releases/download/v0.39.1/frp_0.39.1_linux_amd64.tar.gz",
+                    check=True, Shell=True)
+                sp.run("mkdir frp", check=True, Shell=True)
+                sp.run("cd frp", check=True, Shell=True)
+                sp.run("tar -zxvf frp.tar.gz", check=True, Shell=True)
             except:
                 QMessageBox.critical(traceback.format_exc())
         self.remote_port = random.randint(20000, 60000)
         self.pbtn_start.clicked.connect(self.start)
-        self.passwd.setEnabled(False) #当付费节点维护完成之后去掉此行
+        self.passwd.setEnabled(False)  # 当付费节点维护完成之后去掉此行
         self.url_list = ["gz1.qwq.one", "sh.qwq.one", "hk.qwq.one", "hz.qwq.one", "gz2.qwq.one"]
     
     def start(self):

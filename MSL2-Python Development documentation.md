@@ -45,6 +45,7 @@
 - self.want_to_download = 0 ->同上
 
 -
+
 self.java_path=["/usr/lib/jvm/java-17-openjdk-amd64","/usr/lib/jvm/java-16-openjdk-amd64","/usr/libjvm/java-8-openjdk-amd64"]
 -> 第一个为Java17路径，第二个为Java16路径，第三个为Java8路径，默认为Ubuntu系统
 
