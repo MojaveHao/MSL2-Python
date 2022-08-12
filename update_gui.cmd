@@ -9,6 +9,7 @@ pyside6-uic frp.ui -o ui_frp.py
 pyside6-uic help.ui -o ui_help.py
 pyside6-uic setting.ui -o ui_setting.py
 pyside6-uic license.ui -o ui_license.py
+pyside6-uic start_options.ui -o ui_start_options.py
 
 echo GUI Update Success!
 pause

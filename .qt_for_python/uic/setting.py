@@ -16,7 +16,7 @@ from PySide6.QtWidgets import (QComboBox, QLabel,
                                QWidget)
 
 
-class Ui_Setting(object):
+class Ui_Setiing(object):
     def setupUi(self, Setiing):
         if not Setiing.objectName():
             Setiing.setObjectName(u"Setiing")

@@ -1,0 +1,4 @@
+SOURCES = ui_kfq.py
+TRANSLATIONS = msl_en.ts
+CODECFORTR = UTF-8
+CODECFORSRC = UTF-8
