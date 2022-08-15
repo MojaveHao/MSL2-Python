@@ -8,16 +8,12 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QListView,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QWidget)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QRect,
+                            Qt)
+from PySide6.QtGui import (QCursor)
+from PySide6.QtWidgets import (QLabel, QLineEdit, QListView,
+                               QListWidget, QListWidgetItem, QPushButton)
+
 
 class Ui_FrpcConfig(object):
     def setupUi(self, FrpcConfig):
@@ -64,15 +60,16 @@ class Ui_FrpcConfig(object):
         self.pushButton = QPushButton(FrpcConfig)
         self.pushButton.setObjectName(u"pushButton")
         self.pushButton.setGeometry(QRect(290, 150, 101, 21))
-
+        
         self.retranslateUi(FrpcConfig)
-
+        
         QMetaObject.connectSlotsByName(FrpcConfig)
+    
     # setupUi
-
+    
     def retranslateUi(self, FrpcConfig):
         FrpcConfig.setWindowTitle(QCoreApplication.translate("FrpcConfig", u"Form", None))
-
+        
         __sortingEnabled = self.select_url.isSortingEnabled()
         self.select_url.setSortingEnabled(False)
         ___qlistwidgetitem = self.select_url.item(0)
@@ -82,17 +79,21 @@ class Ui_FrpcConfig(object):
         ___qlistwidgetitem2 = self.select_url.item(2)
         ___qlistwidgetitem2.setText(QCoreApplication.translate("FrpcConfig", u"[\u514d\u8d39]\u9999\u6e2f", None));
         ___qlistwidgetitem3 = self.select_url.item(3)
-        ___qlistwidgetitem3.setText(QCoreApplication.translate("FrpcConfig", u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u676d\u5dde \u4f18\u5148\u4f7f\u7528", None));
+        ___qlistwidgetitem3.setText(QCoreApplication.translate("FrpcConfig",
+                                                               u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u676d\u5dde \u4f18\u5148\u4f7f\u7528",
+                                                               None));
         ___qlistwidgetitem4 = self.select_url.item(4)
-        ___qlistwidgetitem4.setText(QCoreApplication.translate("FrpcConfig", u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u5e7f\u5dde \u676d\u5dde\u4e0d\u884c\u518d\u7528", None));
+        ___qlistwidgetitem4.setText(QCoreApplication.translate("FrpcConfig",
+                                                               u"[\u6b63\u5728\u7ef4\u62a4][\u4ed8\u8d39]\u5e7f\u5dde \u676d\u5dde\u4e0d\u884c\u518d\u7528",
+                                                               None));
         self.select_url.setSortingEnabled(__sortingEnabled)
-
+        
         self.n1.setText(QCoreApplication.translate("FrpcConfig", u"QQ\u53f7\u7801", None))
         self.n2.setText(QCoreApplication.translate("FrpcConfig", u"\u5bc6\u7801", None))
         self.pbtn_start.setText(QCoreApplication.translate("FrpcConfig", u"\u542f\u52a8", None))
         self.n3.setText(QCoreApplication.translate("FrpcConfig", u"\u7aef\u53e3", None))
         self.pbtn_look_gwip.setText(QCoreApplication.translate("FrpcConfig", u"\u67e5\u770b\u516c\u7f51IP", None))
-        self.pbtn_try_update.setText(QCoreApplication.translate("FrpcConfig", u"\u5c1d\u8bd5\u66f4\u65b0\u5ba2\u6237\u7aef", None))
+        self.pbtn_try_update.setText(
+            QCoreApplication.translate("FrpcConfig", u"\u5c1d\u8bd5\u66f4\u65b0\u5ba2\u6237\u7aef", None))
         self.pushButton.setText(QCoreApplication.translate("FrpcConfig", u"\u524d\u5f80\u8d5e\u52a9", None))
     # retranslateUi
-

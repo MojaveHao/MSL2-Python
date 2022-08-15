@@ -142,7 +142,8 @@ while True:
         if temp == 2:
             print("请前往您的服务端文件夹，找到server.properites文件，修改内容即可。看不懂的选项请查询Minecraft Wiki.")
         if temp == 3:
-            print("这是MSL2-Python的命令行版本.如果您更习惯GUI或者您有4G以上的内存，我们推荐您运行主程序(而不是此程序)来启动GUI.")
+            print(
+                "这是MSL2-Python的命令行版本.如果您更习惯GUI或者您有4G以上的内存，我们推荐您运行主程序(而不是此程序)来启动GUI.")
             print("软件版本:CLI_22M7B3(2.3.1)")
     if choice == 7:
         os.system("sudo apt update && sudo apt upgrade -y")

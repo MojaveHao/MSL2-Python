@@ -1,24 +1,23 @@
 import os
+import subprocess as sp
 import sys
 import webbrowser as web
-import traceback as tb
-import subprocess as sp
-from tqdm import tqdm
 
 from PySide6.QtGui import *
-from PySide6.QtCore import *
 from PySide6.QtWidgets import *
+from tqdm import tqdm
 
 import SupportLib.RAM as RAM
 from SupportLib.Output import Output
-from SupportLib.frp import FRP
-from SupportLib.setting import Setting
-
 from SupportLib.create_config import *
 from SupportLib.download_server_support import Download_Manager as DManager
+from SupportLib.frp import FRP
+from SupportLib.setting import Setting
 from SupportLib.ui_kfq import Ui_MainWindow as MSL2Py
-#from SupportLib.mslhelp import Help
-#from SupportLib.license import License
+
+
+# from SupportLib.mslhelp import Help
+# from SupportLib.license import License
 
 class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     def __init__(self):
@@ -36,7 +35,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.want_to_download = 0  # 同上
             pbar.update(1)
             self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64", "/usr/lib/jvm/java-16-openjdk-amd64",
-                            "/usr/lib/jvm/java-8-openjdk-amd64", '']
+                              "/usr/lib/jvm/java-8-openjdk-amd64", '']
             pbar.update(1)
             self.server_path = ""  # 服务端的路径
             pbar.update(1)
@@ -133,7 +132,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 pbar.update(1)
             if os.path.isdir(self.server_path):  # 如果服务端路径存在就执行
                 try:
-                    with open(f"{self.server_path}" + os.sep + "server.properties",encoding='utf-8') as f:  # 读取server.properties
+                    with open(f"{self.server_path}" + os.sep + "server.properties",
+                              encoding='utf-8') as f:  # 读取server.properties
                         server_lines = f.readlines()
                 except:
                     QMessageBox.warning(self, "警告", "您必须确保已经在服务端路径下生成了server.properties文件")
@@ -146,7 +146,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                         server_lines[i] = "pvp={}".format(self.pvp)
                     if "enable-command-block=" in server_lines[i]:
                         server_lines[i] = "enable-command-block={}".format(self.command_block)
-                with open(f"{self.server_path}" + os.sep + "server.properties", "w",encoding='utf-8'):  # 将修改后的内容重新写回server.properties
+                with open(f"{self.server_path}" + os.sep + "server.properties", "w",
+                          encoding='utf-8'):  # 将修改后的内容重新写回server.properties
                     f.write(''.join(server_lines))
             else:
                 QMessageBox.warning(self, "警告", "请您选择正确的服务端路径")
@@ -165,10 +166,11 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
-
+    
     def start_server(self):  # 启动服务器
         sp.run(
-                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True,Shell=True)
+            f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',
+            check=True)
         print(
                 f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
     def open_logs(self):  # 显示日志
@@ -179,7 +181,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             print(err)
     
     def about(self):  # 显示软件信息
-        QMessageBox.information(self,"软件信息","MSL2-Python 22M8B2\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
+        QMessageBox.information(self, "软件信息",
+                                "MSL2-Python 22M8B2\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
@@ -216,16 +219,19 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         pbar.update(1)
         self.lb_path.setText(self.server_path)
         pbar.update(1)
+    
     def download_server(self):  # 创建下载窗口
         download = DManager(self.download_path)
     
     def visit_help(self):  # 查看帮助
         web.open("https://ntfs2020.github.io/MSL2-Python/#/")
-
+    
     def open_set(self):
         '''显示设置页面'''
         mslsetting = Setting()
         self.show()
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()
