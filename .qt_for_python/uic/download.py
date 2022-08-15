@@ -8,12 +8,16 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject, QSize, Qt)
-from PySide6.QtGui import (QCursor)
-from PySide6.QtWidgets import (QComboBox, QGridLayout,
-                               QHBoxLayout, QLabel, QPushButton, QSizePolicy,
-                               QVBoxLayout, QWidget)
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QGridLayout,
+    QHBoxLayout, QLabel, QPushButton, QSizePolicy,
+    QVBoxLayout, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -38,25 +42,26 @@ class Ui_Dialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
         self.label.setSizePolicy(sizePolicy)
-        
+
         self.verticalLayout_2.addWidget(self.label)
-        
+
         self.cbox_source = QComboBox(self.widget)
         self.cbox_source.addItem("")
         self.cbox_source.addItem("")
         self.cbox_source.addItem("")
         self.cbox_source.setObjectName(u"cbox_source")
-        
+
         self.verticalLayout_2.addWidget(self.cbox_source)
-        
+
         self.pbtn_ok1 = QPushButton(self.widget)
         self.pbtn_ok1.setObjectName(u"pbtn_ok1")
         self.pbtn_ok1.setCursor(QCursor(Qt.PointingHandCursor))
-        
+
         self.verticalLayout_2.addWidget(self.pbtn_ok1)
-        
+
+
         self.horizontalLayout.addWidget(self.widget)
-        
+
         self.widget_2 = QWidget(Dialog)
         self.widget_2.setObjectName(u"widget_2")
         self.widget_2.setMinimumSize(QSize(230, 145))
@@ -67,9 +72,9 @@ class Ui_Dialog(object):
         self.label_2.setObjectName(u"label_2")
         sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
         self.label_2.setSizePolicy(sizePolicy)
-        
+
         self.gridLayout.addWidget(self.label_2, 0, 0, 1, 1)
-        
+
         self.cbox_type = QComboBox(self.widget_2)
         self.cbox_type.addItem("")
         self.cbox_type.addItem("")
@@ -89,18 +94,19 @@ class Ui_Dialog(object):
         self.cbox_type.addItem("")
         self.cbox_type.setObjectName(u"cbox_type")
         self.cbox_type.setCursor(QCursor(Qt.PointingHandCursor))
-        
+
         self.gridLayout.addWidget(self.cbox_type, 1, 0, 1, 1)
-        
+
         self.pbtn_ok2 = QPushButton(self.widget_2)
         self.pbtn_ok2.setObjectName(u"pbtn_ok2")
         self.pbtn_ok2.setEnabled(True)
         self.pbtn_ok2.setCursor(QCursor(Qt.PointingHandCursor))
-        
+
         self.gridLayout.addWidget(self.pbtn_ok2, 2, 0, 1, 1)
-        
+
+
         self.horizontalLayout.addWidget(self.widget_2)
-        
+
         self.widget_3 = QWidget(Dialog)
         self.widget_3.setObjectName(u"widget_3")
         self.widget_3.setMinimumSize(QSize(230, 145))
@@ -111,9 +117,9 @@ class Ui_Dialog(object):
         self.label_3.setObjectName(u"label_3")
         sizePolicy.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
         self.label_3.setSizePolicy(sizePolicy)
-        
+
         self.verticalLayout.addWidget(self.label_3)
-        
+
         self.cbox_ver = QComboBox(self.widget_3)
         self.cbox_ver.addItem("")
         self.cbox_ver.addItem("")
@@ -172,32 +178,31 @@ class Ui_Dialog(object):
         self.cbox_ver.addItem("")
         self.cbox_ver.setObjectName(u"cbox_ver")
         self.cbox_ver.setCursor(QCursor(Qt.PointingHandCursor))
-        
+
         self.verticalLayout.addWidget(self.cbox_ver)
-        
+
         self.pbtn_start_download = QPushButton(self.widget_3)
         self.pbtn_start_download.setObjectName(u"pbtn_start_download")
         self.pbtn_start_download.setCursor(QCursor(Qt.PointingHandCursor))
-        
+
         self.verticalLayout.addWidget(self.pbtn_start_download)
-        
+
+
         self.horizontalLayout.addWidget(self.widget_3)
-        
+
+
         self.retranslateUi(Dialog)
-        
+
         QMetaObject.connectSlotsByName(Dialog)
-    
     # setupUi
-    
+
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"\u4e0b\u8f7d\u6e90\uff1a", None))
         self.cbox_source.setItemText(0, QCoreApplication.translate("Dialog", u"Xiaoyu\u6e90(MSL2)", None))
-        self.cbox_source.setItemText(1, QCoreApplication.translate("Dialog",
-                                                                   u"\u5b98\u65b9\u6e90(\u4e0b\u8f7d\u6162 \u4f46\u662f\u6700\u65b0\u7684)",
-                                                                   None))
+        self.cbox_source.setItemText(1, QCoreApplication.translate("Dialog", u"\u5b98\u65b9\u6e90(\u4e0b\u8f7d\u6162 \u4f46\u662f\u6700\u65b0\u7684)", None))
         self.cbox_source.setItemText(2, QCoreApplication.translate("Dialog", u"SakuraMirror(\u65e7\u7248\u672c)", None))
-        
+
         self.pbtn_ok1.setText(QCoreApplication.translate("Dialog", u"\u786e\u8ba4", None))
         self.label_2.setText(QCoreApplication.translate("Dialog", u"\u8981\u4e0b\u8f7d\u7684\u7aef\uff1a", None))
         self.cbox_type.setItemText(0, QCoreApplication.translate("Dialog", u"Paper", None))
@@ -216,7 +221,7 @@ class Ui_Dialog(object):
         self.cbox_type.setItemText(13, QCoreApplication.translate("Dialog", u"Cauldron", None))
         self.cbox_type.setItemText(14, QCoreApplication.translate("Dialog", u"Thermos", None))
         self.cbox_type.setItemText(15, QCoreApplication.translate("Dialog", u"WaterFall", None))
-        
+
         self.pbtn_ok2.setText(QCoreApplication.translate("Dialog", u"\u786e\u8ba4", None))
         self.label_3.setText(QCoreApplication.translate("Dialog", u"\u8981\u4e0b\u8f7d\u7aef\u7248\u672c\uff1a", None))
         self.cbox_ver.setItemText(0, QCoreApplication.translate("Dialog", u"1.18.1", None))
@@ -274,6 +279,7 @@ class Ui_Dialog(object):
         self.cbox_ver.setItemText(52, QCoreApplication.translate("Dialog", u"1.7.2", None))
         self.cbox_ver.setItemText(53, QCoreApplication.translate("Dialog", u"1.7.1", None))
         self.cbox_ver.setItemText(54, QCoreApplication.translate("Dialog", u"1.7", None))
-        
+
         self.pbtn_start_download.setText(QCoreApplication.translate("Dialog", u"\u5f00\u59cb\u4e0b\u8f7d", None))
     # retranslateUi
+
