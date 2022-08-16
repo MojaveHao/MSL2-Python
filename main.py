@@ -24,7 +24,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         super().__init__()
         self.setupUi(self)
         self.show()
-        with tqdm(total=33) as pbar:
+        with tqdm(total=35) as pbar:
             pbar.set_description('pyMSL:SettingUp')
             self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
             pbar.update(1)
@@ -94,18 +94,24 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.pbtn_upd_set.clicked.connect(self.open_set)
             pbar.update(1)
         
-        '''if not os.path.isdir("MSLDownload"):  # 判断是否有下载目录，没有就创建
-            os.mkdir("MSLDownload")
-        else:
-            self.download_path = "../MSLDownload"
-        if os.path.isfile("msl_config.text"):  # 如果存在配置就从配置读取
-            temp = read_config()
-            self.using_java = temp[0]
-            self.java_path = temp[1]
-            self.server_path = temp[2]
-            self.download_path = temp[3]
-    '''
-    
+            if not os.path.isdir("MSLDownload"):  # 判断是否有下载目录，没有就创建
+                os.mkdir("MSLDownload")
+            else:
+                self.download_path = "../MSLDownload"
+            pbar.update(1)
+            
+            if os.path.isfile("msl_config.txt"):  # 如果存在配置就从配置读取
+                temp_config = read_config()
+                config = list(temp_config.value())
+                self.server_name = config[0]
+                self.server_path = config[1]
+                self.java_path = config[2]
+                self.using_java = 'Config Customed'
+                pbar.update(1)
+            else: # 不存在配置就写入
+                print(f'{"server_name":{self.server_name},"server_path":{self.server_path},"java_path":{self.java_path}}')
+                #write_config()
+                
     def set_adv(self):  # 读写server.properties文件修改设置
         if not self.server_status:
             with tqdm(total=7) as pbar:
@@ -166,8 +172,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',
             check=True)
         print(
-            f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
-    
+                f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
     def open_logs(self):  # 显示日志
         try:
             logs = Output(self.server_path, self.server_status)
@@ -188,7 +193,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             QMessageBox.information(self, "Java8路径", str(self.java_path[2]))
         if self.cbox_using_java.currentText() == "":
             QMessageBox(self, "提示", "您选择了系统环境变量")
-    
+        if self.cbox_using_java.currentText() == 'Config Customed':
+            QMessageBox(self,"提示","您的Java由配置文件决定,但您仍可手动调整")
     def frp_guide(self, now):  # 调用FRP配置指南
         frpconfig = FRP()
         self.show()
