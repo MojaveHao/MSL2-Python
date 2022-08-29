@@ -170,11 +170,21 @@
 
             - use-native-transport 是否使用针对Linux平台的数据包收发优化 [ 仅Linux ][True/False]
 
-                - motd 服务器信息展示 （MOTD）[str]
+            - motd 服务器信息展示 （MOTD）[str]
 
             - 更多详见[Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Server.properties?variant=zh)
 
+      ### 关于
+      MSL2-Python(pyMSL)
+      Code by MojaveHao/Mojavium
+      Thanks:
+		
+      - David2022/Xian66 --- Fixed bugs and supplied MOS II(Download Source) 
+
+      Open Source License:GNU Affero Genral Public License v3([View at there](https://www.gnu.org/licenses/agpl-3.0.en.html))
+      
       ### 快捷工具
+      
         - 快速更新GUI
           使用update_gui.cmd(Windows)或.\update_gui(Linux)来快速更新已有的.ui文件，请自行添加您添加的其他的.ui文件 
         - 快速更新需求库
