@@ -2,7 +2,7 @@
 
 # MSL2-Python
 
-# <small>22M7Beta3(2.3.1)[Develop Update]</small>
+# <small>22M8 Beta2</small>
 
 > MSL2的Python版本，可以在Linux上使用
 
