@@ -34,8 +34,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             pbar.update(1)
             self.want_to_download = 0  # 同上
             pbar.update(1)
-            self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64", "/usr/lib/jvm/java-16-openjdk-amd64",
-                              "/usr/lib/jvm/java-8-openjdk-amd64", '']
+            self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64/", "/usr/lib/jvm/java-16-openjdk-amd64/",
+                              "/usr/lib/jvm/java-8-openjdk-amd64/", '']
             pbar.update(1)
             self.server_path = ""  # 服务端的路径
             pbar.update(1)
@@ -43,7 +43,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             pbar.update(1)
             self.min_mem_G = 1  # 最小内存(G)
             pbar.update(1)
-            self.max_mem_G = RAM.mem()[1]  # 最大内存(G)
+            self.max_mem_G = int(RAM.mem()[1] / 100000000)  # 最大内存(G)
             pbar.update(1)
             self.dis_log4j2 = True  # 是否禁用log4j2
             pbar.update(1)
@@ -107,12 +107,12 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 self.server_path = config[1]
                 self.java_path = config[2]
                 self.using_java = 'Config Customed'
-                pbar.update(1)
+                
             else: # 不存在配置就写入
                 #print(f'{"server_name":{self.server_name},"server_path":{self.server_path},"java_path":{self.java_path}}')
                 #write_config()
                 pass
-            
+            pbar.update(1)
     def set_adv(self):  # 读写server.properties文件修改设置
         if not self.server_status:
             with tqdm(total=7) as pbar:
@@ -153,7 +153,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             else:
                 QMessageBox.warning(self, "警告", "请您选择正确的服务端路径")
             self.min_ram.setMinimum(1)  # 定义最小内存为1G
-            self.min_ram.setMaximum(self.max_mem_G)  # 设置最大内存为当前可用内存
+            self.min_ram.setMaximum(self.max_mem_G)  # 设置最大内存
             self.max_ram.setMinimum(self.min_mem_G)  # 设置最小内存
             write_config(self.using_java, self.java_path, self.server_path, self.download_path)
         else:
@@ -169,8 +169,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
     
     def start_server(self):  # 启动服务器
-        sp.run(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True)
         print(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
+        sp.run(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True)
     def open_logs(self):  # 显示日志
         try:
             logs = Output(self.server_path, self.server_status)
