@@ -35,7 +35,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.want_to_download = 0  # 同上
             pbar.update(1)
             self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64/", "/usr/lib/jvm/java-16-openjdk-amd64/",
-                              "/usr/lib/jvm/java-8-openjdk-amd64/", '']
+                              "/usr/lib/jvm/java-8-openjdk-amd64/", ' ']
             pbar.update(1)
             self.server_path = ""  # 服务端的路径
             pbar.update(1)

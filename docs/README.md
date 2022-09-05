@@ -187,11 +187,24 @@
 
 MSL2-Python(pyMSL)
 Code by MojaveHao/Mojavium
+
+Copyright MojaveHao and David2022 and contributors 2022.
+
 Thanks:
+
 - David2022/Xian66 --- Fixed bugs and supplied MOS II(Download Source) 
   
 
 Open Source License:GNU Affero Genral Public License v3([View at there](https://www.gnu.org/licenses/agpl-3.0.en.html))
+
+## More
+
+Discourages and does not support all commercial use
+Without permission, no one may use images and icons, or the original text of the introduction about the origin of the name MSL2-Python at the beginning of this article, for commercial purposes or on the homepage of the project, or other unauthorized acts.
+
+Derivative software needs to declare reference
+If the MSL2-Python distribution package is referenced without modifying it, the derived project should mention the use of MSL2-Python anywhere in the description.
+If the MSL2-Python source code is modified and republished, or another project is published with reference to the internal implementation of MSL2-Python, the derivative project must be clearly declared from this repository at the beginning of the article or where the 'MSL2-Python' related content first appears (https: //github.com/NTFS2020/MSL2-Python). The fact that it is free and open source must not be distorted or hidden.
 
 # 快捷工具
 
