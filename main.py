@@ -170,8 +170,9 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     
     def start_server(self):  # 启动服务器
         self.using_java = self.cbox_using_java.currentIndex()
-        print(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
-        sp.run(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True)
+        startup_cmd = [f'cd {self.server_path} || {self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar {self.server_name} {self.server_start_opitions}']
+        print(startup_cmd)
+        sp.run(startup_cmd,shell=True)
     def open_logs(self):  # 显示日志
         try:
             logs = Output(self.server_path, self.server_status)
