@@ -1,0 +1,1 @@
+nuitka main.py --standalone --onefile --enable-plugin=pyside6 --enable-plugin=numpy

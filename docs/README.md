@@ -21,7 +21,7 @@
             - macOS用户下载macOS 64-bit universal2 installer
     - 下载PySide6和其他运行环境
 
-        - 如果您已经配置好了Python3.7(或更高)环境，请在终端执行pip install -r requirements.txt以安装依赖
+        - 如果您已经配置好了Python3.7(或更高)环境，请在终端执行.\update_requirements以安装依赖
         - 注：此处请保证终端的路径处于我们的项目文件根目录
         - 注2：如果您正在使用Linux请将pip替换为sudo pip3
     - Java

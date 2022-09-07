@@ -35,7 +35,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.want_to_download = 0  # 同上
             pbar.update(1)
             self.java_path = ["/usr/lib/jvm/java-17-openjdk-amd64/", "/usr/lib/jvm/java-16-openjdk-amd64/",
-                              "/usr/lib/jvm/java-8-openjdk-amd64/", ' ']
+                              "/usr/lib/jvm/java-8-openjdk-amd64/", '']
             pbar.update(1)
             self.server_path = ""  # 服务端的路径
             pbar.update(1)
@@ -43,7 +43,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             pbar.update(1)
             self.min_mem_G = 1  # 最小内存(G)
             pbar.update(1)
-            self.max_mem_G = int(RAM.mem()[1] / 100000000)  # 最大内存(G)
+            self.max_mem_G = int(RAM.mem()[1] / 1000000000)  # 最大内存(G)
             pbar.update(1)
             self.dis_log4j2 = True  # 是否禁用log4j2
             pbar.update(1)
@@ -169,6 +169,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
     
     def start_server(self):  # 启动服务器
+        self.using_java = self.cbox_using_java.currentIndex()
         print(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ')
         sp.run(f'{self.java_path[self.using_java]}java -Xms {self.min_mem_G}G -Xmx {self.max_mem_G}G -jar "{self.server_path + self.server_name}"{self.server_start_opitions} ',check=True)
     def open_logs(self):  # 显示日志
@@ -180,7 +181,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     
     def about(self):  # 显示软件信息
         QMessageBox.information(self, "软件信息",
-                                "MSL2-Python 22M8B2\nCode by MojaveHao and 2z0h0m9\nOpenSourced by GNU Affero General Public License v3")
+                                "MSL2-Python 22M9B2 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
