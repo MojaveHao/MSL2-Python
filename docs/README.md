@@ -81,20 +81,21 @@
 
             - [CloudFlare](https://doc.natfrp.com/#/app/mc?id=srv-cloudflare)
 
-      ### 常用指令
+### 常用指令
 
-        - /ban <玩家名/玩家IP地址>  封禁玩家名/玩家IP地址
+- /ban <玩家名/玩家IP地址>  封禁玩家名/玩家IP地址
+	
+- /tick <玩家名/玩家IP地址>  临时踢出玩家名/玩家IP地址
 
-        - /tick <玩家名/玩家IP地址>  临时踢出玩家名/玩家IP地址
-      ### 部分常用配置翻译
-####             server.properties
-- [int]代表一个整数
+### server.properties中部分常用配置翻译
 
-- [str]代表一串字符
-
-- [True/False]代表您只能选择True(是)或者Flase(否)作为值
-
-    
+    	```
+    	 [int]代表一个整数
+    	
+    	 [str]代表一串字符
+    	
+    	 [True/False]代表您只能选择True(是)或者Flase(否)作为值
+    	```
 
 - spawn-protection 通过将该值进行 2x+1
 的运算来决定出生点的保护半径，设置为0将只保护出生点下方那一个方块。[int]
