@@ -1,3 +1,3 @@
 @echo off
-pip install pipreqs
+pip install -r pipreqs
 pipreqs .
