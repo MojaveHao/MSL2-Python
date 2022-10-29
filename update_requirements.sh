@@ -1,1 +1,1 @@
-sudo pip3 install -r pipreqs
+sudo pip3 install -r pipreqs --upgrade

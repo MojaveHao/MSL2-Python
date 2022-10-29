@@ -1,3 +1,2 @@
 @echo off
-pip install -r pipreqs
-pipreqs .
+pip install -r pipreqs --upgrade
