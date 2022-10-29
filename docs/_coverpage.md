@@ -1,6 +1,6 @@
 ![logo](logo.png)
 
-# MSL2-Python <small>22M8 Beta2</small>
+# MSL2-Python <small>22M10 Beta1</small>
 
 > MSL2的Python版本，可以在Linux上使用
 
