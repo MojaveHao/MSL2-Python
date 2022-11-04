@@ -121,6 +121,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 pbar.update(1)
                 self.max_mem_G = self.max_ram.value()  # 获取最大内存(G)
                 pbar.update(1)
+                if self.min_mem_G > self.max_mem_G:
+                    QMessageBox.warning(self,"警告","最小内存大于最大内存，请修改")
                 self.max_players = int(self.max_player.text())  # 获取最大玩家数量
                 pbar.update(1)
                 self.serv_port = int(self.server_port.text())  # 获取服务器端口
@@ -169,20 +171,14 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
     
     def start_server(self):  # 启动服务器
+        f.open('last_log.txt','w',encoding='utf-8')
+        f.open('last_err.txt','w',encoding='utf-8')
         self.using_java = self.cbox_using_java.currentIndex()
-        startup_cmd = f'cd {self.server_path} | {self.java_path[self.using_java]}java -Xms{self.min_mem_G}G -Xmx{self.max_mem_G}G -jar {self.server_name} {self.server_start_opitions}'
-        print(startup_cmd)
-        sp.run(startup_cmd,shell=True)
-    def open_logs(self):  # 显示日志
-        try:
-            logs = Output(self.server_path, self.server_status)
-            logs.show()
-        except TypeError as err:
-            print(err)
-    
+        sp.run(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],cwd=self.server_path,check=True,stdout=f.write(),stderr=e.write())
+
     def about(self):  # 显示软件信息
         QMessageBox.information(self, "软件信息",
-                                "MSL2-Python 22M9B2 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
+                                "MSL2-Python 22M10B1 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
@@ -236,3 +232,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()
     sys.exit(app.exec())
+
