@@ -1,2 +1,0 @@
-- name: Build EXE from Python Script
-  uses: Nuitka/Nuitka-Action@v0.4
