@@ -165,10 +165,10 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         self.dis_log4j2 = not self.dis_log4j2  # 反相是否启用log4j2的设置
         if self.dis_log4j2:  # 设置反相之后摁钮显示的文字
             self.pbtn_dis_log4j2.setText("启用log4j2 (不推荐)")
-            self.server_start_opitions += "-Dlog4j2.formatMsgNoLookups=true -nogui"
+            self.server_start_opitions += "-Dlog4j2.formatMsgNoLookups=true"
         else:
             self.pbtn_dis_log4j2.setText("通过启动参数禁用Log4j2")
-            self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true -nogui", '')
+            self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true", '')
     
     def start_server(self):  # 启动服务器
         f.open('last_log.txt','w',encoding='utf-8')
