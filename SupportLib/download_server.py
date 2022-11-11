@@ -131,30 +131,30 @@ class Download_Manager(QDialog, Ui_Dialog):
             self.ver = self.cbox_ver.currentText()
             if self.type == 'Bugjump(Mojang)':
                 temp = self.cbox_ver.currentIndex()
-                download(self.temp2[temp], 'server.jar', save_path='../MSLDownload/')
+                download(down_url=self.temp2[temp], down_name='server.jar', down_path='../MSLDownload/')
             if self.type == 'Loliserver':
-                download(self.temp2[0], 'LoliServer-1.16.5-185-server.jar', save_path='../MSLDownload/')
+                download(down_url=self.temp2[0], down_name='LoliServer-1.16.5-185-server.jar', down_path='../MSLDownload/')
             if self.type == 'Arclight':
                 if self.ver == '1.16.5':
-                    download(self.temp2[1], 'arclight-forge-1.16-1.0.18.jar', save_path='../MSLDownload/')
+                    download(down_url=self.temp2[1], down_name='arclight-forge-1.16-1.0.18.jar', down_path='../MSLDownload/')
                 if self.ver == '1.15.2':
-                    download(self.temp2[2], 'arclight-forge-1.15-1.0.18.jar', save_path='../MSLDownload/')
+                    download(down_url=self.temp2[2], down_name='arclight-forge-1.15-1.0.18.jar', down_path='../MSLDownload/')
             if self.type == 'Catserver':
-                download(self.temp2[3], 'arclight-forge-1.16-1.0.18.jar', save_path='../MSLDownload/')
+                download(self.temp2[3], down_name='arclight-forge-1.16-1.0.18.jar', down_path='../MSLDownload/')
             if self.type == 'Spigot':
-                download(f'https://download.getbukkit.org/spigot/spigot-{self.ver}.jar', f'Spigot-{self.ver}.jar',
-                         save_path='../MSLDownload/')
+                download(down_url=f'https://download.getbukkit.org/spigot/spigot-{self.ver}.jar', down_name=f'Spigot-{self.ver}.jar',
+                         down_path='../MSLDownload/')
             if self.type == 'Vanilla':
-                download(f'https://download.getbukkit.org/vanilla/vanilla-{self.ver}.jar', f'Vanilla-{self.ver}.jar',
-                         save_path='../MSLDownload/')
+                download(down_url=f'https://download.getbukkit.org/vanilla/vanilla-{self.ver}.jar', down_name=f'Vanilla-{self.ver}.jar',
+                         down_path='../MSLDownload/')
             if self.type == 'Bukkit':
-                download(f'https://download.getbukkit.org/spigot/craftbukkit-{self.ver}.jar',
-                         f'CraftBukkit-{self.ver}.jar', save_path='../MSLDownload/')
+                download(down_url=f'https://download.getbukkit.org/spigot/craftbukkit-{self.ver}.jar',down_name=
+                         f'CraftBukkit-{self.ver}.jar', down_path='../MSLDownload/')
             if self.type == 'Purpur':
-                download(f'https://https://dwmcs.nstarmc.cn/Purpur/purpur-{self.ver}', f'Purpur-{self.ver}.jar',
-                         save_path='../MSLDownload/')
+                download(down_url=f'https://https://dwmcs.nstarmc.cn/Purpur/purpur-{self.ver}', down_name= f'Purpur-{self.ver}.jar',
+                         down_path='../MSLDownload/')
             if self.type == 'Paper':
-                download(f'https://https://dwmcs.nstarmc.cn/Paper/paper-{self.ver}', f'Paper-{self.ver}.jar',
-                         save_path='../MSLDownload/')
+                download(down_url=f'https://https://dwmcs.nstarmc.cn/Paper/paper-{self.ver}',down_name= f'Paper-{self.ver}.jar',
+                         down_path='../MSLDownload/')
         else:
             QMessageBox.warning(self, "警告", "您必须先选择服务端")
