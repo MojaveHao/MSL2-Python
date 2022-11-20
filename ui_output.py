@@ -8,9 +8,15 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QMetaObject)
-from PySide6.QtWidgets import (QGridLayout, QTextBrowser)
-
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QApplication, QDialog, QGridLayout, QSizePolicy,
+    QTextBrowser, QWidget)
 
 class Ui_Output(object):
     def setupUi(self, Output):
@@ -24,15 +30,16 @@ class Ui_Output(object):
         self.show_logs = QTextBrowser(Output)
         self.show_logs.setObjectName(u"show_logs")
         self.show_logs.setStyleSheet(u"border:none;")
-        
+
         self.gridLayout.addWidget(self.show_logs, 0, 0, 1, 1)
-        
+
+
         self.retranslateUi(Output)
-        
+
         QMetaObject.connectSlotsByName(Output)
-    
     # setupUi
-    
+
     def retranslateUi(self, Output):
         Output.setWindowTitle(QCoreApplication.translate("Output", u"Dialog", None))
     # retranslateUi
+
