@@ -1,20 +1,13 @@
+import json
+
 def read_config():
-    with open("msl_config.txt") as f:
-        config = eval(f.read())
-        return config
-'''
-{
-    'server_name':'',
-    'server_path':''
-    'java_path':'',
-}
-'''
+    with open("config.json","r") as f:
+        conf = json.load(f)
+        return conf
+    
 def write_config(config):
-    with open("msl_config.txt", "w") as f:
-        old_config = read_config()
-        for con in old_config:
-            if config == con:
-                print("Config Already Saved.")
-                exit()
-        new_config = old_config.append(config)
-        f.write(new_config)
+    with open("msl_config.json", "w") as f:
+        old_config = json.load(f)
+        if config == old_config:
+            return("Already Saved")
+        json.dump(config)
