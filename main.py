@@ -161,6 +161,10 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.min_ram.setMinimum(1)  # 定义最小内存为1G
             self.min_ram.setMaximum(self.max_mem_G)  # 设置最大内存
             self.max_ram.setMinimum(self.min_mem_G)  # 设置最小内存
+            print(self.using_java)
+            print(self.java_path)
+            print(self.server_path)
+            print(self.download_path)
             write_config(self.using_java, self.java_path, self.server_path, self.download_path)
         else:
             QMessageBox.warning(self, "警告", "请您在关闭服务器后再更改此部分设置!")
@@ -224,7 +228,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         pbar.update(1)
     
     def download_server(self):  # 创建下载窗口
-        download = DManager(self.download_path)
+        # download = DManager(self.download_path)
+        pass
     
     def visit_help(self):  # 查看帮助
         web.open("https://ntfs2020.github.io/MSL2-Python/#/")
