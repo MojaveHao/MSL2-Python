@@ -23,11 +23,11 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         super().__init__()
         self.setupUi(self)
         self.show()
-        with tqdm(total=35) as pbar:
+        with tqdm(total=36) as pbar:
             pbar.set_description('pyMSL:SettingUp')
             self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
             pbar.update(1)
-            self.setWindowTitle("我的世界开服器")
+            self.setWindowTitle("pyMSL 22M11Beta1")
             pbar.update(1)
             self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
             pbar.update(1)
@@ -99,18 +99,23 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 self.download_path = "../MSLDownload"
             pbar.update(1)
             
+            self.glob_conf = {'Server_Name':f'{self.server_name}','Server_Path':f'{self.server_path}','Java_Path':f'{self.java_path}','Min_Mem':f'{self.min_mem_G}','Max_Mem':f'{self.max_mem_G}','Port':f'{self.serv_port}',}
+            pbar.update(1)
+            
             if os.path.isfile("msl_config.txt"):  # 如果存在配置就从配置读取
-                temp_config = read_config()
-                config = list(temp_config.value())
-                self.server_name = config[0]
-                self.server_path = config[1]
-                self.java_path = config[2]
+                config = read_config()
+                self.server_name = config['Server_Name']
+                self.server_path = config['Server_Path']
+                self.java_path = config['Java_Path']
+                self.min_mem_G = config['Min_Mem']
+                self.max_mem_G = config['Max_Mem']
+                self.serv_port = config['Port']
                 self.using_java = 'Config Customed'
                 
             else: # 不存在配置就写入
-                #print(f'{"server_name":{self.server_name},"server_path":{self.server_path},"java_path":{self.java_path}}')
-                #write_config()
-                pass
+                
+                write_config(self.glob_conf)
+
             pbar.update(1)
     def set_adv(self):  # 读写server.properties文件修改设置
         if not self.server_status:
@@ -170,14 +175,17 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true", '')
     
     def start_server(self):  # 启动服务器
-        f.open('last_log.txt','w',encoding='utf-8')
-        f.open('last_err.txt','w',encoding='utf-8')
+        l = open('last_log.txt','w',encoding='utf-8')
+        e = open('last_err.txt','w',encoding='utf-8')
         self.using_java = self.cbox_using_java.currentIndex()
-        sp.run(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],cwd=self.server_path,check=True,stdout=f.write(),stderr=e.write())
-
+        print(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],f"cwd:{self.server_path}")
+        sp.run(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],cwd=self.server_path,check=True,stdout=log,stderr=err)
+        l.write(log)
+        e.write(err)
+        
     def about(self):  # 显示软件信息
         QMessageBox.information(self, "软件信息",
-                                "MSL2-Python 22M10B1 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
+                                "MSL2-Python 22M11B1 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
@@ -225,6 +233,9 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         '''显示设置页面'''
         mslsetting = Setting()
         self.show()
+        
+    def open_logs(self):
+        web.open(f"{self.server_path}/logs/latest.log")
 
 
 if __name__ == '__main__':
