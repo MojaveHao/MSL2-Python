@@ -31,9 +31,9 @@
 		 - 如果您希望使用Python311，请您使用AUR：
 			- [Python311 on AUR](https://aur.archlinux.org/packages/python311)
 	
-			- [AUR](https://wiki.archlinux.org/title/Arch_User_Repository))
+			- [AUR](https://wiki.archlinux.org/title/Arch_User_Repository)
 	
-			- [Pacman](https://wiki.archlinuxcn.org/wiki/Pacman))
+			- [Pacman](https://wiki.archlinuxcn.org/wiki/Pacman)
 	
 			- 作为一个老练的Arch Linux用户，您应该知道怎么使用
 			
