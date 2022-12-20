@@ -221,7 +221,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         pbar.update(1)
     
     def download_server(self):  # 创建下载窗口
-        download = DManager(self.download_path)
+        # download = DManager(self.download_path)
+        pass
     
     def visit_help(self):  # 查看帮助
         web.open("https://ntfs2020.github.io/MSL2-Python/#/")
