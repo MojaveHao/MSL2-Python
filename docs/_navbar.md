@@ -8,4 +8,4 @@
     * [常用配置翻译](#server.properties中部分常用配置翻译)
 * [关于](#关于)
 * [快捷工具](#快捷工具)
-* [繁體](zh_hk/_coverpage.md)
+* [繁體](zh_hk/README.md)
