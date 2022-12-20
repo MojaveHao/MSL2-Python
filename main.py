@@ -23,13 +23,14 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
         super().__init__()
         self.setupUi(self)
         self.show()
+        self.debug_mode = 1
         with tqdm(total=36) as pbar:
             pbar.set_description('pyMSL:SettingUp')
             self.setWindowIcon(QIcon("Resource" + os.sep + "logo.png"))
             pbar.update(1)
-            self.setWindowTitle("pyMSL 22M11Beta1")
+            self.setWindowTitle("pyMSL 22M12 Release 1")
             pbar.update(1)
-            self.using_java = 0  # 0为17，1为16，2为8，3为使用系统变量
+            self.using_java = 3  # 0为17，1为16，2为8，3为使用系统变量
             pbar.update(1)
             self.want_to_download = 0  # 同上
             pbar.update(1)
@@ -99,7 +100,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 self.download_path = "../MSLDownload"
             pbar.update(1)
             
-            self.glob_conf = {'Server_Name':f'{self.server_name}','Server_Path':f'{self.server_path}','Java_Path':f'{self.java_path}','Min_Mem':f'{self.min_mem_G}','Max_Mem':f'{self.max_mem_G}','Port':f'{self.serv_port}',}
+            self.glob_conf = {'Server_Name':f'{self.server_name}','Server_Path':f'{self.server_path}','Java_Path':f'{self.java_path[self.using_java]}','Min_Mem':f'{self.min_mem_G}','Max_Mem':f'{self.max_mem_G}','Port':f'{self.serv_port}',}
             pbar.update(1)
             
             if os.path.isfile("msl_config.txt"):  # 如果存在配置就从配置读取
@@ -110,7 +111,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 self.min_mem_G = config['Min_Mem']
                 self.max_mem_G = config['Max_Mem']
                 self.serv_port = config['Port']
-                self.using_java = 'Config Customed'
+                self.using_java = 3
                 
             else: # 不存在配置就写入
                 
@@ -128,8 +129,10 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 if self.min_mem_G > self.max_mem_G:
                     QMessageBox.warning(self,"警告","最小内存大于最大内存，请修改")
                 self.max_players = int(self.max_player.text())  # 获取最大玩家数量
+                print(self.max_players)
                 pbar.update(1)
                 self.serv_port = int(self.server_port.text())  # 获取服务器端口
+                print(self.serv_port)
                 pbar.update(1)
                 self.pvp = bool(self.cbox_pvp)  # 获取是否启用pvp
                 pbar.update(1)
@@ -139,29 +142,28 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
                 pbar.update(1)
             if os.path.isdir(self.server_path):  # 如果服务端路径存在就执行
                 try:
-                    with open(f"{self.server_path}" + os.sep + "server.properties",
-                              encoding='utf-8') as f:  # 读取server.properties
+                    with open(f"{self.server_path}" + os.sep + "server.properties", encoding='utf-8') as f:  # 读取server.properties
                         server_lines = f.readlines()
                 except:
                     QMessageBox.warning(self, "警告", "您必须确保已经在服务端路径下生成了server.properties文件")
-                for i in server_lines:  # 遍历server.properties，并且在内存中修改内容
-                    if "max-players=" in server_lines[i]:
-                        server_lines[i] = "max-players={}".format(self.max_players)
-                    if "server-port=" in server_lines[i]:
-                        server_lines[i] = "server-port={}".format(self.serv_port)
-                    if "pvp=" in server_lines[i]:
-                        server_lines[i] = "pvp={}".format(self.pvp)
-                    if "enable-command-block=" in server_lines[i]:
-                        server_lines[i] = "enable-command-block={}".format(self.command_block)
-                with open(f"{self.server_path}" + os.sep + "server.properties", "w",
-                          encoding='utf-8'):  # 将修改后的内容重新写回server.properties
-                    f.write(''.join(server_lines))
+                for i in range(len(server_lines)):  # 遍历server.properties，并且在内存中修改内容
+                        if "max-players=" in server_lines[i]:
+                            server_lines[i] = f"max-players={self.max_players}\n"
+                        if "server-port=" in server_lines[i]:
+                            server_lines[i] = f"server-port={self.serv_port}\n"
+                        if "pvp=" in server_lines[i]:
+                            server_lines[i] = f"pvp={self.pvp}\n"
+                        if "enable-command-block=" in server_lines[i]:
+                            server_lines[i] = f"enable-command-blocks={self.command_block}\n"
+                print(server_lines)
+                with open(f"{self.server_path}" + os.sep + "server.properties", "w", encoding='utf-8') as f:  # 将修改后的内容重新写回server.properties
+                    f.writelines(server_lines)
             else:
                 QMessageBox.warning(self, "警告", "请您选择正确的服务端路径")
             self.min_ram.setMinimum(1)  # 定义最小内存为1G
             self.min_ram.setMaximum(self.max_mem_G)  # 设置最大内存
             self.max_ram.setMinimum(self.min_mem_G)  # 设置最小内存
-            write_config(self.using_java, self.java_path, self.server_path, self.download_path)
+            write_config(self.glob_conf)
         else:
             QMessageBox.warning(self, "警告", "请您在关闭服务器后再更改此部分设置!")
     
@@ -175,17 +177,13 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             self.server_start_opitions.replace("-Dlog4j2.formatMsgNoLookups=true", '')
     
     def start_server(self):  # 启动服务器
-        l = open('last_log.txt','w',encoding='utf-8')
-        e = open('last_err.txt','w',encoding='utf-8')
         self.using_java = self.cbox_using_java.currentIndex()
         print(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],f"cwd:{self.server_path}")
-        sp.run(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],cwd=self.server_path,check=True,stdout=log,stderr=err)
-        l.write(log)
-        e.write(err)
+        sp.run(['java','-jar',f'-Xms{self.min_mem_G}G',f'-Xmx{self.max_mem_G}G',f'{self.server_name}',f'{self.server_start_opitions}'],cwd=self.server_path,check=True,shell=True,stdout=open('latest.txt','w'),stderr=open('latest_err.txt','w'))
         
     def about(self):  # 显示软件信息
         QMessageBox.information(self, "软件信息",
-                                "MSL2-Python 22M11B1 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
+                                "MSL2-Python 22M12R1 \nCode by MojaveHao \nOpenSourced by GNU Affero General Public License v3")
     
     def show_java_path(self):  # 展示默认的Java路径
         if self.cbox_using_java.currentText() == "Java17":
@@ -196,8 +194,7 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
             QMessageBox.information(self, "Java8路径", str(self.java_path[2]))
         if self.cbox_using_java.currentText() == "":
             QMessageBox(self, "提示", "您选择了系统环境变量")
-        if self.cbox_using_java.currentText() == 'Config Customed':
-            QMessageBox(self,"提示","您的Java由配置文件决定,但您仍可手动调整")
+            
     def frp_guide(self, now):  # 调用FRP配置指南
         frpconfig = FRP()
         self.show()
@@ -237,7 +234,8 @@ class MSL2(QMainWindow, MSL2Py, Output, FRP, Setting):
     def open_logs(self):
         web.open(f"{self.server_path}/logs/latest.log")
 
-
+    def debug(self,text):
+        pass
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     msl = MSL2()

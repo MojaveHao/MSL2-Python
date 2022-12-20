@@ -1,0 +1,15 @@
+"filename", "language", "Python", "XML", "JSON", "comment", "blank", "total"
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\create_config.py", "Python", -12, 0, 0, 0, 2, -10
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\setting.ui", "XML", 0, -9, 0, 0, 0, -9
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_download.py", "Python", 3, 0, 0, 0, 3, 6
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_frp.py", "Python", 0, 0, 0, 0, -1, -1
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_help.py", "Python", 2, 0, 0, 0, -1, 1
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_license.py", "Python", 1844, 0, 0, 0, 0, 1844
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_setting.py", "Python", -14, 0, 0, 0, 0, -14
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_start_options.py", "Python", 19, 0, 0, 0, -1, 18
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\update.py", "Python", -1, 0, 0, 0, 0, -1
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\main.py", "Python", 3, 0, 0, -1, 4, 6
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\msl_config.json", "JSON", 0, 0, 1, 0, 0, 1
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\ui_kfq.py", "Python", 1, 0, 0, 0, 6, 7
+"c:\Users\HTTco\OneDrive\桌面\MSL2-Python\ui_output.py", "Python", 7, 0, 0, 0, 0, 7
+"Total", "-", 1852, -9, 1, -1, 12, 1855

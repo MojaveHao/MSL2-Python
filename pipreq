@@ -1,12 +1,8 @@
 PySide6
 tqdm
 requests
-signal
-urllib
 multitasking
 retry
-traceback
 psutil
-tkinter
 nuitka
 httpx

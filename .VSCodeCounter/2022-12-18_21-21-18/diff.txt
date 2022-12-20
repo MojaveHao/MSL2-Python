@@ -1,0 +1,40 @@
+Date : 2022-12-18 21:21:18
+Directory : c:\Users\HTTco\OneDrive\桌面\MSL2-Python
+Total : 13 files,  1844 codes, -1 comments, 12 blanks, all 1855 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Python   |         11 |      1,852 |         -1 |         12 |      1,863 |
+| JSON     |          1 |          1 |          0 |          0 |          1 |
+| XML      |          1 |         -9 |          0 |          0 |         -9 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                     |         13 |      1,844 |         -1 |         12 |      1,855 |
+| SupportLib                                                            |          9 |      1,832 |          0 |          2 |      1,834 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                              | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\create_config.py    | Python   |        -12 |          0 |          2 |        -10 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\setting.ui          | XML      |         -9 |          0 |          0 |         -9 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_download.py      | Python   |          3 |          0 |          3 |          6 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_frp.py           | Python   |          0 |          0 |         -1 |         -1 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_help.py          | Python   |          2 |          0 |         -1 |          1 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_license.py       | Python   |      1,844 |          0 |          0 |      1,844 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_setting.py       | Python   |        -14 |          0 |          0 |        -14 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\ui_start_options.py | Python   |         19 |          0 |         -1 |         18 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\SupportLib\update.py           | Python   |         -1 |          0 |          0 |         -1 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\main.py                        | Python   |          3 |         -1 |          4 |          6 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\msl_config.json                | JSON     |          1 |          0 |          0 |          1 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\ui_kfq.py                      | Python   |          1 |          0 |          6 |          7 |
+| c:\Users\HTTco\OneDrive\桌面\MSL2-Python\ui_output.py                   | Python   |          7 |          0 |          0 |          7 |
+| Total                                                                 |          |      1,844 |         -1 |         12 |      1,855 |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
